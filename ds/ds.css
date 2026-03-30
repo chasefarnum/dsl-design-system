@@ -93,6 +93,13 @@ body {
   height: 16px;
 }
 
+.ds-theme-btn--fixed {
+  position: fixed;
+  top: var(--spacing-4);
+  right: var(--spacing-5);
+  z-index: 300;
+}
+
 /* ── Nav groups ──────────────────────────────────────────────────────────────── */
 
 .ds-nav__group {
