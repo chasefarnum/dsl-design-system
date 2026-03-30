@@ -1,0 +1,35 @@
+{
+  "name": "inputs",
+  "description": "Text input variants with sizes, states, icons, and helper text",
+  "primitive": "native",
+  "cssClass": "dsl-input",
+  "source": "components/inputs/inputs.html",
+  "variants": {
+    "type": {
+      "options": ["text", "email", "phone", "password", "search", "textarea", "select"],
+      "default": "text"
+    },
+    "size": {
+      "options": ["sm", "md", "lg"],
+      "default": "md",
+      "cssModifier": "dsl-input--{size}"
+    },
+    "state": {
+      "options": ["default", "focus", "filled", "error", "disabled"],
+      "default": "default",
+      "cssModifier": "dsl-input-wrapper--{state}"
+    }
+  },
+  "slots": ["input-wrapper", "input-prefix", "input-suffix", "input-label", "input-helper"],
+  "tokens": {
+    "--form-input-bg": "var(--form-input-bg)",
+    "--form-input-border": "var(--form-input-border)",
+    "--form-input-border-focus": "var(--form-input-border-focus)",
+    "--form-input-text": "var(--form-input-text)",
+    "--form-input-placeholder": "var(--form-input-placeholder)",
+    "--form-label-text": "var(--form-label-text)",
+    "--color-semantic-error": "var(--color-semantic-error)",
+    "--shape-radius-md": "var(--shape-radius-md)",
+    "--shape-border-width-thin": "var(--shape-border-width-thin)"
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Sections — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../button/button.css" />
+  <link rel="stylesheet" href="sections.css" />
+  <style>
+    body { margin: 0; font-family: var(--typography-font-family-body); }
+  </style>
+</head>
+<body>
+
+  <!-- Hero section -->
+  <section class="dsl-section dsl-section--hero dsl-section--bg-white">
+    <div class="dsl-section__container">
+      <span class="dsl-section__eyebrow">Discover Senior Living</span>
+      <h1 class="dsl-section__heading">Find the Perfect Community for Your Loved One</h1>
+      <p class="dsl-section__body">Explore our award-winning senior living communities across Florida. Independent Living, Assisted Living, Memory Care, and more — all with resort-style amenities and exceptional care.</p>
+      <div class="dsl-section__actions">
+        <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--lg"><span class="dsl-btn__text">Find a Community</span></a>
+        <a href="#" class="dsl-btn dsl-btn--ghost dsl-btn--lg"><span class="dsl-btn__text">Schedule a Tour</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature section -->
+  <section class="dsl-section dsl-section--feature dsl-section--bg-subtle">
+    <div class="dsl-section__container">
+      <span class="dsl-section__eyebrow">Why Discovery Senior Living</span>
+      <h2 class="dsl-section__heading" style="max-width:560px;">Award-Winning Care You Can Trust</h2>
+      <div class="dsl-section__grid">
+        <div class="dsl-section__feature-item">
+          <div class="dsl-section__feature-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+          </div>
+          <h3 class="dsl-section__feature-title">Personalized Care</h3>
+          <p class="dsl-section__feature-body">Individualized care plans tailored to each resident's unique needs, preferences, and goals.</p>
+        </div>
+        <div class="dsl-section__feature-item">
+          <div class="dsl-section__feature-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <h3 class="dsl-section__feature-title">5-Star Dining</h3>
+          <p class="dsl-section__feature-body">Chef-prepared meals with fresh, seasonal ingredients. Multiple dining venues and flexible meal plans.</p>
+        </div>
+        <div class="dsl-section__feature-item">
+          <div class="dsl-section__feature-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+          </div>
+          <h3 class="dsl-section__feature-title">24/7 Support</h3>
+          <p class="dsl-section__feature-body">Our dedicated care team is available around the clock to ensure safety, comfort, and peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Split section -->
+  <section class="dsl-section dsl-section--split dsl-section--bg-white">
+    <div class="dsl-section__container">
+      <div>
+        <span class="dsl-section__eyebrow">Independent Living</span>
+        <h2 class="dsl-section__subheading" style="font-size: var(--typography-font-size-3xl);">Live Life on Your Terms</h2>
+        <p class="dsl-section__body">Enjoy the freedom of maintenance-free living with access to a full calendar of social events, fitness programs, and cultural enrichment.</p>
+        <div class="dsl-section__actions">
+          <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--md"><span class="dsl-btn__text">Explore Communities</span></a>
+        </div>
+      </div>
+      <div class="dsl-section__media">
+        <img src="https://placehold.co/580x400/E5EEF7/00549E?text=Community" alt="Independent Living community" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA section — brand background -->
+  <section class="dsl-section dsl-section--cta dsl-section--bg-brand">
+    <div class="dsl-section__container">
+      <h2 class="dsl-section__heading">Ready to Find Your New Home?</h2>
+      <p class="dsl-section__body">Schedule a personal tour and see why thousands of families trust Discovery Senior Living.</p>
+      <div class="dsl-section__actions">
+        <a href="#" class="dsl-btn dsl-btn--secondary dsl-btn--lg"><span class="dsl-btn__text">Schedule a Tour</span></a>
+        <a href="#" class="dsl-btn dsl-btn--ghost dsl-btn--lg" style="border-color:rgba(255,255,255,0.5);color:var(--color-text-inverse)"><span class="dsl-btn__text">Call 1-800-555-1234</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content section — dark background -->
+  <section class="dsl-section dsl-section--content dsl-section--bg-dark">
+    <div class="dsl-section__container">
+      <span class="dsl-section__eyebrow">Our Story</span>
+      <h2 class="dsl-section__heading" style="max-width:640px;">Dedicated to Enriching the Lives of Seniors for Over 30 Years</h2>
+      <p class="dsl-section__body" style="max-width:640px;">Founded in 1991, Discovery Senior Living has grown to become one of the nation's premier senior living operators with communities across Florida, Georgia, and the Southeast.</p>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Badge — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="badge.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-6); }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+    .demo-row { display: flex; align-items: center; gap: var(--spacing-3); flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Variants — md size</h2>
+    <div class="demo-row">
+      <span class="dsl-badge dsl-badge--default dsl-badge--md">Default</span>
+      <span class="dsl-badge dsl-badge--brand dsl-badge--md">Brand</span>
+      <span class="dsl-badge dsl-badge--success dsl-badge--md">Available Now</span>
+      <span class="dsl-badge dsl-badge--warning dsl-badge--md">Limited Units</span>
+      <span class="dsl-badge dsl-badge--error dsl-badge--md">Waitlist Only</span>
+      <span class="dsl-badge dsl-badge--info dsl-badge--md">New Community</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Variants — sm size</h2>
+    <div class="demo-row">
+      <span class="dsl-badge dsl-badge--default dsl-badge--sm">Default</span>
+      <span class="dsl-badge dsl-badge--brand dsl-badge--sm">Brand</span>
+      <span class="dsl-badge dsl-badge--success dsl-badge--sm">Available</span>
+      <span class="dsl-badge dsl-badge--warning dsl-badge--sm">Limited</span>
+      <span class="dsl-badge dsl-badge--error dsl-badge--sm">Waitlist</span>
+      <span class="dsl-badge dsl-badge--info dsl-badge--sm">New</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Dismissible</h2>
+    <div class="demo-row">
+      <span class="dsl-badge dsl-badge--default dsl-badge--md">
+        Independent Living
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+      <span class="dsl-badge dsl-badge--brand dsl-badge--md">
+        Featured
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+      <span class="dsl-badge dsl-badge--success dsl-badge--md">
+        Available Now
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+      <span class="dsl-badge dsl-badge--error dsl-badge--md">
+        Waitlist Only
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+    </div>
+  </div>
+
+  <script src="badge.js"></script>
+</body>
+</html>

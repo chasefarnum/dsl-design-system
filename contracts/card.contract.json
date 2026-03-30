@@ -1,0 +1,43 @@
+{
+  "name": "Card",
+  "source": "components/card/card.html",
+  "primitive": "native",
+  "description": "Surface container for grouping related content. Used for community highlights, resident profiles, and CTA blocks.",
+  "cssClass": "dsl-card",
+  "variants": {
+    "elevation": {
+      "options": ["flat", "raised", "bordered"],
+      "default": "flat",
+      "cssModifier": "dsl-card--{elevation}"
+    }
+  },
+  "slots": [
+    "dsl-card",
+    "dsl-card__media",
+    "dsl-card__header",
+    "dsl-card__title",
+    "dsl-card__subtitle",
+    "dsl-card__body",
+    "dsl-card__footer"
+  ],
+  "tokens": {
+    "--color-bg-default":          "var(--color-bg-default)",
+    "--color-border-default":      "var(--color-border-default)",
+    "--color-text-primary":        "var(--color-text-primary)",
+    "--color-text-secondary":      "var(--color-text-secondary)",
+    "--color-text-muted":          "var(--color-text-muted)",
+    "--shape-radius-lg":           "var(--shape-radius-lg)",
+    "--shape-border-width-thin":   "var(--shape-border-width-thin)",
+    "--shape-shadow-sm":           "var(--shape-shadow-sm)",
+    "--shape-shadow-md":           "var(--shape-shadow-md)",
+    "--spacing-4":                 "var(--spacing-4)",
+    "--spacing-5":                 "var(--spacing-5)",
+    "--typography-font-family-heading": "var(--typography-font-family-heading)",
+    "--typography-font-family-body":    "var(--typography-font-family-body)",
+    "--typography-font-size-sm":        "var(--typography-font-size-sm)",
+    "--typography-font-size-md":        "var(--typography-font-size-md)",
+    "--typography-font-size-xl":        "var(--typography-font-size-xl)",
+    "--typography-font-weight-bold":    "var(--typography-font-weight-bold)"
+  },
+  "states": []
+}

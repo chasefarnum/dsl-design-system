@@ -1,0 +1,171 @@
+/* DSL Inputs
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+/* ── Field wrapper ─────────────────────────────────────────────────────────── */
+
+.dsl-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* ── Label ─────────────────────────────────────────────────────────────────── */
+
+.dsl-input-label {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--form-label-text);
+  line-height: var(--typography-line-height-tight);
+}
+
+/* ── Input wrapper (for prefix/suffix icons) ───────────────────────────────── */
+
+.dsl-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Base input ────────────────────────────────────────────────────────────── */
+
+.dsl-input {
+  display: block;
+  width: 100%;
+  background-color: var(--form-input-bg);
+  border: var(--shape-border-width-thin) solid var(--form-input-border);
+  border-radius: var(--shape-radius-md);
+  font-family: var(--typography-font-family-body);
+  color: var(--form-input-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+.dsl-input::placeholder {
+  color: var(--form-input-placeholder);
+}
+
+.dsl-input:focus {
+  outline: none;
+  border-color: var(--form-input-border-focus);
+  box-shadow: 0 0 0 var(--shape-border-width-medium) var(--color-brand-primary-60);
+}
+
+.dsl-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: var(--color-bg-subtle);
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────────────────── */
+
+.dsl-input--sm {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--typography-font-size-sm);
+  line-height: var(--typography-line-height-tight);
+}
+
+.dsl-input--md {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--typography-font-size-md);
+  line-height: var(--typography-line-height-tight);
+}
+
+.dsl-input--lg {
+  padding: var(--spacing-4) var(--spacing-5);
+  font-size: var(--typography-font-size-lg);
+  line-height: var(--typography-line-height-tight);
+}
+
+/* ── Error state ───────────────────────────────────────────────────────────── */
+
+.dsl-input-field--error .dsl-input {
+  border-color: var(--color-semantic-error);
+}
+
+.dsl-input-field--error .dsl-input:focus {
+  box-shadow: 0 0 0 var(--shape-border-width-medium) var(--color-semantic-error);
+}
+
+.dsl-input-field--error .dsl-input-helper {
+  color: var(--color-semantic-error);
+}
+
+/* ── Prefix / suffix icons ─────────────────────────────────────────────────── */
+
+.dsl-input-prefix,
+.dsl-input-suffix {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: var(--color-text-muted);
+}
+
+.dsl-input-prefix {
+  left: var(--spacing-3);
+}
+
+.dsl-input-suffix {
+  right: var(--spacing-3);
+}
+
+.dsl-input--has-prefix { padding-left: var(--spacing-7); }
+.dsl-input--has-suffix { padding-right: var(--spacing-7); }
+
+.dsl-input--sm.dsl-input--has-prefix { padding-left: calc(var(--spacing-3) + 24px); }
+.dsl-input--sm.dsl-input--has-suffix { padding-right: calc(var(--spacing-3) + 24px); }
+
+/* ── Textarea ──────────────────────────────────────────────────────────────── */
+
+.dsl-input--textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ── Select ────────────────────────────────────────────────────────────────── */
+
+.dsl-input-wrapper--select::after {
+  content: '';
+  position: absolute;
+  right: var(--spacing-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--color-text-muted);
+  pointer-events: none;
+}
+
+.dsl-input--select {
+  padding-right: var(--spacing-7);
+  cursor: pointer;
+}
+
+/* ── Helper / error message ────────────────────────────────────────────────── */
+
+.dsl-input-helper {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--typography-line-height-tight);
+}
+
+/* ── Character count ───────────────────────────────────────────────────────── */
+
+.dsl-input-count {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-xs);
+  color: var(--color-text-muted);
+  text-align: right;
+  margin-top: var(--spacing-1);
+}
+
+.dsl-input-count--over {
+  color: var(--color-semantic-error);
+}

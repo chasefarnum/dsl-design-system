@@ -1,0 +1,22 @@
+{
+  "name": "pagination",
+  "description": "Prev/next + page number controls with active state and ellipsis",
+  "primitive": "native",
+  "cssClass": "dsl-pagination",
+  "source": "components/pagination/pagination.html",
+  "variants": {
+    "size": {
+      "options": ["sm", "md"],
+      "default": "md",
+      "cssModifier": "dsl-pagination--{size}"
+    }
+  },
+  "tokens": {
+    "--color-bg-default": "var(--color-bg-default)",
+    "--color-bg-brand": "var(--color-bg-brand)",
+    "--color-text-primary": "var(--color-text-primary)",
+    "--color-text-inverse": "var(--color-text-inverse)",
+    "--color-border-default": "var(--color-border-default)",
+    "--shape-radius-md": "var(--shape-radius-md)"
+  }
+}

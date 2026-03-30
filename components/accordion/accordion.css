@@ -1,0 +1,104 @@
+/* DSL Accordion
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+.dsl-accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dsl-accordion + .dsl-accordion {
+  margin-top: var(--spacing-3);
+}
+
+/* ── Item ──────────────────────────────────────────────────────────────────── */
+
+.dsl-accordion__item {
+  border-bottom: var(--shape-border-width-thin) solid var(--color-border-default);
+}
+
+.dsl-accordion__item:first-child {
+  border-top: var(--shape-border-width-thin) solid var(--color-border-default);
+}
+
+/* ── Variant: bordered ─────────────────────────────────────────────────────── */
+
+.dsl-accordion--bordered .dsl-accordion__item {
+  border: var(--shape-border-width-thin) solid var(--color-border-default);
+  border-radius: var(--shape-radius-md);
+  margin-bottom: var(--spacing-2);
+  overflow: hidden;
+}
+
+.dsl-accordion--bordered .dsl-accordion__item:first-child {
+  border-top: var(--shape-border-width-thin) solid var(--color-border-default);
+}
+
+/* ── Trigger ───────────────────────────────────────────────────────────────── */
+
+.dsl-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-4) var(--spacing-5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--color-text-primary);
+  text-align: left;
+  gap: var(--spacing-4);
+  transition: background-color 0.15s ease;
+}
+
+.dsl-accordion__trigger:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+.dsl-accordion__trigger:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+/* ── Chevron icon ──────────────────────────────────────────────────────────── */
+
+.dsl-accordion__chevron {
+  flex-shrink: 0;
+  width: 1.25em;
+  height: 1.25em;
+  color: var(--color-text-muted);
+  transition: transform 0.2s ease;
+}
+
+.dsl-accordion__item[data-open] .dsl-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.dsl-accordion__item[data-open] .dsl-accordion__trigger {
+  color: var(--color-text-brand);
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────────────── */
+
+.dsl-accordion__panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.25s ease;
+}
+
+.dsl-accordion__item[data-open] .dsl-accordion__panel {
+  max-height: 600px;
+}
+
+.dsl-accordion__panel-inner {
+  padding: 0 var(--spacing-5) var(--spacing-5);
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  line-height: var(--typography-line-height-normal);
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Button — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="button.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-6); }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+    .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Primary</h2>
+    <div class="demo-row">
+      <button class="dsl-btn dsl-btn--primary dsl-btn--sm" type="button"><span class="dsl-btn__text">Small</span></button>
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button"><span class="dsl-btn__text">Schedule a Tour</span></button>
+      <button class="dsl-btn dsl-btn--primary dsl-btn--lg" type="button"><span class="dsl-btn__text">Get Started</span></button>
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" disabled><span class="dsl-btn__text">Disabled</span></button>
+    </div>
+    <div class="demo-row">
+      <!-- Icon left -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button">
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg>
+        </span>
+        <span class="dsl-btn__text">Icon Left</span>
+      </button>
+      <!-- Icon right -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button">
+        <span class="dsl-btn__text">Icon Right</span>
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg>
+        </span>
+      </button>
+      <!-- Icon only -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md dsl-btn--icon-only" type="button" aria-label="Search">
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        </span>
+      </button>
+      <!-- Loading -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md dsl-btn--loading" type="button" aria-busy="true">
+        <span class="dsl-btn__spinner" aria-hidden="true"></span>
+        <span class="dsl-btn__text">Loading…</span>
+      </button>
+      <!-- Full width -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md dsl-btn--full" type="button"><span class="dsl-btn__text">Full Width</span></button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Secondary</h2>
+    <div class="demo-row">
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--sm" type="button"><span class="dsl-btn__text">Small</span></button>
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--md" type="button"><span class="dsl-btn__text">Learn More</span></button>
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--lg" type="button"><span class="dsl-btn__text">Explore Communities</span></button>
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--md dsl-btn--loading" type="button" aria-busy="true">
+        <span class="dsl-btn__spinner" aria-hidden="true"></span>
+        <span class="dsl-btn__text">Loading…</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Ghost</h2>
+    <div class="demo-row">
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--sm" type="button"><span class="dsl-btn__text">Small</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button"><span class="dsl-btn__text">View Floor Plans</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--lg" type="button"><span class="dsl-btn__text">Contact Us</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--md dsl-btn--icon-only" type="button" aria-label="Close">
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

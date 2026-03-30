@@ -1,0 +1,21 @@
+{
+  "name": "tabs",
+  "description": "Tabbed panel interface with underline and pill variants, keyboard navigation",
+  "primitive": "native",
+  "cssClass": "dsl-tabs",
+  "source": "components/tabs/tabs.html",
+  "variants": {
+    "variant": {
+      "options": ["underline", "pill"],
+      "default": "underline",
+      "cssModifier": "dsl-tabs--{variant}"
+    }
+  },
+  "states": ["default", "active", "disabled"],
+  "tokens": {
+    "--color-brand-primary": "var(--color-brand-primary)",
+    "--color-bg-subtle": "var(--color-bg-subtle)",
+    "--color-border-default": "var(--color-border-default)",
+    "--shape-radius-full": "var(--shape-radius-full)"
+  }
+}

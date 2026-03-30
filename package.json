@@ -1,0 +1,14 @@
+{
+  "name": "dsl-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node config/style-dictionary.config.js",
+    "build:watch": "node config/style-dictionary.config.js --watch"
+  },
+  "devDependencies": {
+    "chokidar": "^3.6.0",
+    "style-dictionary": "^4.0.0"
+  }
+}

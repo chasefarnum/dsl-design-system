@@ -1,0 +1,170 @@
+/* DSL Button
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+.dsl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  border: var(--shape-border-width-thin) solid transparent;
+  border-radius: var(--shape-radius-md);
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-tight);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+}
+
+/* ── Variant: primary ──────────────────────────────────────────────────────── */
+
+.dsl-btn--primary {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border-color: var(--button-primary-border);
+}
+
+.dsl-btn--primary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--button-primary-bg-hover);
+  border-color: var(--button-primary-bg-hover);
+}
+
+/* ── Variant: secondary ────────────────────────────────────────────────────── */
+
+.dsl-btn--secondary {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border-color: var(--button-secondary-border);
+}
+
+.dsl-btn--secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--button-secondary-bg-hover);
+  border-color: var(--button-secondary-bg-hover);
+}
+
+/* ── Variant: ghost ────────────────────────────────────────────────────────── */
+
+.dsl-btn--ghost {
+  background-color: var(--button-ghost-bg);
+  color: var(--button-ghost-text);
+  border-color: var(--button-ghost-border);
+}
+
+.dsl-btn--ghost:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--button-ghost-bg-hover);
+}
+
+/* ── Size: sm ──────────────────────────────────────────────────────────────── */
+
+.dsl-btn--sm {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--typography-font-size-sm);
+}
+
+/* ── Size: md (default) ────────────────────────────────────────────────────── */
+
+.dsl-btn--md {
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--typography-font-size-md);
+}
+
+/* ── Size: lg ──────────────────────────────────────────────────────────────── */
+
+.dsl-btn--lg {
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--typography-font-size-lg);
+}
+
+/* ── Full-width ────────────────────────────────────────────────────────────── */
+
+.dsl-btn--full {
+  width: 100%;
+}
+
+/* ── Icon only ─────────────────────────────────────────────────────────────── */
+
+.dsl-btn--icon-only {
+  padding: var(--spacing-3);
+}
+
+.dsl-btn--icon-only.dsl-btn--sm {
+  padding: var(--spacing-2);
+}
+
+.dsl-btn--icon-only.dsl-btn--lg {
+  padding: var(--spacing-4);
+}
+
+/* ── Icon ──────────────────────────────────────────────────────────────────── */
+
+.dsl-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+}
+
+/* ── States ────────────────────────────────────────────────────────────────── */
+
+.dsl-btn:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+.dsl-btn:active:not(:disabled):not([aria-disabled="true"]) {
+  opacity: 0.88;
+  transform: translateY(1px);
+}
+
+.dsl-btn:disabled,
+.dsl-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Loading state ─────────────────────────────────────────────────────────── */
+
+.dsl-btn--loading {
+  cursor: wait;
+  pointer-events: none;
+}
+
+.dsl-btn--loading .dsl-btn__text {
+  opacity: 0;
+}
+
+.dsl-btn--loading .dsl-btn__icon {
+  opacity: 0;
+}
+
+.dsl-btn__spinner {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+}
+
+.dsl-btn__spinner::after {
+  content: '';
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: var(--shape-radius-full);
+  border: var(--shape-border-width-medium) solid currentColor;
+  border-top-color: transparent;
+  animation: dsl-spin 0.7s linear infinite;
+}
+
+@keyframes dsl-spin {
+  to { transform: rotate(360deg); }
+}

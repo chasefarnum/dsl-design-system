@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Accordion — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="accordion.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-7); max-width: 640px; }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-4); }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Default — Multi-open</h2>
+    <div class="dsl-accordion" data-mode="multi">
+      <div class="dsl-accordion__item">
+        <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc1-panel1" id="acc1-btn1" type="button">
+          What types of senior living options are available?
+          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dsl-accordion__panel" id="acc1-panel1" role="region" aria-labelledby="acc1-btn1">
+          <div class="dsl-accordion__panel-inner">
+            We offer Independent Living, Assisted Living, Memory Care, and Skilled Nursing — each designed to provide the right level of support while promoting dignity and independence.
+          </div>
+        </div>
+      </div>
+      <div class="dsl-accordion__item">
+        <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc1-panel2" id="acc1-btn2" type="button">
+          How do I schedule a tour?
+          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dsl-accordion__panel" id="acc1-panel2" role="region" aria-labelledby="acc1-btn2">
+          <div class="dsl-accordion__panel-inner">
+            You can schedule a tour by calling our community directly, filling out our online form, or visiting in person during business hours (Monday–Saturday, 9am–5pm).
+          </div>
+        </div>
+      </div>
+      <div class="dsl-accordion__item">
+        <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc1-panel3" id="acc1-btn3" type="button">
+          What is included in the monthly fee?
+          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dsl-accordion__panel" id="acc1-panel3" role="region" aria-labelledby="acc1-btn3">
+          <div class="dsl-accordion__panel-inner">
+            Monthly fees typically include housing, meals, housekeeping, utilities, transportation, and access to community amenities and programming. Care services are individually tailored.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Bordered — Single-open</h2>
+    <div class="dsl-accordion dsl-accordion--bordered" data-mode="single">
+      <div class="dsl-accordion__item">
+        <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc2-panel1" id="acc2-btn1" type="button">
+          Is memory care covered by Medicare?
+          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dsl-accordion__panel" id="acc2-panel1" role="region" aria-labelledby="acc2-btn1">
+          <div class="dsl-accordion__panel-inner">
+            Medicare generally does not cover long-term memory care. However, certain short-term skilled nursing care may be covered. Our financial counselors can help you explore all payment options.
+          </div>
+        </div>
+      </div>
+      <div class="dsl-accordion__item">
+        <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc2-panel2" id="acc2-btn2" type="button">
+          Can residents bring their own furniture?
+          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dsl-accordion__panel" id="acc2-panel2" role="region" aria-labelledby="acc2-btn2">
+          <div class="dsl-accordion__panel-inner">
+            Yes! We encourage residents to personalize their spaces. You're welcome to bring furniture, artwork, and personal mementos to make your apartment feel like home.
+          </div>
+        </div>
+      </div>
+      <div class="dsl-accordion__item">
+        <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc2-panel3" id="acc2-btn3" type="button">
+          Are pets allowed?
+          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dsl-accordion__panel" id="acc2-panel3" role="region" aria-labelledby="acc2-btn3">
+          <div class="dsl-accordion__panel-inner">
+            Many of our communities are pet-friendly! Policies vary by location — please ask your community director about specific pet guidelines and any associated fees.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="accordion.js"></script>
+</body>
+</html>

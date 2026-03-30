@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Tooltip — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../button/button.css" />
+  <link rel="stylesheet" href="tooltip.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-9); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-7); }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-4); }
+    .demo-row { display: flex; align-items: center; gap: var(--spacing-7); flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Tooltip Positions</h2>
+    <div class="demo-row">
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="Schedule a tour to visit in person" data-tooltip-position="top">
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" aria-describedby="tt1">
+          <span class="dsl-btn__text">Tooltip Top</span>
+        </button>
+        <span class="dsl-tooltip" id="tt1" role="tooltip" data-position="top">Schedule a tour to visit in person</span>
+      </span>
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="Our communities are open daily 9am–5pm" data-tooltip-position="bottom">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" aria-describedby="tt2">
+          <span class="dsl-btn__text">Tooltip Bottom</span>
+        </button>
+        <span class="dsl-tooltip" id="tt2" role="tooltip" data-position="bottom">Our communities are open daily 9am–5pm</span>
+      </span>
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="Call toll-free: 1-800-555-1234" data-tooltip-position="left">
+        <button class="dsl-btn dsl-btn--secondary dsl-btn--md" type="button" aria-describedby="tt3">
+          <span class="dsl-btn__text">Tooltip Left</span>
+        </button>
+        <span class="dsl-tooltip" id="tt3" role="tooltip" data-position="left">Call toll-free: 1-800-555-1234</span>
+      </span>
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="All-inclusive pricing with no hidden fees" data-tooltip-position="right">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" aria-describedby="tt4">
+          <span class="dsl-btn__text">Tooltip Right</span>
+        </button>
+        <span class="dsl-tooltip" id="tt4" role="tooltip" data-position="right">All-inclusive pricing with no hidden fees</span>
+      </span>
+
+    </div>
+  </div>
+
+  <script src="tooltip.js"></script>
+</body>
+</html>

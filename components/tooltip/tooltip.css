@@ -1,0 +1,63 @@
+/* DSL Tooltip */
+
+.dsl-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.dsl-tooltip {
+  position: absolute;
+  z-index: 300;
+  max-width: 240px;
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-000);
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  line-height: var(--typography-line-height-snug);
+  border-radius: var(--shape-radius-md);
+  box-shadow: var(--shape-shadow-md);
+  white-space: normal;
+  word-break: break-word;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.dsl-tooltip[data-visible] {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Position: top (default) ───────────────────────────────────────────────── */
+
+.dsl-tooltip[data-position="top"] {
+  bottom: calc(100% + var(--spacing-2));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Position: bottom ──────────────────────────────────────────────────────── */
+
+.dsl-tooltip[data-position="bottom"] {
+  top: calc(100% + var(--spacing-2));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Position: left ────────────────────────────────────────────────────────── */
+
+.dsl-tooltip[data-position="left"] {
+  right: calc(100% + var(--spacing-2));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ── Position: right ───────────────────────────────────────────────────────── */
+
+.dsl-tooltip[data-position="right"] {
+  left: calc(100% + var(--spacing-2));
+  top: 50%;
+  transform: translateY(-50%);
+}

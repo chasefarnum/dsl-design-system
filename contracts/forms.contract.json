@@ -1,0 +1,31 @@
+{
+  "name": "forms",
+  "description": "Complete form layout with all input types and validation states",
+  "primitive": "native",
+  "cssClass": "dsl-form",
+  "source": "components/forms/forms.html",
+  "variants": {
+    "state": {
+      "options": ["default", "error", "success"],
+      "default": "default",
+      "cssModifier": "dsl-form-field--{state}"
+    }
+  },
+  "slots": ["form-field", "form-label", "form-input", "form-helper", "form-error"],
+  "tokens": {
+    "--form-input-bg": "var(--form-input-bg)",
+    "--form-input-border": "var(--form-input-border)",
+    "--form-input-border-focus": "var(--form-input-border-focus)",
+    "--form-input-text": "var(--form-input-text)",
+    "--form-input-placeholder": "var(--form-input-placeholder)",
+    "--form-label-text": "var(--form-label-text)",
+    "--color-semantic-error": "var(--color-semantic-error)",
+    "--color-semantic-success": "var(--color-semantic-success)",
+    "--shape-radius-md": "var(--shape-radius-md)",
+    "--shape-border-width-thin": "var(--shape-border-width-thin)",
+    "--shape-border-width-medium": "var(--shape-border-width-medium)",
+    "--spacing-2": "var(--spacing-2)",
+    "--spacing-3": "var(--spacing-3)",
+    "--spacing-4": "var(--spacing-4)"
+  }
+}

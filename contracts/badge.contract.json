@@ -1,0 +1,35 @@
+{
+  "name": "Badge",
+  "source": "components/badge/badge.html",
+  "primitive": "native",
+  "description": "Compact inline label for status, category tags, and feature callouts on senior living pages.",
+  "cssClass": "dsl-badge",
+  "variants": {
+    "intent": {
+      "options": ["default", "success", "warning", "error", "info"],
+      "default": "default",
+      "cssModifier": "dsl-badge--{intent}"
+    }
+  },
+  "slots": ["badge"],
+  "tokens": {
+    "--color-brand-primary":       "var(--color-brand-primary)",
+    "--color-neutral-000":         "var(--color-neutral-000)",
+    "--color-semantic-success":    "var(--color-semantic-success)",
+    "--color-semantic-warning":    "var(--color-semantic-warning)",
+    "--color-semantic-error":      "var(--color-semantic-error)",
+    "--color-semantic-info":       "var(--color-semantic-info)",
+    "--color-bg-subtle":           "var(--color-bg-subtle)",
+    "--color-text-secondary":      "var(--color-text-secondary)",
+    "--color-border-default":      "var(--color-border-default)",
+    "--shape-radius-full":         "var(--shape-radius-full)",
+    "--spacing-1":                 "var(--spacing-1)",
+    "--spacing-3":                 "var(--spacing-3)",
+    "--typography-font-family-body":    "var(--typography-font-family-body)",
+    "--typography-font-size-xs":        "var(--typography-font-size-xs)",
+    "--typography-font-size-sm":        "var(--typography-font-size-sm)",
+    "--typography-font-weight-semibold":"var(--typography-font-weight-semibold)",
+    "--typography-letter-spacing-wide": "var(--typography-letter-spacing-wide)"
+  },
+  "states": ["hover"]
+}

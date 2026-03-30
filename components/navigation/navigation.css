@@ -1,0 +1,254 @@
+/* DSL Navigation
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+.dsl-nav {
+  background-color: var(--color-bg-default);
+  border-bottom: var(--shape-border-width-thin) solid var(--color-border-default);
+  width: 100%;
+  z-index: 100;
+}
+
+.dsl-nav--sticky {
+  position: sticky;
+  top: 0;
+}
+
+.dsl-nav--scrolled {
+  box-shadow: var(--shape-shadow-sm);
+}
+
+/* ── Inner container ───────────────────────────────────────────────────────── */
+
+.dsl-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-5);
+  height: 64px;
+}
+
+/* ── Logo ──────────────────────────────────────────────────────────────────── */
+
+.dsl-nav__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: var(--typography-font-family-heading);
+  font-size: var(--typography-font-size-xl);
+  font-weight: var(--typography-font-weight-bold);
+  color: var(--color-brand-primary);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Links ─────────────────────────────────────────────────────────────────── */
+
+.dsl-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.dsl-nav__item {
+  position: relative;
+}
+
+.dsl-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  font-weight: var(--typography-font-weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--shape-radius-md);
+  transition: color 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.dsl-nav__link:hover,
+.dsl-nav__link:focus-visible {
+  color: var(--color-text-brand);
+  background-color: var(--color-bg-subtle);
+}
+
+.dsl-nav__link--active {
+  color: var(--color-text-brand);
+  font-weight: var(--typography-font-weight-semibold);
+}
+
+.dsl-nav__link:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+.dsl-nav__link-chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+  color: var(--color-text-muted);
+}
+
+.dsl-nav__item[data-submenu-open] .dsl-nav__link-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Submenu ───────────────────────────────────────────────────────────────── */
+
+.dsl-nav__submenu {
+  position: absolute;
+  top: calc(100% + var(--spacing-2));
+  left: 0;
+  min-width: 200px;
+  background-color: var(--color-bg-default);
+  border: var(--shape-border-width-thin) solid var(--color-border-default);
+  border-radius: var(--shape-radius-md);
+  box-shadow: var(--shape-shadow-lg);
+  padding: var(--spacing-2) 0;
+  list-style: none;
+  margin: 0;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+.dsl-nav__item[data-submenu-open] .dsl-nav__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dsl-nav__submenu-link {
+  display: block;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background-color 0.1s ease;
+}
+
+.dsl-nav__submenu-link:hover {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-brand);
+}
+
+/* ── CTA area ──────────────────────────────────────────────────────────────── */
+
+.dsl-nav__cta {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+}
+
+/* ── Hamburger ─────────────────────────────────────────────────────────────── */
+
+.dsl-nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-2);
+  border-radius: var(--shape-radius-md);
+  margin-left: auto;
+}
+
+.dsl-nav__hamburger:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+}
+
+.dsl-nav__hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: var(--shape-radius-full);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.dsl-nav[data-mobile-open] .dsl-nav__hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.dsl-nav[data-mobile-open] .dsl-nav__hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.dsl-nav[data-mobile-open] .dsl-nav__hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile ────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .dsl-nav__hamburger {
+    display: flex;
+  }
+
+  .dsl-nav__links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg-default);
+    border-bottom: var(--shape-border-width-thin) solid var(--color-border-default);
+    padding: var(--spacing-3) var(--spacing-5);
+    box-shadow: var(--shape-shadow-sm);
+    z-index: 99;
+  }
+
+  .dsl-nav[data-mobile-open] .dsl-nav__links {
+    display: flex;
+  }
+
+  .dsl-nav__cta {
+    display: none;
+  }
+
+  .dsl-nav[data-mobile-open] .dsl-nav__cta {
+    display: flex;
+    margin: var(--spacing-3) 0;
+    width: 100%;
+  }
+
+  .dsl-nav__submenu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding-left: var(--spacing-4);
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+  }
+
+  .dsl-nav__item[data-submenu-open] .dsl-nav__submenu {
+    display: block;
+  }
+}
+
+.dsl-nav {
+  position: relative;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Avatar — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="avatar.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-6); }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-4); }
+    .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Image — All Sizes</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--xs">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--sm">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--md">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--lg">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--xl">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Initials — All Sizes</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--xs" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--sm" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--lg" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--xl" aria-label="Jane Doe">JD</div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Icon — All Sizes</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--xs" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--sm" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--md" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--lg" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--xl" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>With Online Badge</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--md dsl-avatar--with-badge">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=2" alt="John Smith" />
+        <span class="dsl-avatar__badge" aria-label="Online"></span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md dsl-avatar--with-badge" aria-label="Mary Johnson">
+        MJ
+        <span class="dsl-avatar__badge" aria-label="Online"></span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--lg dsl-avatar--with-badge" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+        <span class="dsl-avatar__badge" aria-label="Online"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Avatar Group</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar-group">
+        <div class="dsl-avatar dsl-avatar--image dsl-avatar--md">
+          <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+        </div>
+        <div class="dsl-avatar dsl-avatar--image dsl-avatar--md">
+          <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=2" alt="John Smith" />
+        </div>
+        <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md" aria-label="Mary Johnson">MJ</div>
+        <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md" aria-label="Robert Brown">RB</div>
+        <div class="dsl-avatar dsl-avatar--md dsl-avatar-group__count">+4</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

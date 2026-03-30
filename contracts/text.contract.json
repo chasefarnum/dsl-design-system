@@ -1,0 +1,21 @@
+{
+  "name": "text",
+  "description": "Typography demo page showing the full type scale and utility styles",
+  "primitive": "native",
+  "cssClass": "dsl-text",
+  "source": "components/text/text.html",
+  "variants": {},
+  "tokens": {
+    "--typography-font-family-heading": "var(--typography-font-family-heading)",
+    "--typography-font-family-body": "var(--typography-font-family-body)",
+    "--typography-font-size-xs": "var(--typography-font-size-xs)",
+    "--typography-font-size-sm": "var(--typography-font-size-sm)",
+    "--typography-font-size-md": "var(--typography-font-size-md)",
+    "--typography-font-size-lg": "var(--typography-font-size-lg)",
+    "--typography-font-size-xl": "var(--typography-font-size-xl)",
+    "--typography-font-size-2xl": "var(--typography-font-size-2xl)",
+    "--typography-font-size-3xl": "var(--typography-font-size-3xl)",
+    "--typography-font-size-4xl": "var(--typography-font-size-4xl)",
+    "--typography-font-size-5xl": "var(--typography-font-size-5xl)"
+  }
+}

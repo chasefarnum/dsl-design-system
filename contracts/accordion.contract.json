@@ -1,0 +1,35 @@
+{
+  "name": "accordion",
+  "description": "Collapsible content panels for FAQs and progressive disclosure",
+  "primitive": "native",
+  "cssClass": "dsl-accordion",
+  "source": "components/accordion/accordion.html",
+  "variants": {
+    "variant": {
+      "options": ["default", "bordered"],
+      "default": "default",
+      "cssModifier": "dsl-accordion--{variant}"
+    },
+    "mode": {
+      "options": ["multi", "single"],
+      "default": "multi",
+      "dataAttribute": "data-mode"
+    }
+  },
+  "slots": ["accordion__item", "accordion__trigger", "accordion__panel"],
+  "states": ["closed", "open"],
+  "tokens": {
+    "--color-bg-default": "var(--color-bg-default)",
+    "--color-bg-subtle": "var(--color-bg-subtle)",
+    "--color-border-default": "var(--color-border-default)",
+    "--color-text-primary": "var(--color-text-primary)",
+    "--color-text-secondary": "var(--color-text-secondary)",
+    "--color-brand-primary": "var(--color-brand-primary)",
+    "--shape-radius-md": "var(--shape-radius-md)",
+    "--shape-border-width-thin": "var(--shape-border-width-thin)",
+    "--spacing-4": "var(--spacing-4)",
+    "--spacing-5": "var(--spacing-5)",
+    "--typography-font-family-body": "var(--typography-font-family-body)",
+    "--typography-font-weight-semibold": "var(--typography-font-weight-semibold)"
+  }
+}

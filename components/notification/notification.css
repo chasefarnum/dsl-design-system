@@ -1,0 +1,141 @@
+/* DSL Notification / Alert
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ */
+
+/* ── Base alert ────────────────────────────────────────────────────────────── */
+
+.dsl-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-5);
+  border-radius: var(--shape-radius-md);
+  border: var(--shape-border-width-thin) solid transparent;
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  line-height: var(--typography-line-height-normal);
+}
+
+/* ── Intents ───────────────────────────────────────────────────────────────── */
+
+.dsl-alert--info {
+  background-color: var(--color-brand-primary-light);
+  border-color: var(--color-semantic-info);
+  color: var(--color-text-primary);
+}
+
+.dsl-alert--info .dsl-alert__icon { color: var(--color-semantic-info); }
+
+.dsl-alert--success {
+  background-color: #edf7f1;
+  border-color: var(--color-semantic-success);
+  color: var(--color-text-primary);
+}
+
+.dsl-alert--success .dsl-alert__icon { color: var(--color-semantic-success); }
+
+.dsl-alert--warning {
+  background-color: #fef9ec;
+  border-color: var(--color-semantic-warning);
+  color: var(--color-text-primary);
+}
+
+.dsl-alert--warning .dsl-alert__icon { color: var(--color-semantic-warning); }
+
+.dsl-alert--error {
+  background-color: #fdf2f1;
+  border-color: var(--color-semantic-error);
+  color: var(--color-text-primary);
+}
+
+.dsl-alert--error .dsl-alert__icon { color: var(--color-semantic-error); }
+
+/* ── Icon ──────────────────────────────────────────────────────────────────── */
+
+.dsl-alert__icon {
+  display: flex;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+/* ── Content ───────────────────────────────────────────────────────────────── */
+
+.dsl-alert__content {
+  flex: 1;
+}
+
+.dsl-alert__title {
+  font-weight: var(--typography-font-weight-semibold);
+  margin: 0 0 var(--spacing-1);
+  color: var(--color-text-primary);
+}
+
+.dsl-alert__body {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+/* ── Dismiss button ────────────────────────────────────────────────────────── */
+
+.dsl-alert__dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  margin-left: var(--spacing-2);
+  border-radius: var(--shape-radius-md);
+  width: 20px;
+  height: 20px;
+  transition: color 0.15s ease;
+}
+
+.dsl-alert__dismiss:hover { color: var(--color-text-primary); }
+.dsl-alert__dismiss:focus-visible { outline: var(--shape-border-width-medium) solid var(--color-border-focus); }
+
+/* ── Banner variant ────────────────────────────────────────────────────────── */
+
+.dsl-alert--banner {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+
+/* ── Toast variant ─────────────────────────────────────────────────────────── */
+
+.dsl-toast-container {
+  position: fixed;
+  bottom: var(--spacing-5);
+  right: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  z-index: 500;
+  max-width: 380px;
+}
+
+.dsl-alert--toast {
+  box-shadow: var(--shape-shadow-lg);
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: dsl-toast-in 0.25s ease;
+}
+
+@keyframes dsl-toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dsl-alert--toast.dsl-alert--dismissing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* ── Hidden ────────────────────────────────────────────────────────────────── */
+.dsl-alert[hidden] { display: none; }

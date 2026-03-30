@@ -1,0 +1,239 @@
+/* DSL Forms
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+.dsl-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.dsl-form-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.dsl-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+}
+
+/* ── Field wrapper ─────────────────────────────────────────────────────────── */
+
+.dsl-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* ── Label ─────────────────────────────────────────────────────────────────── */
+
+.dsl-form-label {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--form-label-text);
+  line-height: var(--typography-line-height-tight);
+}
+
+.dsl-form-label__required {
+  color: var(--color-semantic-error);
+  margin-left: var(--spacing-1);
+}
+
+/* ── Base input styles (shared by text, email, password, etc.) ────────────── */
+
+.dsl-form-input {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--form-input-bg);
+  border: var(--shape-border-width-thin) solid var(--form-input-border);
+  border-radius: var(--shape-radius-md);
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  color: var(--form-input-text);
+  line-height: var(--typography-line-height-tight);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+.dsl-form-input::placeholder {
+  color: var(--form-input-placeholder);
+}
+
+.dsl-form-input:focus {
+  outline: none;
+  border-color: var(--form-input-border-focus);
+  box-shadow: 0 0 0 var(--shape-border-width-medium) var(--color-brand-primary-60);
+}
+
+.dsl-form-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: var(--color-bg-subtle);
+}
+
+/* ── Textarea ──────────────────────────────────────────────────────────────── */
+
+.dsl-form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ── Select ────────────────────────────────────────────────────────────────── */
+
+.dsl-form-select-wrapper {
+  position: relative;
+}
+
+.dsl-form-select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: var(--spacing-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--color-text-muted);
+  pointer-events: none;
+}
+
+.dsl-form-select {
+  padding-right: var(--spacing-7);
+  cursor: pointer;
+}
+
+/* ── Checkbox & Radio ──────────────────────────────────────────────────────── */
+
+.dsl-form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  cursor: pointer;
+}
+
+.dsl-form-check__input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--color-brand-primary);
+  cursor: pointer;
+}
+
+.dsl-form-check__label {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  color: var(--form-input-text);
+  line-height: var(--typography-line-height-normal);
+  cursor: pointer;
+}
+
+/* ── Toggle switch ─────────────────────────────────────────────────────────── */
+
+.dsl-form-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  cursor: pointer;
+}
+
+.dsl-form-toggle__track {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.dsl-form-toggle__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.dsl-form-toggle__slider {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--shape-radius-full);
+  background-color: var(--color-neutral-300);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.dsl-form-toggle__slider::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--shape-radius-full);
+  background-color: var(--color-neutral-000);
+  transition: transform 0.2s ease;
+  box-shadow: var(--shape-shadow-xs);
+}
+
+.dsl-form-toggle__input:checked + .dsl-form-toggle__slider {
+  background-color: var(--color-brand-primary);
+}
+
+.dsl-form-toggle__input:checked + .dsl-form-toggle__slider::before {
+  transform: translateX(20px);
+}
+
+.dsl-form-toggle__input:focus-visible + .dsl-form-toggle__slider {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.dsl-form-toggle__label {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  color: var(--form-input-text);
+  cursor: pointer;
+}
+
+/* ── Helper text ───────────────────────────────────────────────────────────── */
+
+.dsl-form-helper {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--typography-line-height-tight);
+}
+
+/* ── Validation states ─────────────────────────────────────────────────────── */
+
+.dsl-form-field--error .dsl-form-input {
+  border-color: var(--color-semantic-error);
+}
+
+.dsl-form-field--error .dsl-form-input:focus {
+  box-shadow: 0 0 0 var(--shape-border-width-medium) var(--color-semantic-error);
+}
+
+.dsl-form-field--error .dsl-form-helper {
+  color: var(--color-semantic-error);
+}
+
+.dsl-form-field--success .dsl-form-input {
+  border-color: var(--color-semantic-success);
+}
+
+.dsl-form-field--success .dsl-form-input:focus {
+  box-shadow: 0 0 0 var(--shape-border-width-medium) var(--color-semantic-success);
+}
+
+.dsl-form-field--success .dsl-form-helper {
+  color: var(--color-semantic-success);
+}

@@ -1,0 +1,139 @@
+/* DSL Calendar
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+.dsl-calendar {
+  display: inline-block;
+  background-color: var(--color-bg-default);
+  border: var(--shape-border-width-thin) solid var(--color-border-default);
+  border-radius: var(--shape-radius-md);
+  box-shadow: var(--shape-shadow-sm);
+  font-family: var(--typography-font-family-body);
+  width: 320px;
+  overflow: hidden;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+
+.dsl-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4) var(--spacing-5);
+  border-bottom: var(--shape-border-width-thin) solid var(--color-border-default);
+}
+
+.dsl-calendar__title {
+  font-size: var(--typography-font-size-md);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.dsl-calendar__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: var(--spacing-2);
+  border-radius: var(--shape-radius-md);
+  transition: background-color 0.15s ease, color 0.15s ease;
+  width: 32px;
+  height: 32px;
+}
+
+.dsl-calendar__nav:hover {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+}
+
+.dsl-calendar__nav:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+}
+
+/* ── Weekday labels ────────────────────────────────────────────────────────── */
+
+.dsl-calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: var(--spacing-3) var(--spacing-4) 0;
+}
+
+.dsl-calendar__weekday {
+  text-align: center;
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--typography-letter-spacing-wide);
+  padding: var(--spacing-2) 0;
+}
+
+/* ── Grid ──────────────────────────────────────────────────────────────────── */
+
+.dsl-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: var(--spacing-2) var(--spacing-4) var(--spacing-4);
+  gap: var(--spacing-1);
+}
+
+/* ── Day cells ─────────────────────────────────────────────────────────────── */
+
+.dsl-calendar__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--shape-radius-full);
+  border: none;
+  background: none;
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  margin: 0 auto;
+}
+
+.dsl-calendar__day:hover:not([disabled]):not(.dsl-calendar__day--selected) {
+  background-color: var(--color-bg-subtle);
+}
+
+.dsl-calendar__day:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+}
+
+.dsl-calendar__day--outside {
+  color: var(--color-text-muted);
+  opacity: 0.45;
+}
+
+.dsl-calendar__day--today {
+  font-weight: var(--typography-font-weight-bold);
+  color: var(--color-brand-primary);
+  border: var(--shape-border-width-thin) solid var(--color-brand-primary);
+}
+
+.dsl-calendar__day--selected {
+  background-color: var(--color-bg-brand);
+  color: var(--color-text-inverse);
+  font-weight: var(--typography-font-weight-semibold);
+}
+
+.dsl-calendar__day--selected:hover {
+  background-color: var(--color-bg-brand-dark);
+}
+
+.dsl-calendar__day[disabled],
+.dsl-calendar__day--disabled {
+  color: var(--color-text-muted);
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}

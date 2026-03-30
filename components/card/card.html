@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Card — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../button/button.css" />
+  <link rel="stylesheet" href="card.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-7); }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-4); }
+    .demo-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-5); }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Flat (default)</h2>
+    <div class="demo-row">
+      <article class="dsl-card dsl-card--flat">
+        <div class="dsl-card__media">
+          <img src="https://placehold.co/560x315/E5EEF7/00549E?text=Community" alt="Community" />
+        </div>
+        <div class="dsl-card__header">
+          <h3 class="dsl-card__title">Independent Living</h3>
+          <p class="dsl-card__subtitle">Starting from $3,200 / month</p>
+        </div>
+        <div class="dsl-card__body">
+          <p>Experience the perfect balance of independence and support in our vibrant community.</p>
+        </div>
+        <div class="dsl-card__footer">
+          <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm">Schedule a Tour</a>
+          <a href="#" class="dsl-btn dsl-btn--ghost dsl-btn--sm">Learn More</a>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Raised</h2>
+    <div class="demo-row">
+      <article class="dsl-card dsl-card--raised">
+        <div class="dsl-card__header">
+          <h3 class="dsl-card__title">Assisted Living</h3>
+          <p class="dsl-card__subtitle">Personalized daily support</p>
+        </div>
+        <div class="dsl-card__body">
+          <p>Dedicated care team available around the clock to assist with daily activities.</p>
+        </div>
+        <div class="dsl-card__footer">
+          <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm">Schedule a Tour</a>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Bordered</h2>
+    <div class="demo-row">
+      <article class="dsl-card dsl-card--bordered">
+        <div class="dsl-card__header">
+          <h3 class="dsl-card__title">Memory Care</h3>
+          <p class="dsl-card__subtitle">Specialized dementia support</p>
+        </div>
+        <div class="dsl-card__body">
+          <p>A secure and nurturing environment designed for those living with Alzheimer's and dementia.</p>
+        </div>
+        <div class="dsl-card__footer">
+          <a href="#" class="dsl-btn dsl-btn--secondary dsl-btn--sm">Contact Us</a>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Horizontal Layout</h2>
+    <div style="max-width: 600px;">
+      <article class="dsl-card dsl-card--raised dsl-card--horizontal">
+        <div class="dsl-card__media">
+          <img src="https://placehold.co/280x200/E5EEF7/00549E?text=Community" alt="Community" />
+        </div>
+        <div style="display:flex;flex-direction:column;flex:1;">
+          <div class="dsl-card__header">
+            <h3 class="dsl-card__title">Sunrise Gardens</h3>
+            <p class="dsl-card__subtitle">Orlando, FL</p>
+          </div>
+          <div class="dsl-card__body">
+            <p>Award-winning senior living with resort-style amenities and exceptional care.</p>
+          </div>
+          <div class="dsl-card__footer">
+            <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm">Schedule a Tour</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Clickable / Linked Card</h2>
+    <div class="demo-row">
+      <a href="#" class="dsl-card dsl-card--raised dsl-card--clickable">
+        <div class="dsl-card__media">
+          <img src="https://placehold.co/560x315/FDF1E3/EC881D?text=Community" alt="Community" />
+        </div>
+        <div class="dsl-card__header">
+          <h3 class="dsl-card__title">The Harbors</h3>
+          <p class="dsl-card__subtitle">Clearwater, FL</p>
+        </div>
+        <div class="dsl-card__body">
+          <p>Waterfront senior living with stunning views and world-class amenities.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

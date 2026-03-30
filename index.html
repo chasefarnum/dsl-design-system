@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Design System — Component Gallery</title>
+
+  <!-- Token variables -->
+  <link rel="stylesheet" href="output/variables.css" />
+
+  <!-- Component styles -->
+  <link rel="stylesheet" href="components/button/button.css" />
+  <link rel="stylesheet" href="components/badge/badge.css" />
+  <link rel="stylesheet" href="components/card/card.css" />
+  <link rel="stylesheet" href="components/accordion/accordion.css" />
+  <link rel="stylesheet" href="components/avatar/avatar.css" />
+  <link rel="stylesheet" href="components/calendar/calendar.css" />
+  <link rel="stylesheet" href="components/dialog/dialog.css" />
+  <link rel="stylesheet" href="components/forms/forms.css" />
+  <link rel="stylesheet" href="components/icons/icons.css" />
+  <link rel="stylesheet" href="components/inputs/inputs.css" />
+  <link rel="stylesheet" href="components/menu/menu.css" />
+  <link rel="stylesheet" href="components/navigation/navigation.css" />
+  <link rel="stylesheet" href="components/notification/notification.css" />
+  <link rel="stylesheet" href="components/pagination/pagination.css" />
+  <link rel="stylesheet" href="components/sections/sections.css" />
+  <link rel="stylesheet" href="components/tabs/tabs.css" />
+  <link rel="stylesheet" href="components/text/text.css" />
+  <link rel="stylesheet" href="components/tooltip/tooltip.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--typography-font-family-body);
+      background: var(--color-bg-subtle);
+      color: var(--color-text-primary);
+    }
+    /* Layout */
+    .gallery-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar */
+    .gallery-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: var(--color-bg-default);
+      border-right: var(--shape-border-width-thin) solid var(--color-border-default);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: var(--spacing-5) 0;
+    }
+    .gallery-sidebar__logo {
+      font-family: var(--typography-font-family-heading);
+      font-size: var(--typography-font-size-xl);
+      font-weight: var(--typography-font-weight-bold);
+      color: var(--color-brand-primary);
+      padding: 0 var(--spacing-5) var(--spacing-4);
+      display: block;
+      text-decoration: none;
+      border-bottom: var(--shape-border-width-thin) solid var(--color-border-subtle);
+      margin-bottom: var(--spacing-3);
+    }
+    .gallery-sidebar__nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .gallery-sidebar__link {
+      display: block;
+      padding: var(--spacing-2) var(--spacing-5);
+      font-size: var(--typography-font-size-sm);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+    .gallery-sidebar__link:hover {
+      color: var(--color-text-brand);
+      background-color: var(--color-bg-subtle);
+    }
+    /* Main content */
+    .gallery-main {
+      flex: 1;
+      overflow: hidden;
+      padding: var(--spacing-7);
+    }
+    /* Section */
+    .gallery-section {
+      margin-bottom: var(--spacing-9);
+      scroll-margin-top: var(--spacing-6);
+    }
+    .gallery-section__title {
+      font-family: var(--typography-font-family-heading);
+      font-size: var(--typography-font-size-2xl);
+      font-weight: var(--typography-font-weight-bold);
+      color: var(--color-text-primary);
+      margin: 0 0 var(--spacing-5);
+      padding-bottom: var(--spacing-3);
+      border-bottom: var(--shape-border-width-thin) solid var(--color-border-default);
+    }
+    .gallery-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-4);
+    }
+    .gallery-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--spacing-5);
+    }
+  </style>
+</head>
+<body>
+
+<!-- SVG sprite -->
+<div style="display:none" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-arrow-right" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-info" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-success" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-warning" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-error" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-user" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></symbol>
+  <symbol id="icon-search" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-external-link" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></symbol>
+</svg></div>
+
+<div class="gallery-layout">
+
+  <!-- Sidebar -->
+  <aside class="gallery-sidebar">
+    <a class="gallery-sidebar__logo" href="#">DSL</a>
+    <ul class="gallery-sidebar__nav">
+      <li><a class="gallery-sidebar__link" href="#accordion">Accordion</a></li>
+      <li><a class="gallery-sidebar__link" href="#avatar">Avatar</a></li>
+      <li><a class="gallery-sidebar__link" href="#badge">Badge</a></li>
+      <li><a class="gallery-sidebar__link" href="#button">Button</a></li>
+      <li><a class="gallery-sidebar__link" href="#calendar">Calendar</a></li>
+      <li><a class="gallery-sidebar__link" href="#card">Card</a></li>
+      <li><a class="gallery-sidebar__link" href="#dialog">Dialog</a></li>
+      <li><a class="gallery-sidebar__link" href="#forms">Forms</a></li>
+      <li><a class="gallery-sidebar__link" href="#icons">Icons</a></li>
+      <li><a class="gallery-sidebar__link" href="#inputs">Inputs</a></li>
+      <li><a class="gallery-sidebar__link" href="#menu">Menu</a></li>
+      <li><a class="gallery-sidebar__link" href="#navigation">Navigation</a></li>
+      <li><a class="gallery-sidebar__link" href="#notification">Notification</a></li>
+      <li><a class="gallery-sidebar__link" href="#pagination">Pagination</a></li>
+      <li><a class="gallery-sidebar__link" href="#sections">Sections</a></li>
+      <li><a class="gallery-sidebar__link" href="#tabs">Tabs</a></li>
+      <li><a class="gallery-sidebar__link" href="#text">Typography</a></li>
+      <li><a class="gallery-sidebar__link" href="#tooltip">Tooltip</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main content -->
+  <main class="gallery-main">
+
+    <!-- Accordion -->
+    <section class="gallery-section" id="accordion">
+      <h2 class="gallery-section__title">Accordion</h2>
+      <div style="max-width:600px;">
+        <div class="dsl-accordion" data-mode="multi">
+          <div class="dsl-accordion__item">
+            <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="ks-acc1" id="ks-acc1-btn" type="button">
+              What types of senior living are available?
+              <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="dsl-accordion__panel" id="ks-acc1" role="region" aria-labelledby="ks-acc1-btn">
+              <div class="dsl-accordion__panel-inner">Independent Living, Assisted Living, Memory Care, and Skilled Nursing — each providing the right level of support.</div>
+            </div>
+          </div>
+          <div class="dsl-accordion__item">
+            <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="ks-acc2" id="ks-acc2-btn" type="button">
+              How do I schedule a tour?
+              <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="dsl-accordion__panel" id="ks-acc2" role="region" aria-labelledby="ks-acc2-btn">
+              <div class="dsl-accordion__panel-inner">Call us, fill out our online form, or visit in person during business hours (Monday–Saturday, 9am–5pm).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avatar -->
+    <section class="gallery-section" id="avatar">
+      <h2 class="gallery-section__title">Avatar</h2>
+      <div class="gallery-row">
+        <div class="dsl-avatar dsl-avatar--image dsl-avatar--xl"><img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="User" /></div>
+        <div class="dsl-avatar dsl-avatar--initials dsl-avatar--lg" aria-label="Jane Doe">JD</div>
+        <div class="dsl-avatar dsl-avatar--icon dsl-avatar--md" aria-label="User"><span class="dsl-avatar__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg></span></div>
+        <div class="dsl-avatar dsl-avatar--image dsl-avatar--md dsl-avatar--with-badge">
+          <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=2" alt="Online user" />
+          <span class="dsl-avatar__badge" aria-label="Online"></span>
+        </div>
+        <div class="dsl-avatar-group">
+          <div class="dsl-avatar dsl-avatar--image dsl-avatar--md"><img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=3" alt="" /></div>
+          <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md" aria-label="AJ">AJ</div>
+          <div class="dsl-avatar dsl-avatar--md dsl-avatar-group__count">+3</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Badge -->
+    <section class="gallery-section" id="badge">
+      <h2 class="gallery-section__title">Badge</h2>
+      <div class="gallery-row">
+        <span class="dsl-badge dsl-badge--default dsl-badge--md">Default</span>
+        <span class="dsl-badge dsl-badge--brand dsl-badge--md">Brand</span>
+        <span class="dsl-badge dsl-badge--success dsl-badge--md">Available</span>
+        <span class="dsl-badge dsl-badge--warning dsl-badge--md">Limited</span>
+        <span class="dsl-badge dsl-badge--error dsl-badge--md">Waitlist</span>
+        <span class="dsl-badge dsl-badge--info dsl-badge--md">New</span>
+      </div>
+      <div class="gallery-row">
+        <span class="dsl-badge dsl-badge--default dsl-badge--sm">Default sm</span>
+        <span class="dsl-badge dsl-badge--brand dsl-badge--sm">Brand sm</span>
+        <span class="dsl-badge dsl-badge--success dsl-badge--md">
+          Dismissible
+          <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+        </span>
+      </div>
+    </section>
+
+    <!-- Button -->
+    <section class="gallery-section" id="button">
+      <h2 class="gallery-section__title">Button</h2>
+      <div class="gallery-row">
+        <button class="dsl-btn dsl-btn--primary dsl-btn--sm" type="button"><span class="dsl-btn__text">Primary sm</span></button>
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button"><span class="dsl-btn__text">Primary md</span></button>
+        <button class="dsl-btn dsl-btn--primary dsl-btn--lg" type="button"><span class="dsl-btn__text">Primary lg</span></button>
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" disabled><span class="dsl-btn__text">Disabled</span></button>
+      </div>
+      <div class="gallery-row">
+        <button class="dsl-btn dsl-btn--secondary dsl-btn--md" type="button"><span class="dsl-btn__text">Secondary</span></button>
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button"><span class="dsl-btn__text">Ghost</span></button>
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md dsl-btn--loading" type="button" aria-busy="true"><span class="dsl-btn__spinner" aria-hidden="true"></span><span class="dsl-btn__text">Loading</span></button>
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md dsl-btn--icon-only" type="button" aria-label="Search"><span class="dsl-btn__icon"><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><use href="#icon-search"/></svg></span></button>
+      </div>
+    </section>
+
+    <!-- Calendar -->
+    <section class="gallery-section" id="calendar">
+      <h2 class="gallery-section__title">Calendar</h2>
+      <div class="dsl-calendar" id="ks-calendar" role="application" aria-label="Calendar">
+        <div class="dsl-calendar__header">
+          <button class="dsl-calendar__nav" id="ks-cal-prev" aria-label="Previous month" type="button"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></button>
+          <h2 class="dsl-calendar__title" id="ks-cal-title" aria-live="polite"></h2>
+          <button class="dsl-calendar__nav" id="ks-cal-next" aria-label="Next month" type="button"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg></button>
+        </div>
+        <div class="dsl-calendar__weekdays" aria-hidden="true">
+          <div class="dsl-calendar__weekday">Su</div><div class="dsl-calendar__weekday">Mo</div><div class="dsl-calendar__weekday">Tu</div><div class="dsl-calendar__weekday">We</div><div class="dsl-calendar__weekday">Th</div><div class="dsl-calendar__weekday">Fr</div><div class="dsl-calendar__weekday">Sa</div>
+        </div>
+        <div class="dsl-calendar__grid" id="ks-cal-grid" role="grid"></div>
+      </div>
+    </section>
+
+    <!-- Card -->
+    <section class="gallery-section" id="card">
+      <h2 class="gallery-section__title">Card</h2>
+      <div class="gallery-card-grid">
+        <article class="dsl-card dsl-card--flat">
+          <div class="dsl-card__media"><img src="https://placehold.co/560x315/E5EEF7/00549E?text=Community" alt="Community" /></div>
+          <div class="dsl-card__header"><h3 class="dsl-card__title">Flat Card</h3><p class="dsl-card__subtitle">Independent Living</p></div>
+          <div class="dsl-card__body"><p>Experience maintenance-free senior living.</p></div>
+          <div class="dsl-card__footer"><a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm"><span class="dsl-btn__text">Schedule</span></a></div>
+        </article>
+        <article class="dsl-card dsl-card--raised">
+          <div class="dsl-card__header"><h3 class="dsl-card__title">Raised Card</h3><p class="dsl-card__subtitle">Assisted Living</p></div>
+          <div class="dsl-card__body"><p>Personalized care with 24/7 support staff.</p></div>
+          <div class="dsl-card__footer"><a href="#" class="dsl-btn dsl-btn--secondary dsl-btn--sm"><span class="dsl-btn__text">Learn More</span></a></div>
+        </article>
+        <a href="#" class="dsl-card dsl-card--raised dsl-card--clickable">
+          <div class="dsl-card__media"><img src="https://placehold.co/560x315/FDF1E3/EC881D?text=Clickable" alt="Clickable card" /></div>
+          <div class="dsl-card__header"><h3 class="dsl-card__title">Clickable Card</h3><p class="dsl-card__subtitle">Memory Care</p></div>
+          <div class="dsl-card__body"><p>Hover to see card lift effect.</p></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Dialog -->
+    <section class="gallery-section" id="dialog">
+      <h2 class="gallery-section__title">Dialog</h2>
+      <div class="gallery-row">
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" data-dialog-open="ks-dialog">
+          <span class="dsl-btn__text">Open Dialog</span>
+        </button>
+      </div>
+      <div class="dsl-dialog-backdrop" id="backdrop-ks-dialog" role="presentation">
+        <div class="dsl-dialog dsl-dialog--md" id="ks-dialog" role="dialog" aria-modal="true" aria-labelledby="ks-dialog-title" tabindex="-1">
+          <div class="dsl-dialog__header">
+            <h2 class="dsl-dialog__title" id="ks-dialog-title">Schedule a Tour</h2>
+            <button class="dsl-dialog__close" aria-label="Close dialog" type="button" data-dialog-close><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><use href="#icon-close"/></svg></button>
+          </div>
+          <div class="dsl-dialog__body"><p>We'd love to show you around. Our team will reach out to confirm your tour date and time. Tours available Monday–Saturday, 9am–4pm.</p></div>
+          <div class="dsl-dialog__footer">
+            <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" data-dialog-close><span class="dsl-btn__text">Cancel</span></button>
+            <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button"><span class="dsl-btn__text">Request Tour</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section class="gallery-section" id="forms">
+      <h2 class="gallery-section__title">Forms</h2>
+      <div style="max-width:480px;background:var(--color-bg-default);border-radius:var(--shape-radius-lg);padding:var(--spacing-6);box-shadow:var(--shape-shadow-sm);">
+        <div class="dsl-form">
+          <div class="dsl-form-field">
+            <label class="dsl-form-label" for="ks-name">Full Name <span class="dsl-form-label__required" aria-hidden="true">*</span></label>
+            <input class="dsl-form-input" type="text" id="ks-name" placeholder="Jane Doe" required />
+          </div>
+          <div class="dsl-form-field">
+            <label class="dsl-form-label" for="ks-email">Email <span class="dsl-form-label__required" aria-hidden="true">*</span></label>
+            <input class="dsl-form-input" type="email" id="ks-email" placeholder="jane@example.com" required />
+          </div>
+          <div class="dsl-form-field">
+            <label class="dsl-form-label" for="ks-care">Care Type</label>
+            <div class="dsl-form-select-wrapper">
+              <select class="dsl-form-input dsl-form-select" id="ks-care">
+                <option value="">Select…</option>
+                <option>Independent Living</option>
+                <option>Assisted Living</option>
+                <option>Memory Care</option>
+              </select>
+            </div>
+          </div>
+          <div class="dsl-form-field">
+            <label class="dsl-form-toggle">
+              <span class="dsl-form-toggle__track"><input class="dsl-form-toggle__input" type="checkbox" role="switch" aria-checked="false" /><span class="dsl-form-toggle__slider"></span></span>
+              <span class="dsl-form-toggle__label">SMS reminders</span>
+            </label>
+          </div>
+          <div class="dsl-form-field dsl-form-field--error">
+            <label class="dsl-form-label" for="ks-phone">Phone</label>
+            <input class="dsl-form-input" type="tel" id="ks-phone" value="not-a-phone" aria-invalid="true" />
+            <span class="dsl-form-helper" role="alert">Please enter a valid phone number.</span>
+          </div>
+          <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="submit"><span class="dsl-btn__text">Submit</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Icons -->
+    <section class="gallery-section" id="icons">
+      <h2 class="gallery-section__title">Icons</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-5);">
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-brand-primary)"><use href="#icon-arrow-right"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-brand-primary)"><use href="#icon-chevron-down"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-text-primary)"><use href="#icon-search"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-semantic-success)"><use href="#icon-success"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-semantic-warning)"><use href="#icon-warning"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-semantic-error)"><use href="#icon-error"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-semantic-info)"><use href="#icon-info"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-text-muted)"><use href="#icon-user"/></svg>
+        <svg class="dsl-icon dsl-icon--24" style="color:var(--color-brand-secondary)"><use href="#icon-star"/></svg>
+        <svg class="dsl-icon dsl-icon--32" style="color:var(--color-brand-primary)"><use href="#icon-external-link"/></svg>
+      </div>
+    </section>
+
+    <!-- Inputs -->
+    <section class="gallery-section" id="inputs">
+      <h2 class="gallery-section__title">Inputs</h2>
+      <div style="max-width:400px;display:flex;flex-direction:column;gap:var(--spacing-4);">
+        <div class="dsl-input-field">
+          <label class="dsl-input-label" for="ks-input-text">Name</label>
+          <input class="dsl-input dsl-input--md" type="text" id="ks-input-text" placeholder="Enter your name" />
+        </div>
+        <div class="dsl-input-field">
+          <label class="dsl-input-label" for="ks-input-search">Search</label>
+          <div class="dsl-input-wrapper">
+            <span class="dsl-input-prefix" aria-hidden="true"><svg width="16" height="16"><use href="#icon-search"/></svg></span>
+            <input class="dsl-input dsl-input--md dsl-input--has-prefix" type="search" id="ks-input-search" placeholder="Search communities…" />
+          </div>
+        </div>
+        <div class="dsl-input-field dsl-input-field--error">
+          <label class="dsl-input-label" for="ks-input-err">Email (error)</label>
+          <input class="dsl-input dsl-input--md" type="email" id="ks-input-err" value="invalid" aria-invalid="true" />
+          <span class="dsl-input-helper" role="alert">Enter a valid email address.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="gallery-section" id="menu">
+      <h2 class="gallery-section__title">Menu</h2>
+      <div class="gallery-row">
+        <div class="dsl-menu" id="ks-menu">
+          <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ks-menu-panel" id="ks-menu-trigger">
+            <span class="dsl-btn__text">Actions</span>
+            <span class="dsl-btn__icon"><svg width="16" height="16"><use href="#icon-chevron-down"/></svg></span>
+          </button>
+          <ul class="dsl-menu__panel" id="ks-menu-panel" role="menu" aria-labelledby="ks-menu-trigger">
+            <li role="none"><button class="dsl-menu__item" type="button" role="menuitem"><svg class="dsl-menu__item-icon" aria-hidden="true"><use href="#icon-user"/></svg>View Profile</button></li>
+            <li role="none"><button class="dsl-menu__item" type="button" role="menuitem"><svg class="dsl-menu__item-icon" aria-hidden="true"><use href="#icon-star"/></svg>Add to Favorites</button></li>
+            <li role="none" class="dsl-menu__divider" aria-hidden="true"></li>
+            <li role="none"><button class="dsl-menu__item dsl-menu__item--destructive" type="button" role="menuitem"><svg class="dsl-menu__item-icon" aria-hidden="true"><use href="#icon-error"/></svg>Remove</button></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="gallery-section" id="navigation">
+      <h2 class="gallery-section__title">Navigation</h2>
+      <div style="border-radius:var(--shape-radius-md);overflow:hidden;border:var(--shape-border-width-thin) solid var(--color-border-default);">
+        <nav class="dsl-nav" id="ks-nav" aria-label="Demo navigation" style="position:relative;">
+          <div class="dsl-nav__inner">
+            <a class="dsl-nav__logo" href="#">DSL</a>
+            <button class="dsl-nav__hamburger" type="button" aria-controls="ks-nav-links" aria-expanded="false" aria-label="Toggle menu" id="ks-nav-hamburger">
+              <span class="dsl-nav__hamburger-bar"></span>
+              <span class="dsl-nav__hamburger-bar"></span>
+              <span class="dsl-nav__hamburger-bar"></span>
+            </button>
+            <ul class="dsl-nav__links" id="ks-nav-links" role="list">
+              <li class="dsl-nav__item"><a class="dsl-nav__link dsl-nav__link--active" href="#">Communities</a></li>
+              <li class="dsl-nav__item">
+                <button class="dsl-nav__link" type="button" aria-haspopup="true" aria-expanded="false" id="ks-care-btn">
+                  Care Options <svg class="dsl-nav__link-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </button>
+                <ul class="dsl-nav__submenu" role="menu" aria-labelledby="ks-care-btn">
+                  <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Independent Living</a></li>
+                  <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Assisted Living</a></li>
+                  <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Memory Care</a></li>
+                </ul>
+              </li>
+              <li class="dsl-nav__item"><a class="dsl-nav__link" href="#">Resources</a></li>
+            </ul>
+            <div class="dsl-nav__cta">
+              <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm"><span class="dsl-btn__text">Schedule a Tour</span></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Notification -->
+    <section class="gallery-section" id="notification">
+      <h2 class="gallery-section__title">Notification / Alert</h2>
+      <div style="max-width:600px;display:flex;flex-direction:column;gap:var(--spacing-3);">
+        <div class="dsl-alert dsl-alert--info" role="status">
+          <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-info"/></svg>
+          <div class="dsl-alert__content"><p class="dsl-alert__title">Tour Confirmed</p><p class="dsl-alert__body">Your tour is scheduled for Thursday at 10am.</p></div>
+          <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+        </div>
+        <div class="dsl-alert dsl-alert--success" role="status">
+          <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-success"/></svg>
+          <div class="dsl-alert__content"><p class="dsl-alert__title">Application Submitted</p><p class="dsl-alert__body">Our team will contact you within 24 hours.</p></div>
+          <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+        </div>
+        <div class="dsl-alert dsl-alert--warning" role="alert">
+          <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-warning"/></svg>
+          <div class="dsl-alert__content"><p class="dsl-alert__title">Limited Availability</p><p class="dsl-alert__body">Only 2 apartments remain.</p></div>
+          <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+        </div>
+        <div class="dsl-alert dsl-alert--error" role="alert">
+          <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-error"/></svg>
+          <div class="dsl-alert__content"><p class="dsl-alert__title">Form Error</p><p class="dsl-alert__body">Please correct the errors below.</p></div>
+          <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+        </div>
+      </div>
+      <div style="margin-top:var(--spacing-4);display:flex;gap:var(--spacing-3);">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--sm" type="button" data-toast="success"><span class="dsl-btn__text">Show Toast</span></button>
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <section class="gallery-section" id="pagination">
+      <h2 class="gallery-section__title">Pagination</h2>
+      <nav aria-label="Pagination demo">
+        <ol class="dsl-pagination" id="ks-pagination" data-total="10" data-current="3"></ol>
+      </nav>
+    </section>
+
+    <!-- Sections -->
+    <section class="gallery-section" id="sections">
+      <h2 class="gallery-section__title">Sections</h2>
+      <div style="border-radius:var(--shape-radius-md);overflow:hidden;border:var(--shape-border-width-thin) solid var(--color-border-default);">
+        <section class="dsl-section dsl-section--cta dsl-section--bg-brand" style="padding: var(--spacing-7) var(--spacing-5);">
+          <div class="dsl-section__container">
+            <span class="dsl-section__eyebrow">Get Started Today</span>
+            <h2 class="dsl-section__heading" style="font-size:var(--typography-font-size-2xl)">Ready to Find Your New Home?</h2>
+            <p class="dsl-section__body" style="font-size:var(--typography-font-size-md)">Schedule a personal tour and see why thousands of families trust us.</p>
+            <div class="dsl-section__actions">
+              <a href="#" class="dsl-btn dsl-btn--secondary dsl-btn--md"><span class="dsl-btn__text">Schedule a Tour</span></a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="gallery-section" id="tabs">
+      <h2 class="gallery-section__title">Tabs</h2>
+      <div style="max-width:560px;">
+        <div class="dsl-tabs dsl-tabs--underline" id="ks-tabs">
+          <ul class="dsl-tabs__list" role="tablist" aria-label="Care options">
+            <li role="presentation"><button class="dsl-tabs__tab" role="tab" aria-selected="true" aria-controls="ks-tab-panel1" id="ks-tab1" type="button">Independent</button></li>
+            <li role="presentation"><button class="dsl-tabs__tab" role="tab" aria-selected="false" aria-controls="ks-tab-panel2" id="ks-tab2" type="button">Assisted</button></li>
+            <li role="presentation"><button class="dsl-tabs__tab" role="tab" aria-selected="false" aria-controls="ks-tab-panel3" id="ks-tab3" type="button">Memory Care</button></li>
+          </ul>
+          <div class="dsl-tabs__panel" role="tabpanel" id="ks-tab-panel1" aria-labelledby="ks-tab1"><p>Maintenance-free lifestyle with resort-style amenities and a vibrant social calendar.</p></div>
+          <div class="dsl-tabs__panel" role="tabpanel" id="ks-tab-panel2" aria-labelledby="ks-tab2" hidden><p>Personalized daily support with trained care staff available 24/7.</p></div>
+          <div class="dsl-tabs__panel" role="tabpanel" id="ks-tab-panel3" aria-labelledby="ks-tab3" hidden><p>Specialized programming in a secure, nurturing environment.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="gallery-section" id="text">
+      <h2 class="gallery-section__title">Typography</h2>
+      <div style="display:flex;flex-direction:column;gap:var(--spacing-4);max-width:700px;">
+        <h1 class="dsl-h1">Heading 1 — 72px</h1>
+        <h2 class="dsl-h2">Heading 2 — 56px</h2>
+        <h3 class="dsl-h3">Heading 3 — 40px</h3>
+        <h4 class="dsl-h4">Heading 4 — 32px</h4>
+        <h5 class="dsl-h5">Heading 5 — 24px</h5>
+        <h6 class="dsl-h6">Heading 6 — 18px</h6>
+        <p class="dsl-body-lg">Body Large — Experience the perfect balance of independence and support in our vibrant communities.</p>
+        <p class="dsl-body">Body Default — Our dedicated care teams are available 24/7 to assist residents with daily activities.</p>
+        <span class="dsl-eyebrow">Eyebrow Label</span>
+        <blockquote class="dsl-blockquote">"Moving to Discovery Senior Living was the best decision we ever made."</blockquote>
+        <p class="dsl-body">Inline <code class="dsl-code">var(--color-brand-primary)</code> code and a <a class="dsl-link" href="#">text link</a>.</p>
+      </div>
+    </section>
+
+    <!-- Tooltip -->
+    <section class="gallery-section" id="tooltip">
+      <h2 class="gallery-section__title">Tooltip</h2>
+      <div class="gallery-row" style="padding: var(--spacing-7) 0;">
+        <span class="dsl-tooltip-wrapper" data-tooltip-position="top">
+          <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" aria-describedby="ks-tt1"><span class="dsl-btn__text">Top</span></button>
+          <span class="dsl-tooltip" id="ks-tt1" role="tooltip" data-position="top">Tooltip on top</span>
+        </span>
+        <span class="dsl-tooltip-wrapper" data-tooltip-position="bottom">
+          <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" aria-describedby="ks-tt2"><span class="dsl-btn__text">Bottom</span></button>
+          <span class="dsl-tooltip" id="ks-tt2" role="tooltip" data-position="bottom">Tooltip on bottom</span>
+        </span>
+        <span class="dsl-tooltip-wrapper" data-tooltip-position="right">
+          <button class="dsl-btn dsl-btn--secondary dsl-btn--md" type="button" aria-describedby="ks-tt3"><span class="dsl-btn__text">Right</span></button>
+          <span class="dsl-tooltip" id="ks-tt3" role="tooltip" data-position="right">Tooltip on right</span>
+        </span>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Toast container -->
+<div class="dsl-toast-container" id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<!-- Scripts -->
+<script src="components/accordion/accordion.js"></script>
+<script src="components/badge/badge.js"></script>
+<script src="components/dialog/dialog.js"></script>
+<script src="components/forms/forms.js"></script>
+<script src="components/menu/menu.js"></script>
+<script src="components/notification/notification.js"></script>
+<script src="components/pagination/pagination.js"></script>
+<script src="components/tabs/tabs.js"></script>
+<script src="components/tooltip/tooltip.js"></script>
+
+<!-- Inline calendar for kitchen sink (uses separate IDs) -->
+<script>
+(function () {
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const today = new Date(); today.setHours(0,0,0,0);
+  let yr = today.getFullYear(), mo = today.getMonth(), sel = null;
+  function isDisabled(d) { return d < today; }
+  function sameDay(a,b) { return a&&b&&a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate(); }
+  function render() {
+    var title=document.getElementById('ks-cal-title'), grid=document.getElementById('ks-cal-grid');
+    if(!title||!grid) return;
+    title.textContent = MONTHS[mo]+' '+yr; grid.innerHTML='';
+    var fd=new Date(yr,mo,1).getDay(), dim=new Date(yr,mo+1,0).getDate(), dip=new Date(yr,mo,0).getDate();
+    for(var i=fd-1;i>=0;i--) grid.appendChild(mk(new Date(yr,mo-1,dip-i),true));
+    for(var d=1;d<=dim;d++) grid.appendChild(mk(new Date(yr,mo,d),false));
+    var tot=fd+dim, tr=tot%7===0?0:7-tot%7;
+    for(var d2=1;d2<=tr;d2++) grid.appendChild(mk(new Date(yr,mo+1,d2),true));
+  }
+  function mk(date,outside) {
+    var btn=document.createElement('button'); btn.type='button'; btn.className='dsl-calendar__day'; btn.textContent=date.getDate();
+    btn.setAttribute('data-date',date.toISOString().split('T')[0]);
+    if(outside) btn.classList.add('dsl-calendar__day--outside');
+    if(sameDay(date,today)) btn.classList.add('dsl-calendar__day--today');
+    if(sameDay(date,sel)) btn.classList.add('dsl-calendar__day--selected');
+    if(isDisabled(date)) { btn.disabled=true; btn.classList.add('dsl-calendar__day--disabled'); }
+    return btn;
+  }
+  document.getElementById('ks-cal-prev').addEventListener('click',function(){ mo--; if(mo<0){mo=11;yr--;} render(); });
+  document.getElementById('ks-cal-next').addEventListener('click',function(){ mo++; if(mo>11){mo=0;yr++;} render(); });
+  document.getElementById('ks-cal-grid').addEventListener('click',function(e){ var btn=e.target.closest('.dsl-calendar__day'); if(btn&&!btn.disabled){sel=new Date(btn.dataset.date+'T00:00:00');render();} });
+  render();
+})();
+</script>
+
+<!-- Navigation for kitchen sink -->
+<script>
+(function(){
+  var nav=document.getElementById('ks-nav'), hbg=document.getElementById('ks-nav-hamburger');
+  if(hbg&&nav) hbg.addEventListener('click',function(){ var o=nav.hasAttribute('data-mobile-open'); if(o){nav.removeAttribute('data-mobile-open');hbg.setAttribute('aria-expanded','false');}else{nav.setAttribute('data-mobile-open','');hbg.setAttribute('aria-expanded','true');} });
+  document.querySelectorAll('#ks-nav .dsl-nav__link[aria-haspopup]').forEach(function(btn){
+    btn.addEventListener('click',function(){ var item=btn.closest('.dsl-nav__item'),isOpen=item.hasAttribute('data-submenu-open');
+    document.querySelectorAll('#ks-nav .dsl-nav__item[data-submenu-open]').forEach(function(el){if(el!==item){el.removeAttribute('data-submenu-open');el.querySelector('[aria-haspopup]').setAttribute('aria-expanded','false');}});
+    if(isOpen){item.removeAttribute('data-submenu-open');btn.setAttribute('aria-expanded','false');}else{item.setAttribute('data-submenu-open','');btn.setAttribute('aria-expanded','true');} });
+  });
+})();
+</script>
+
+</body>
+</html>

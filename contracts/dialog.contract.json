@@ -1,0 +1,27 @@
+{
+  "name": "dialog",
+  "description": "Modal dialog with focus trap and keyboard accessibility",
+  "primitive": "native",
+  "cssClass": "dsl-dialog",
+  "source": "components/dialog/dialog.html",
+  "variants": {
+    "size": {
+      "options": ["sm", "md", "lg"],
+      "default": "md",
+      "cssModifier": "dsl-dialog--{size}"
+    }
+  },
+  "slots": ["dialog__backdrop", "dialog__panel", "dialog__header", "dialog__title", "dialog__close", "dialog__body", "dialog__footer"],
+  "states": ["closed", "open"],
+  "tokens": {
+    "--color-bg-default": "var(--color-bg-default)",
+    "--color-overlay-dark-60": "var(--color-overlay-dark-60)",
+    "--color-text-primary": "var(--color-text-primary)",
+    "--color-border-default": "var(--color-border-default)",
+    "--shape-radius-lg": "var(--shape-radius-lg)",
+    "--shape-shadow-xl": "var(--shape-shadow-xl)",
+    "--spacing-5": "var(--spacing-5)",
+    "--spacing-6": "var(--spacing-6)",
+    "--typography-font-family-heading": "var(--typography-font-family-heading)"
+  }
+}

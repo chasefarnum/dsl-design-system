@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Dialog — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../button/button.css" />
+  <link rel="stylesheet" href="dialog.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-6); }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-4); }
+    .demo-row { display: flex; gap: var(--spacing-4); flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Open dialogs</h2>
+    <div class="demo-row">
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" data-dialog-open="dialog-sm">
+        <span class="dsl-btn__text">Open Small</span>
+      </button>
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" data-dialog-open="dialog-md">
+        <span class="dsl-btn__text">Open Medium</span>
+      </button>
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--md" type="button" data-dialog-open="dialog-lg">
+        <span class="dsl-btn__text">Open Large</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Small dialog -->
+  <div class="dsl-dialog-backdrop" id="backdrop-dialog-sm" role="presentation">
+    <div class="dsl-dialog dsl-dialog--sm" id="dialog-sm" role="dialog" aria-modal="true" aria-labelledby="dialog-sm-title" tabindex="-1">
+      <div class="dsl-dialog__header">
+        <h2 class="dsl-dialog__title" id="dialog-sm-title">Confirm Action</h2>
+        <button class="dsl-dialog__close" aria-label="Close dialog" type="button" data-dialog-close>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </div>
+      <div class="dsl-dialog__body">
+        <p>Are you sure you want to remove this community from your favorites?</p>
+      </div>
+      <div class="dsl-dialog__footer">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" data-dialog-close><span class="dsl-btn__text">Cancel</span></button>
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button"><span class="dsl-btn__text">Confirm</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium dialog -->
+  <div class="dsl-dialog-backdrop" id="backdrop-dialog-md" role="presentation">
+    <div class="dsl-dialog dsl-dialog--md" id="dialog-md" role="dialog" aria-modal="true" aria-labelledby="dialog-md-title" tabindex="-1">
+      <div class="dsl-dialog__header">
+        <h2 class="dsl-dialog__title" id="dialog-md-title">Schedule a Tour</h2>
+        <button class="dsl-dialog__close" aria-label="Close dialog" type="button" data-dialog-close>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </div>
+      <div class="dsl-dialog__body">
+        <p>We'd love to show you around! Fill out the form and a member of our team will reach out to confirm your tour date and time.</p>
+        <p style="margin-top: var(--spacing-4);">Tours are available Monday–Saturday, 9am–4pm.</p>
+      </div>
+      <div class="dsl-dialog__footer">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" data-dialog-close><span class="dsl-btn__text">Maybe Later</span></button>
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button"><span class="dsl-btn__text">Request a Tour</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Large dialog -->
+  <div class="dsl-dialog-backdrop" id="backdrop-dialog-lg" role="presentation">
+    <div class="dsl-dialog dsl-dialog--lg" id="dialog-lg" role="dialog" aria-modal="true" aria-labelledby="dialog-lg-title" tabindex="-1">
+      <div class="dsl-dialog__header">
+        <h2 class="dsl-dialog__title" id="dialog-lg-title">Community Information</h2>
+        <button class="dsl-dialog__close" aria-label="Close dialog" type="button" data-dialog-close>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </div>
+      <div class="dsl-dialog__body">
+        <p>Sunrise Gardens is an award-winning senior living community offering Independent Living, Assisted Living, and Memory Care. Nestled on beautifully landscaped grounds in Orlando, FL, our community offers resort-style amenities including a heated pool, fitness center, fine dining, and vibrant social programming.</p>
+        <p style="margin-top: var(--spacing-4);">Our dedicated care team is available 24/7 to ensure the comfort, safety, and wellbeing of every resident. We believe that every day should be filled with purpose, joy, and connection.</p>
+        <p style="margin-top: var(--spacing-4);">Monthly pricing starts at $3,200 for Independent Living and varies based on care level and apartment size. Contact us for a personalized pricing quote.</p>
+      </div>
+      <div class="dsl-dialog__footer">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" data-dialog-close><span class="dsl-btn__text">Close</span></button>
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button"><span class="dsl-btn__text">Schedule a Tour</span></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="dialog.js"></script>
+</body>
+</html>

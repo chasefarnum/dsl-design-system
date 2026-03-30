@@ -1,0 +1,23 @@
+{
+  "name": "icons",
+  "description": "SVG icon system using symbol+use pattern, color inherits from currentColor",
+  "primitive": "native",
+  "cssClass": "dsl-icon",
+  "source": "components/icons/icons.html",
+  "variants": {
+    "size": {
+      "options": [16, 20, 24, 32],
+      "default": 20,
+      "cssModifier": "dsl-icon--{size}"
+    }
+  },
+  "icons": [
+    "arrow-right","arrow-left","chevron-down","chevron-up","chevron-right","chevron-left",
+    "close","check","search","menu","external-link","phone","email",
+    "star","user","calendar","info","warning","error","success"
+  ],
+  "tokens": {
+    "--color-text-primary": "var(--color-text-primary)",
+    "--color-text-muted": "var(--color-text-muted)"
+  }
+}

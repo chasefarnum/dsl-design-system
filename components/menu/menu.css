@@ -1,0 +1,93 @@
+/* DSL Menu / Dropdown
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ */
+
+.dsl-menu {
+  position: relative;
+  display: inline-block;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────────────── */
+
+.dsl-menu__panel {
+  position: absolute;
+  top: calc(100% + var(--spacing-2));
+  left: 0;
+  min-width: 200px;
+  background-color: var(--color-bg-default);
+  border: var(--shape-border-width-thin) solid var(--color-border-default);
+  border-radius: var(--shape-radius-md);
+  box-shadow: var(--shape-shadow-lg);
+  padding: var(--spacing-2) 0;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+.dsl-menu[data-open] .dsl-menu__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Auto-flip: if menu is near right edge, align panel to right */
+.dsl-menu--align-right .dsl-menu__panel {
+  left: auto;
+  right: 0;
+}
+
+/* ── Items ─────────────────────────────────────────────────────────────────── */
+
+.dsl-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: none;
+  border: none;
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.1s ease;
+}
+
+.dsl-menu__item:hover,
+.dsl-menu__item:focus {
+  background-color: var(--color-bg-subtle);
+  outline: none;
+}
+
+.dsl-menu__item--destructive {
+  color: var(--color-semantic-error);
+}
+
+.dsl-menu__item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.dsl-menu__item-icon {
+  display: inline-flex;
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.dsl-menu__item--destructive .dsl-menu__item-icon {
+  color: var(--color-semantic-error);
+}
+
+/* ── Divider ───────────────────────────────────────────────────────────────── */
+
+.dsl-menu__divider {
+  height: var(--shape-border-width-thin);
+  background-color: var(--color-border-default);
+  margin: var(--spacing-2) 0;
+}

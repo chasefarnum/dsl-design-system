@@ -1,0 +1,205 @@
+/* DSL Sections — landing page layout containers */
+
+/* ── Base section ──────────────────────────────────────────────────────────── */
+
+.dsl-section {
+  width: 100%;
+  padding: var(--spacing-9) var(--spacing-5);
+  box-sizing: border-box;
+}
+
+/* ── Container ─────────────────────────────────────────────────────────────── */
+
+.dsl-section__container {
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Background variants ───────────────────────────────────────────────────── */
+
+.dsl-section--bg-white {
+  background-color: var(--color-bg-default);
+  color: var(--color-text-primary);
+}
+
+.dsl-section--bg-subtle {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+}
+
+.dsl-section--bg-brand {
+  background-color: var(--color-bg-brand);
+  color: var(--color-text-inverse);
+}
+
+.dsl-section--bg-dark {
+  background-color: var(--color-bg-brand-dark);
+  color: var(--color-text-inverse);
+}
+
+/* Invert text colors on dark backgrounds */
+.dsl-section--bg-brand .dsl-section__eyebrow,
+.dsl-section--bg-dark .dsl-section__eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dsl-section--bg-brand .dsl-section__body,
+.dsl-section--bg-dark .dsl-section__body {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Section types ─────────────────────────────────────────────────────────── */
+
+/* Hero */
+.dsl-section--hero {
+  padding: var(--spacing-10) var(--spacing-5);
+  text-align: center;
+}
+
+.dsl-section--hero .dsl-section__container {
+  max-width: 800px;
+}
+
+/* Feature */
+.dsl-section--feature {
+  padding: var(--spacing-9) var(--spacing-5);
+}
+
+/* CTA */
+.dsl-section--cta {
+  padding: var(--spacing-8) var(--spacing-5);
+  text-align: center;
+}
+
+/* Content */
+.dsl-section--content {
+  padding: var(--spacing-9) var(--spacing-5);
+}
+
+/* Split (50/50) */
+.dsl-section--split .dsl-section__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-8);
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .dsl-section--split .dsl-section__container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+}
+
+/* ── Typography inside sections ────────────────────────────────────────────── */
+
+.dsl-section__eyebrow {
+  display: block;
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  font-weight: var(--typography-font-weight-semibold);
+  letter-spacing: var(--typography-letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-3);
+}
+
+.dsl-section__heading {
+  font-family: var(--typography-font-family-heading);
+  font-size: var(--typography-font-size-4xl);
+  font-weight: var(--typography-font-weight-bold);
+  line-height: var(--typography-line-height-tight);
+  letter-spacing: var(--typography-letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-4);
+}
+
+.dsl-section--bg-brand .dsl-section__heading,
+.dsl-section--bg-dark .dsl-section__heading {
+  color: var(--color-text-inverse);
+}
+
+.dsl-section__subheading {
+  font-family: var(--typography-font-family-heading);
+  font-size: var(--typography-font-size-2xl);
+  font-weight: var(--typography-font-weight-bold);
+  line-height: var(--typography-line-height-snug);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-3);
+}
+
+.dsl-section__body {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-lg);
+  line-height: var(--typography-line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-5);
+}
+
+.dsl-section__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.dsl-section--hero .dsl-section__actions,
+.dsl-section--cta .dsl-section__actions {
+  justify-content: center;
+}
+
+/* ── Section media ─────────────────────────────────────────────────────────── */
+
+.dsl-section__media {
+  border-radius: var(--shape-radius-lg);
+  overflow: hidden;
+}
+
+.dsl-section__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Feature grid inside sections ──────────────────────────────────────────── */
+
+.dsl-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-6);
+}
+
+.dsl-section__feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.dsl-section__feature-icon {
+  display: flex;
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-brand-primary-light);
+  border-radius: var(--shape-radius-md);
+  color: var(--color-brand-primary);
+}
+
+.dsl-section__feature-title {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.dsl-section__feature-body {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  line-height: var(--typography-line-height-normal);
+  color: var(--color-text-secondary);
+  margin: 0;
+}

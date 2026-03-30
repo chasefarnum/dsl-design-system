@@ -1,0 +1,758 @@
+[
+  {
+    "name": "colors",
+    "label": "Colors",
+    "type": "group",
+    "children": [
+      {
+        "name": "color_brand_primary",
+        "label": "Color Brand Primary",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "color_brand_primary_dark",
+        "label": "Color Brand Primary Dark",
+        "type": "color",
+        "default": {
+          "color": "#002c76"
+        }
+      },
+      {
+        "name": "color_brand_primary_light",
+        "label": "Color Brand Primary Light",
+        "type": "color",
+        "default": {
+          "color": "#e5eef7"
+        }
+      },
+      {
+        "name": "color_brand_primary_60",
+        "label": "Color Brand Primary 60",
+        "type": "color",
+        "default": {
+          "color": "rgba(0, 84, 158, 0.6)"
+        }
+      },
+      {
+        "name": "color_brand_secondary",
+        "label": "Color Brand Secondary",
+        "type": "color",
+        "default": {
+          "color": "#ec881d"
+        }
+      },
+      {
+        "name": "color_brand_secondary_dark",
+        "label": "Color Brand Secondary Dark",
+        "type": "color",
+        "default": {
+          "color": "#c46000"
+        }
+      },
+      {
+        "name": "color_brand_secondary_light",
+        "label": "Color Brand Secondary Light",
+        "type": "color",
+        "default": {
+          "color": "#fdf1e3"
+        }
+      },
+      {
+        "name": "color_brand_accent",
+        "label": "Color Brand Accent",
+        "type": "color",
+        "default": {
+          "color": "#ffdd00"
+        }
+      },
+      {
+        "name": "color_brand_accent_dark",
+        "label": "Color Brand Accent Dark",
+        "type": "color",
+        "default": {
+          "color": "#d7b500"
+        }
+      },
+      {
+        "name": "color_neutral_100",
+        "label": "Color Neutral 100",
+        "type": "color",
+        "default": {
+          "color": "#f6f6f6"
+        }
+      },
+      {
+        "name": "color_neutral_200",
+        "label": "Color Neutral 200",
+        "type": "color",
+        "default": {
+          "color": "#e2e2e2"
+        }
+      },
+      {
+        "name": "color_neutral_300",
+        "label": "Color Neutral 300",
+        "type": "color",
+        "default": {
+          "color": "#cccccc"
+        }
+      },
+      {
+        "name": "color_neutral_400",
+        "label": "Color Neutral 400",
+        "type": "color",
+        "default": {
+          "color": "#999999"
+        }
+      },
+      {
+        "name": "color_neutral_500",
+        "label": "Color Neutral 500",
+        "type": "color",
+        "default": {
+          "color": "#7a7a7a"
+        }
+      },
+      {
+        "name": "color_neutral_600",
+        "label": "Color Neutral 600",
+        "type": "color",
+        "default": {
+          "color": "#5c5c5c"
+        }
+      },
+      {
+        "name": "color_neutral_700",
+        "label": "Color Neutral 700",
+        "type": "color",
+        "default": {
+          "color": "#3d3d3d"
+        }
+      },
+      {
+        "name": "color_neutral_800",
+        "label": "Color Neutral 800",
+        "type": "color",
+        "default": {
+          "color": "#222222"
+        }
+      },
+      {
+        "name": "color_neutral_900",
+        "label": "Color Neutral 900",
+        "type": "color",
+        "default": {
+          "color": "#111111"
+        }
+      },
+      {
+        "name": "color_neutral_000",
+        "label": "Color Neutral 000",
+        "type": "color",
+        "default": {
+          "color": "#ffffff"
+        }
+      },
+      {
+        "name": "color_semantic_success",
+        "label": "Color Semantic Success",
+        "type": "color",
+        "default": {
+          "color": "#2d8a4e"
+        }
+      },
+      {
+        "name": "color_semantic_warning",
+        "label": "Color Semantic Warning",
+        "type": "color",
+        "default": {
+          "color": "#d97706"
+        }
+      },
+      {
+        "name": "color_semantic_error",
+        "label": "Color Semantic Error",
+        "type": "color",
+        "default": {
+          "color": "#c0392b"
+        }
+      },
+      {
+        "name": "color_semantic_info",
+        "label": "Color Semantic Info",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "color_overlay_dark_40",
+        "label": "Color Overlay Dark 40",
+        "type": "color",
+        "default": {
+          "color": "rgba(0, 0, 0, 0.4)"
+        }
+      },
+      {
+        "name": "color_overlay_dark_60",
+        "label": "Color Overlay Dark 60",
+        "type": "color",
+        "default": {
+          "color": "rgba(0, 0, 0, 0.6)"
+        }
+      },
+      {
+        "name": "color_text_primary",
+        "label": "Color Text Primary",
+        "type": "color",
+        "default": {
+          "color": "#111111"
+        }
+      },
+      {
+        "name": "color_text_secondary",
+        "label": "Color Text Secondary",
+        "type": "color",
+        "default": {
+          "color": "#3d3d3d"
+        }
+      },
+      {
+        "name": "color_text_muted",
+        "label": "Color Text Muted",
+        "type": "color",
+        "default": {
+          "color": "#7a7a7a"
+        }
+      },
+      {
+        "name": "color_text_inverse",
+        "label": "Color Text Inverse",
+        "type": "color",
+        "default": {
+          "color": "#ffffff"
+        }
+      },
+      {
+        "name": "color_text_brand",
+        "label": "Color Text Brand",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "color_text_link",
+        "label": "Color Text Link",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "color_text_link_hover",
+        "label": "Color Text Link Hover",
+        "type": "color",
+        "default": {
+          "color": "#002c76"
+        }
+      },
+      {
+        "name": "color_bg_default",
+        "label": "Color Bg Default",
+        "type": "color",
+        "default": {
+          "color": "#ffffff"
+        }
+      },
+      {
+        "name": "color_bg_subtle",
+        "label": "Color Bg Subtle",
+        "type": "color",
+        "default": {
+          "color": "#f6f6f6"
+        }
+      },
+      {
+        "name": "color_bg_brand",
+        "label": "Color Bg Brand",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "color_bg_brand_dark",
+        "label": "Color Bg Brand Dark",
+        "type": "color",
+        "default": {
+          "color": "#002c76"
+        }
+      },
+      {
+        "name": "color_bg_accent",
+        "label": "Color Bg Accent",
+        "type": "color",
+        "default": {
+          "color": "#ec881d"
+        }
+      },
+      {
+        "name": "color_border_default",
+        "label": "Color Border Default",
+        "type": "color",
+        "default": {
+          "color": "#cccccc"
+        }
+      },
+      {
+        "name": "color_border_subtle",
+        "label": "Color Border Subtle",
+        "type": "color",
+        "default": {
+          "color": "#e2e2e2"
+        }
+      },
+      {
+        "name": "color_border_focus",
+        "label": "Color Border Focus",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      }
+    ]
+  },
+  {
+    "name": "typography",
+    "label": "Typography",
+    "type": "group",
+    "children": [
+      {
+        "name": "typography_font_family_heading",
+        "label": "Typography Font Family Heading",
+        "type": "font",
+        "default": {
+          "font": "Lora",
+          "font_set": "GOOGLE"
+        }
+      },
+      {
+        "name": "typography_font_family_body",
+        "label": "Typography Font Family Body",
+        "type": "font",
+        "default": {
+          "font": "Montserrat",
+          "font_set": "GOOGLE"
+        }
+      },
+      {
+        "name": "typography_font_size_xs",
+        "label": "Typography Font Size Xs",
+        "type": "number",
+        "default": 12
+      },
+      {
+        "name": "typography_font_size_sm",
+        "label": "Typography Font Size Sm",
+        "type": "number",
+        "default": 14
+      },
+      {
+        "name": "typography_font_size_md",
+        "label": "Typography Font Size Md",
+        "type": "number",
+        "default": 16
+      },
+      {
+        "name": "typography_font_size_lg",
+        "label": "Typography Font Size Lg",
+        "type": "number",
+        "default": 18
+      },
+      {
+        "name": "typography_font_size_xl",
+        "label": "Typography Font Size Xl",
+        "type": "number",
+        "default": 24
+      },
+      {
+        "name": "typography_font_size_2xl",
+        "label": "Typography Font Size 2xl",
+        "type": "number",
+        "default": 32
+      },
+      {
+        "name": "typography_font_size_3xl",
+        "label": "Typography Font Size 3xl",
+        "type": "number",
+        "default": 40
+      },
+      {
+        "name": "typography_font_size_4xl",
+        "label": "Typography Font Size 4xl",
+        "type": "number",
+        "default": 56
+      },
+      {
+        "name": "typography_font_size_5xl",
+        "label": "Typography Font Size 5xl",
+        "type": "number",
+        "default": 72
+      },
+      {
+        "name": "typography_font_weight_regular",
+        "label": "Typography Font Weight Regular",
+        "type": "number",
+        "default": 400
+      },
+      {
+        "name": "typography_font_weight_medium",
+        "label": "Typography Font Weight Medium",
+        "type": "number",
+        "default": 500
+      },
+      {
+        "name": "typography_font_weight_semibold",
+        "label": "Typography Font Weight Semibold",
+        "type": "number",
+        "default": 600
+      },
+      {
+        "name": "typography_font_weight_bold",
+        "label": "Typography Font Weight Bold",
+        "type": "number",
+        "default": 700
+      },
+      {
+        "name": "typography_line_height_tight",
+        "label": "Typography Line Height Tight",
+        "type": "number",
+        "default": 1.1
+      },
+      {
+        "name": "typography_line_height_snug",
+        "label": "Typography Line Height Snug",
+        "type": "number",
+        "default": 1.25
+      },
+      {
+        "name": "typography_line_height_normal",
+        "label": "Typography Line Height Normal",
+        "type": "number",
+        "default": 1.5
+      },
+      {
+        "name": "typography_line_height_relaxed",
+        "label": "Typography Line Height Relaxed",
+        "type": "number",
+        "default": 1.75
+      },
+      {
+        "name": "typography_letter_spacing_tight",
+        "label": "Typography Letter Spacing Tight",
+        "type": "text",
+        "default": "-0.02em"
+      },
+      {
+        "name": "typography_letter_spacing_normal",
+        "label": "Typography Letter Spacing Normal",
+        "type": "text",
+        "default": "0em"
+      },
+      {
+        "name": "typography_letter_spacing_wide",
+        "label": "Typography Letter Spacing Wide",
+        "type": "text",
+        "default": "0.05em"
+      },
+      {
+        "name": "typography_letter_spacing_wider",
+        "label": "Typography Letter Spacing Wider",
+        "type": "text",
+        "default": "0.1em"
+      }
+    ]
+  },
+  {
+    "name": "spacing",
+    "label": "Spacing",
+    "type": "group",
+    "children": [
+      {
+        "name": "spacing_1",
+        "label": "Spacing 1",
+        "type": "number",
+        "default": 4
+      },
+      {
+        "name": "spacing_2",
+        "label": "Spacing 2",
+        "type": "number",
+        "default": 8
+      },
+      {
+        "name": "spacing_3",
+        "label": "Spacing 3",
+        "type": "number",
+        "default": 12
+      },
+      {
+        "name": "spacing_4",
+        "label": "Spacing 4",
+        "type": "number",
+        "default": 16
+      },
+      {
+        "name": "spacing_5",
+        "label": "Spacing 5",
+        "type": "number",
+        "default": 24
+      },
+      {
+        "name": "spacing_6",
+        "label": "Spacing 6",
+        "type": "number",
+        "default": 32
+      },
+      {
+        "name": "spacing_7",
+        "label": "Spacing 7",
+        "type": "number",
+        "default": 48
+      },
+      {
+        "name": "spacing_8",
+        "label": "Spacing 8",
+        "type": "number",
+        "default": 64
+      },
+      {
+        "name": "spacing_9",
+        "label": "Spacing 9",
+        "type": "number",
+        "default": 80
+      },
+      {
+        "name": "spacing_10",
+        "label": "Spacing 10",
+        "type": "number",
+        "default": 120
+      }
+    ]
+  },
+  {
+    "name": "borders",
+    "label": "Borders",
+    "type": "group",
+    "children": [
+      {
+        "name": "shape_radius_none",
+        "label": "Shape Radius None",
+        "type": "number",
+        "default": 0
+      },
+      {
+        "name": "shape_radius_sm",
+        "label": "Shape Radius Sm",
+        "type": "number",
+        "default": 4
+      },
+      {
+        "name": "shape_radius_md",
+        "label": "Shape Radius Md",
+        "type": "number",
+        "default": 8
+      },
+      {
+        "name": "shape_radius_lg",
+        "label": "Shape Radius Lg",
+        "type": "number",
+        "default": 16
+      },
+      {
+        "name": "shape_radius_xl",
+        "label": "Shape Radius Xl",
+        "type": "number",
+        "default": 24
+      },
+      {
+        "name": "shape_radius_full",
+        "label": "Shape Radius Full",
+        "type": "number",
+        "default": 9999
+      },
+      {
+        "name": "shape_border_width_thin",
+        "label": "Shape Border Width Thin",
+        "type": "number",
+        "default": 1
+      },
+      {
+        "name": "shape_border_width_medium",
+        "label": "Shape Border Width Medium",
+        "type": "number",
+        "default": 2
+      },
+      {
+        "name": "shape_border_width_thick",
+        "label": "Shape Border Width Thick",
+        "type": "number",
+        "default": 3
+      }
+    ]
+  },
+  {
+    "name": "buttons",
+    "label": "Buttons",
+    "type": "group",
+    "children": [
+      {
+        "name": "button_primary_bg",
+        "label": "Button Primary Bg",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "button_primary_bg_hover",
+        "label": "Button Primary Bg Hover",
+        "type": "color",
+        "default": {
+          "color": "#002c76"
+        }
+      },
+      {
+        "name": "button_primary_text",
+        "label": "Button Primary Text",
+        "type": "color",
+        "default": {
+          "color": "#ffffff"
+        }
+      },
+      {
+        "name": "button_primary_border",
+        "label": "Button Primary Border",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "button_secondary_bg",
+        "label": "Button Secondary Bg",
+        "type": "color",
+        "default": {
+          "color": "#ec881d"
+        }
+      },
+      {
+        "name": "button_secondary_bg_hover",
+        "label": "Button Secondary Bg Hover",
+        "type": "color",
+        "default": {
+          "color": "#c46000"
+        }
+      },
+      {
+        "name": "button_secondary_text",
+        "label": "Button Secondary Text",
+        "type": "color",
+        "default": {
+          "color": "#ffffff"
+        }
+      },
+      {
+        "name": "button_secondary_border",
+        "label": "Button Secondary Border",
+        "type": "color",
+        "default": {
+          "color": "#ec881d"
+        }
+      },
+      {
+        "name": "button_ghost_bg_hover",
+        "label": "Button Ghost Bg Hover",
+        "type": "color",
+        "default": {
+          "color": "#e5eef7"
+        }
+      },
+      {
+        "name": "button_ghost_text",
+        "label": "Button Ghost Text",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "button_ghost_border",
+        "label": "Button Ghost Border",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      }
+    ]
+  },
+  {
+    "name": "forms",
+    "label": "Forms",
+    "type": "group",
+    "children": [
+      {
+        "name": "form_input_bg",
+        "label": "Form Input Bg",
+        "type": "color",
+        "default": {
+          "color": "#ffffff"
+        }
+      },
+      {
+        "name": "form_input_border",
+        "label": "Form Input Border",
+        "type": "color",
+        "default": {
+          "color": "#cccccc"
+        }
+      },
+      {
+        "name": "form_input_border_focus",
+        "label": "Form Input Border Focus",
+        "type": "color",
+        "default": {
+          "color": "#00549e"
+        }
+      },
+      {
+        "name": "form_input_text",
+        "label": "Form Input Text",
+        "type": "color",
+        "default": {
+          "color": "#111111"
+        }
+      },
+      {
+        "name": "form_input_placeholder",
+        "label": "Form Input Placeholder",
+        "type": "color",
+        "default": {
+          "color": "#999999"
+        }
+      },
+      {
+        "name": "form_label_text",
+        "label": "Form Label Text",
+        "type": "color",
+        "default": {
+          "color": "#3d3d3d"
+        }
+      }
+    ]
+  }
+]

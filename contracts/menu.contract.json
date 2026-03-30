@@ -1,0 +1,24 @@
+{
+  "name": "menu",
+  "description": "Trigger button + dropdown panel with item variants",
+  "primitive": "native",
+  "cssClass": "dsl-menu",
+  "source": "components/menu/menu.html",
+  "variants": {
+    "position": {
+      "options": ["bottom-left", "bottom-right", "top-left", "top-right"],
+      "default": "bottom-left"
+    }
+  },
+  "slots": ["menu__trigger", "menu__panel", "menu__item", "menu__divider"],
+  "states": ["closed", "open"],
+  "tokens": {
+    "--color-bg-default": "var(--color-bg-default)",
+    "--color-bg-subtle": "var(--color-bg-subtle)",
+    "--color-text-primary": "var(--color-text-primary)",
+    "--color-semantic-error": "var(--color-semantic-error)",
+    "--color-border-default": "var(--color-border-default)",
+    "--shape-radius-md": "var(--shape-radius-md)",
+    "--shape-shadow-lg": "var(--shape-shadow-lg)"
+  }
+}

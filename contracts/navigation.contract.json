@@ -1,0 +1,25 @@
+{
+  "name": "navigation",
+  "description": "Responsive horizontal navbar with logo, links, CTA, hamburger, and dropdown submenus",
+  "primitive": "native",
+  "cssClass": "dsl-nav",
+  "source": "components/navigation/navigation.html",
+  "variants": {
+    "sticky": {
+      "options": [true, false],
+      "default": false,
+      "cssModifier": "dsl-nav--sticky"
+    }
+  },
+  "slots": ["nav__logo", "nav__links", "nav__link", "nav__cta", "nav__hamburger", "nav__submenu"],
+  "states": ["default", "scrolled", "mobile-open"],
+  "tokens": {
+    "--color-bg-default": "var(--color-bg-default)",
+    "--color-text-primary": "var(--color-text-primary)",
+    "--color-brand-primary": "var(--color-brand-primary)",
+    "--color-border-default": "var(--color-border-default)",
+    "--shape-shadow-sm": "var(--shape-shadow-sm)",
+    "--spacing-4": "var(--spacing-4)",
+    "--spacing-5": "var(--spacing-5)"
+  }
+}

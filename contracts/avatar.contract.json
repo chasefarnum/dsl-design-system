@@ -1,0 +1,35 @@
+{
+  "name": "avatar",
+  "description": "User representation via image, initials, or icon",
+  "primitive": "native",
+  "cssClass": "dsl-avatar",
+  "source": "components/avatar/avatar.html",
+  "variants": {
+    "type": {
+      "options": ["image", "initials", "icon"],
+      "default": "image",
+      "cssModifier": "dsl-avatar--{type}"
+    },
+    "size": {
+      "options": ["xs", "sm", "md", "lg", "xl"],
+      "default": "md",
+      "cssModifier": "dsl-avatar--{size}"
+    },
+    "withBadge": {
+      "options": [true, false],
+      "default": false,
+      "cssModifier": "dsl-avatar--with-badge"
+    }
+  },
+  "slots": ["avatar__image", "avatar__initials", "avatar__icon", "avatar__badge"],
+  "tokens": {
+    "--color-bg-brand": "var(--color-bg-brand)",
+    "--color-bg-subtle": "var(--color-bg-subtle)",
+    "--color-text-inverse": "var(--color-text-inverse)",
+    "--color-text-muted": "var(--color-text-muted)",
+    "--color-semantic-success": "var(--color-semantic-success)",
+    "--shape-radius-full": "var(--shape-radius-full)",
+    "--typography-font-family-body": "var(--typography-font-family-body)",
+    "--typography-font-weight-semibold": "var(--typography-font-weight-semibold)"
+  }
+}

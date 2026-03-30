@@ -1,0 +1,30 @@
+{
+  "name": "sections",
+  "description": "Full-width landing page layout containers with background and padding variants",
+  "primitive": "native",
+  "cssClass": "dsl-section",
+  "source": "components/sections/sections.html",
+  "variants": {
+    "type": {
+      "options": ["hero", "feature", "cta", "content", "split"],
+      "default": "content",
+      "cssModifier": "dsl-section--{type}"
+    },
+    "background": {
+      "options": ["white", "subtle", "brand", "dark"],
+      "default": "white",
+      "cssModifier": "dsl-section--bg-{background}"
+    }
+  },
+  "tokens": {
+    "--color-bg-default": "var(--color-bg-default)",
+    "--color-bg-subtle": "var(--color-bg-subtle)",
+    "--color-bg-brand": "var(--color-bg-brand)",
+    "--color-bg-brand-dark": "var(--color-bg-brand-dark)",
+    "--color-text-primary": "var(--color-text-primary)",
+    "--color-text-inverse": "var(--color-text-inverse)",
+    "--spacing-8": "var(--spacing-8)",
+    "--spacing-9": "var(--spacing-9)",
+    "--spacing-10": "var(--spacing-10)"
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Pagination — Component Example</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="pagination.css" />
+  <style>
+    body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
+    .demo-section { margin-bottom: var(--spacing-6); }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-4); }
+  </style>
+</head>
+<body>
+
+  <div class="demo-section">
+    <h2>Medium</h2>
+    <nav aria-label="Pagination">
+      <ol class="dsl-pagination" id="pagination-md" data-total="12" data-current="4"></ol>
+    </nav>
+  </div>
+
+  <div class="demo-section">
+    <h2>Small</h2>
+    <nav aria-label="Pagination">
+      <ol class="dsl-pagination dsl-pagination--sm" id="pagination-sm" data-total="20" data-current="1"></ol>
+    </nav>
+  </div>
+
+  <script src="pagination.js"></script>
+</body>
+</html>

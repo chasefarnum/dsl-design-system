@@ -1,0 +1,115 @@
+/* DSL Tabs */
+
+.dsl-tabs {
+  font-family: var(--typography-font-family-body);
+}
+
+/* ── Tab list ──────────────────────────────────────────────────────────────── */
+
+.dsl-tabs__list {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Underline variant ─────────────────────────────────────────────────────── */
+
+.dsl-tabs--underline .dsl-tabs__list {
+  border-bottom: var(--shape-border-width-thin) solid var(--color-border-default);
+  gap: var(--spacing-1);
+}
+
+.dsl-tabs--underline .dsl-tabs__tab {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: none;
+  border: none;
+  border-bottom: var(--shape-border-width-medium) solid transparent;
+  margin-bottom: -1px;
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  font-weight: var(--typography-font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.dsl-tabs--underline .dsl-tabs__tab:hover {
+  color: var(--color-text-brand);
+}
+
+.dsl-tabs--underline .dsl-tabs__tab[aria-selected="true"] {
+  color: var(--color-brand-primary);
+  border-bottom-color: var(--color-brand-primary);
+  font-weight: var(--typography-font-weight-semibold);
+}
+
+.dsl-tabs--underline .dsl-tabs__tab:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+  outline-offset: -2px;
+  border-radius: var(--shape-radius-md) var(--shape-radius-md) 0 0;
+}
+
+/* ── Pill variant ──────────────────────────────────────────────────────────── */
+
+.dsl-tabs--pill .dsl-tabs__list {
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--shape-radius-full);
+  padding: var(--spacing-1);
+  display: inline-flex;
+}
+
+.dsl-tabs--pill .dsl-tabs__tab {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: none;
+  border: none;
+  border-radius: var(--shape-radius-full);
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-sm);
+  font-weight: var(--typography-font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.dsl-tabs--pill .dsl-tabs__tab:hover {
+  color: var(--color-text-primary);
+}
+
+.dsl-tabs--pill .dsl-tabs__tab[aria-selected="true"] {
+  background-color: var(--color-bg-default);
+  color: var(--color-brand-primary);
+  font-weight: var(--typography-font-weight-semibold);
+  box-shadow: var(--shape-shadow-xs);
+}
+
+.dsl-tabs--pill .dsl-tabs__tab:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Disabled tab ──────────────────────────────────────────────────────────── */
+
+.dsl-tabs__tab[disabled],
+.dsl-tabs__tab[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────────────── */
+
+.dsl-tabs__panel {
+  padding: var(--spacing-5) 0;
+  font-size: var(--typography-font-size-md);
+  line-height: var(--typography-line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+.dsl-tabs__panel[hidden] {
+  display: none;
+}

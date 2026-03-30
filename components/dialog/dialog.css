@@ -1,0 +1,117 @@
+/* DSL Dialog / Modal
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+/* ── Backdrop ──────────────────────────────────────────────────────────────── */
+
+.dsl-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-overlay-dark-60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-5);
+  z-index: 400;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.dsl-dialog-backdrop[data-open] {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────────────── */
+
+.dsl-dialog {
+  background-color: var(--color-bg-default);
+  border-radius: var(--shape-radius-lg);
+  box-shadow: var(--shape-shadow-xl);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 90vh;
+  transform: scale(0.95) translateY(var(--spacing-3));
+  transition: transform 0.2s ease;
+}
+
+.dsl-dialog-backdrop[data-open] .dsl-dialog {
+  transform: scale(1) translateY(0);
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────────────────── */
+
+.dsl-dialog--sm { max-width: 400px; }
+.dsl-dialog--md { max-width: 560px; }
+.dsl-dialog--lg { max-width: 760px; }
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+
+.dsl-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--spacing-5) var(--spacing-6);
+  border-bottom: var(--shape-border-width-thin) solid var(--color-border-default);
+  gap: var(--spacing-4);
+  flex-shrink: 0;
+}
+
+.dsl-dialog__title {
+  font-family: var(--typography-font-family-heading);
+  font-size: var(--typography-font-size-xl);
+  font-weight: var(--typography-font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--typography-line-height-snug);
+}
+
+.dsl-dialog__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: var(--spacing-1);
+  border-radius: var(--shape-radius-md);
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dsl-dialog__close:hover {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+}
+
+.dsl-dialog__close:focus-visible {
+  outline: var(--shape-border-width-medium) solid var(--color-border-focus);
+}
+
+/* ── Body ──────────────────────────────────────────────────────────────────── */
+
+.dsl-dialog__body {
+  padding: var(--spacing-5) var(--spacing-6);
+  overflow-y: auto;
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-md);
+  line-height: var(--typography-line-height-normal);
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────────── */
+
+.dsl-dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: var(--shape-border-width-thin) solid var(--color-border-default);
+  flex-shrink: 0;
+}

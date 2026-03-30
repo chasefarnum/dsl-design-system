@@ -1,0 +1,125 @@
+/* DSL Avatar
+ * Requires: output/variables.css loaded on the page before this stylesheet.
+ * No hardcoded values — all visual properties reference CSS custom properties.
+ */
+
+.dsl-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--shape-radius-full);
+  background-color: var(--color-bg-brand);
+  color: var(--color-text-inverse);
+  font-family: var(--typography-font-family-body);
+  font-weight: var(--typography-font-weight-semibold);
+  overflow: hidden;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────────────────── */
+
+.dsl-avatar--xs {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  font-size: var(--typography-font-size-xs);
+}
+
+.dsl-avatar--sm {
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  font-size: var(--typography-font-size-xs);
+}
+
+.dsl-avatar--md {
+  width: var(--spacing-7);
+  height: var(--spacing-7);
+  font-size: var(--typography-font-size-md);
+}
+
+.dsl-avatar--lg {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  font-size: var(--typography-font-size-xl);
+}
+
+.dsl-avatar--xl {
+  width: var(--spacing-9);
+  height: var(--spacing-9);
+  font-size: var(--typography-font-size-2xl);
+}
+
+/* ── Image type ────────────────────────────────────────────────────────────── */
+
+.dsl-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Icon type ─────────────────────────────────────────────────────────────── */
+
+.dsl-avatar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
+  height: 55%;
+}
+
+.dsl-avatar__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Icon variant background ───────────────────────────────────────────────── */
+
+.dsl-avatar--icon {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+}
+
+/* ── Online badge ──────────────────────────────────────────────────────────── */
+
+.dsl-avatar__badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28%;
+  height: 28%;
+  border-radius: var(--shape-radius-full);
+  background-color: var(--color-semantic-success);
+  border: var(--shape-border-width-medium) solid var(--color-bg-default);
+}
+
+/* ── Group (stacked) ───────────────────────────────────────────────────────── */
+
+.dsl-avatar-group {
+  display: flex;
+  align-items: center;
+}
+
+.dsl-avatar-group .dsl-avatar {
+  border: var(--shape-border-width-medium) solid var(--color-bg-default);
+  box-shadow: var(--shape-shadow-xs);
+}
+
+.dsl-avatar-group .dsl-avatar + .dsl-avatar {
+  margin-left: calc(-1 * var(--spacing-3));
+}
+
+.dsl-avatar-group__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--shape-radius-full);
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+  font-family: var(--typography-font-family-body);
+  font-weight: var(--typography-font-weight-semibold);
+  font-size: var(--typography-font-size-xs);
+  border: var(--shape-border-width-medium) solid var(--color-bg-default);
+  margin-left: calc(-1 * var(--spacing-3));
+}

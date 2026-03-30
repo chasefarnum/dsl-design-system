@@ -1,0 +1,11 @@
+{
+  "figmaFileKey": "JjGwsAJ7mN8fXld3AFXt1G",
+  "tokensDir": "tokens",
+  "contractsDir": "contracts",
+  "primitivesGlob": "tokens/primitive/**/*.tokens.json",
+  "semanticFiles": {
+    "default": "tokens/semantic/semantic.tokens.json"
+  },
+  "brand": "dsl",
+  "componentSourceDir": "components"
+}

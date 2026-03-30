@@ -1,0 +1,58 @@
+{
+  "name": "Button",
+  "source": "components/button/button.html",
+  "primitive": "native",
+  "description": "Primary interactive element for CTAs and form submissions. Used across all HubSpot landing page modules.",
+  "cssClass": "dsl-btn",
+  "variants": {
+    "variant": {
+      "options": ["primary", "secondary", "ghost"],
+      "default": "primary",
+      "cssModifier": "dsl-btn--{variant}"
+    },
+    "size": {
+      "options": ["sm", "md", "lg"],
+      "default": "md",
+      "cssModifier": "dsl-btn--{size}"
+    },
+    "fullWidth": {
+      "options": [true, false],
+      "default": false,
+      "cssModifier": "dsl-btn--full"
+    },
+    "iconPosition": {
+      "options": ["none", "left", "right", "only"],
+      "default": "none",
+      "cssModifier": "dsl-btn--icon-only"
+    },
+    "loading": {
+      "options": [true, false],
+      "default": false,
+      "cssModifier": "dsl-btn--loading"
+    }
+  },
+  "slots": ["button"],
+  "tokens": {
+    "--button-primary-bg":       "var(--button-primary-bg)",
+    "--button-primary-bg-hover": "var(--button-primary-bg-hover)",
+    "--button-primary-text":     "var(--button-primary-text)",
+    "--button-primary-border":   "var(--button-primary-border)",
+    "--button-secondary-bg":     "var(--button-secondary-bg)",
+    "--button-secondary-bg-hover": "var(--button-secondary-bg-hover)",
+    "--button-secondary-text":   "var(--button-secondary-text)",
+    "--button-secondary-border": "var(--button-secondary-border)",
+    "--button-ghost-bg":         "var(--button-ghost-bg)",
+    "--button-ghost-bg-hover":   "var(--button-ghost-bg-hover)",
+    "--button-ghost-text":       "var(--button-ghost-text)",
+    "--button-ghost-border":     "var(--button-ghost-border)",
+    "--shape-radius-md":         "var(--shape-radius-md)",
+    "--spacing-3":               "var(--spacing-3)",
+    "--spacing-5":               "var(--spacing-5)",
+    "--typography-font-family-body":       "var(--typography-font-family-body)",
+    "--typography-font-size-sm":           "var(--typography-font-size-sm)",
+    "--typography-font-size-md":           "var(--typography-font-size-md)",
+    "--typography-font-size-lg":           "var(--typography-font-size-lg)",
+    "--typography-font-weight-semibold":   "var(--typography-font-weight-semibold)"
+  },
+  "states": ["hover", "focus-visible", "active", "disabled", "loading"]
+}

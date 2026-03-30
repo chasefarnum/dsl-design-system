@@ -1,0 +1,27 @@
+{
+  "name": "notification",
+  "description": "Alert/notification with info/success/warning/error variants, dismissible, toast, and banner",
+  "primitive": "native",
+  "cssClass": "dsl-alert",
+  "source": "components/notification/notification.html",
+  "variants": {
+    "intent": {
+      "options": ["info", "success", "warning", "error"],
+      "default": "info",
+      "cssModifier": "dsl-alert--{intent}"
+    },
+    "type": {
+      "options": ["inline", "toast", "banner"],
+      "default": "inline",
+      "cssModifier": "dsl-alert--{type}"
+    }
+  },
+  "states": ["default", "dismissed"],
+  "tokens": {
+    "--color-semantic-info": "var(--color-semantic-info)",
+    "--color-semantic-success": "var(--color-semantic-success)",
+    "--color-semantic-warning": "var(--color-semantic-warning)",
+    "--color-semantic-error": "var(--color-semantic-error)",
+    "--shape-radius-md": "var(--shape-radius-md)"
+  }
+}
