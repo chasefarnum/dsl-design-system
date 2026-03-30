@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notification — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/notification/notification.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Notification</h1>
+      <p class="ds-page-description">Alert/notification with info/success/warning/error variants, dismissible, toast, and banner</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <!-- SVG icons -->
+  <div style="display:none" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-info" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></symbol>
+    <symbol id="icon-success" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></symbol>
+    <symbol id="icon-warning" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></symbol>
+    <symbol id="icon-error" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></symbol>
+  </svg></div>
+
+  <div class="demo-section">
+    <h2>Inline Alerts</h2>
+    <div class="stack">
+      <div class="dsl-alert dsl-alert--info" role="status">
+        <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-info"/></svg>
+        <div class="dsl-alert__content">
+          <p class="dsl-alert__title">Tour Confirmed</p>
+          <p class="dsl-alert__body">Your tour at Sunrise Gardens is scheduled for Thursday at 10am.</p>
+        </div>
+        <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+      </div>
+      <div class="dsl-alert dsl-alert--success" role="status">
+        <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-success"/></svg>
+        <div class="dsl-alert__content">
+          <p class="dsl-alert__title">Application Submitted</p>
+          <p class="dsl-alert__body">We've received your application. Our team will contact you within 24 hours.</p>
+        </div>
+        <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+      </div>
+      <div class="dsl-alert dsl-alert--warning" role="alert">
+        <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-warning"/></svg>
+        <div class="dsl-alert__content">
+          <p class="dsl-alert__title">Limited Availability</p>
+          <p class="dsl-alert__body">Only 2 apartments remain at this price. Contact us to secure your spot.</p>
+        </div>
+        <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+      </div>
+      <div class="dsl-alert dsl-alert--error" role="alert">
+        <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-error"/></svg>
+        <div class="dsl-alert__content">
+          <p class="dsl-alert__title">Form Error</p>
+          <p class="dsl-alert__body">Please correct the errors below before submitting.</p>
+        </div>
+        <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Banner</h2>
+    <div class="dsl-alert dsl-alert--info dsl-alert--banner" role="banner">
+      <svg class="dsl-alert__icon" aria-hidden="true"><use href="#icon-info"/></svg>
+      <div class="dsl-alert__content">
+        <p class="dsl-alert__body">Open House this Saturday, 10am–2pm. All communities welcome visitors.</p>
+      </div>
+      <button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Toast</h2>
+    <div style="display:flex;gap:var(--spacing-3);flex-wrap:wrap;">
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--sm" type="button" data-toast="info"><span class="dsl-btn__text">Info Toast</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--sm" type="button" data-toast="success"><span class="dsl-btn__text">Success Toast</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--sm" type="button" data-toast="warning"><span class="dsl-btn__text">Warning Toast</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--sm" type="button" data-toast="error"><span class="dsl-btn__text">Error Toast</span></button>
+    </div>
+  </div>
+
+  <div class="dsl-toast-container" id="toast-container" aria-live="polite" aria-atomic="false"></div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">intent</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">info, success, warning, error</code></td>
+      <td style="color:var(--ds-text-muted)">info</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-alert--{intent}</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">type</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">inline, toast, banner</code></td>
+      <td style="color:var(--ds-text-muted)">inline</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-alert--{type}</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-info</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-info)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-success</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-success)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-warning</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-warning)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-error</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-error)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-md)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+<script src="../../components/notification/notification.js"></script>
+</body>
+</html>

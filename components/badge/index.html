@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Badge — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/badge/badge.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Badge</h1>
+      <p class="ds-page-description">Compact inline label for status, category tags, and feature callouts on senior living pages.</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <div class="demo-section">
+    <h2>Variants — md size</h2>
+    <div class="demo-row">
+      <span class="dsl-badge dsl-badge--default dsl-badge--md">Default</span>
+      <span class="dsl-badge dsl-badge--brand dsl-badge--md">Brand</span>
+      <span class="dsl-badge dsl-badge--success dsl-badge--md">Available Now</span>
+      <span class="dsl-badge dsl-badge--warning dsl-badge--md">Limited Units</span>
+      <span class="dsl-badge dsl-badge--error dsl-badge--md">Waitlist Only</span>
+      <span class="dsl-badge dsl-badge--info dsl-badge--md">New Community</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Variants — sm size</h2>
+    <div class="demo-row">
+      <span class="dsl-badge dsl-badge--default dsl-badge--sm">Default</span>
+      <span class="dsl-badge dsl-badge--brand dsl-badge--sm">Brand</span>
+      <span class="dsl-badge dsl-badge--success dsl-badge--sm">Available</span>
+      <span class="dsl-badge dsl-badge--warning dsl-badge--sm">Limited</span>
+      <span class="dsl-badge dsl-badge--error dsl-badge--sm">Waitlist</span>
+      <span class="dsl-badge dsl-badge--info dsl-badge--sm">New</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Dismissible</h2>
+    <div class="demo-row">
+      <span class="dsl-badge dsl-badge--default dsl-badge--md">
+        Independent Living
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+      <span class="dsl-badge dsl-badge--brand dsl-badge--md">
+        Featured
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+      <span class="dsl-badge dsl-badge--success dsl-badge--md">
+        Available Now
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+      <span class="dsl-badge dsl-badge--error dsl-badge--md">
+        Waitlist Only
+        <button class="dsl-badge__dismiss" aria-label="Remove" type="button">&#x2715;</button>
+      </span>
+    </div>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">intent</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">default, success, warning, error, info</code></td>
+      <td style="color:var(--ds-text-muted)">default</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-badge--{intent}</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--color-brand-primary</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-brand-primary)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-neutral-000</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-neutral-000)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-success</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-success)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-warning</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-warning)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-error</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-error)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-info</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-info)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-bg-subtle</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-bg-subtle)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-text-secondary</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-text-secondary)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-border-default</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-border-default)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-full</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-full)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-1</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-1)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-3</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-3)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-family-body</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-family-body)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-xs</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-xs)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-sm</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-sm)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-weight-semibold</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-weight-semibold)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-letter-spacing-wide</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-letter-spacing-wide)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+<script src="../../components/badge/badge.js"></script>
+</body>
+</html>

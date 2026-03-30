@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tooltip — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/tooltip/tooltip.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Tooltip</h1>
+      <p class="ds-page-description">Hover+focus tooltip with 4 positions and fade transition</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <div class="demo-section">
+    <h2>Tooltip Positions</h2>
+    <div class="demo-row">
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="Schedule a tour to visit in person" data-tooltip-position="top">
+        <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" aria-describedby="tt1">
+          <span class="dsl-btn__text">Tooltip Top</span>
+        </button>
+        <span class="dsl-tooltip" id="tt1" role="tooltip" data-position="top">Schedule a tour to visit in person</span>
+      </span>
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="Our communities are open daily 9am–5pm" data-tooltip-position="bottom">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" aria-describedby="tt2">
+          <span class="dsl-btn__text">Tooltip Bottom</span>
+        </button>
+        <span class="dsl-tooltip" id="tt2" role="tooltip" data-position="bottom">Our communities are open daily 9am–5pm</span>
+      </span>
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="Call toll-free: 1-800-555-1234" data-tooltip-position="left">
+        <button class="dsl-btn dsl-btn--secondary dsl-btn--md" type="button" aria-describedby="tt3">
+          <span class="dsl-btn__text">Tooltip Left</span>
+        </button>
+        <span class="dsl-tooltip" id="tt3" role="tooltip" data-position="left">Call toll-free: 1-800-555-1234</span>
+      </span>
+
+      <span class="dsl-tooltip-wrapper" data-tooltip="All-inclusive pricing with no hidden fees" data-tooltip-position="right">
+        <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button" aria-describedby="tt4">
+          <span class="dsl-btn__text">Tooltip Right</span>
+        </button>
+        <span class="dsl-tooltip" id="tt4" role="tooltip" data-position="right">All-inclusive pricing with no hidden fees</span>
+      </span>
+
+    </div>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">position</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">top, bottom, left, right</code></td>
+      <td style="color:var(--ds-text-muted)">top</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">data-position</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--color-neutral-900</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-neutral-900)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-neutral-000</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-neutral-000)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-md)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-shadow-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-shadow-md)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-sm</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-sm)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+<script src="../../components/tooltip/tooltip.js"></script>
+</body>
+</html>

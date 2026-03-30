@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avatar — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/avatar/avatar.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Avatar</h1>
+      <p class="ds-page-description">User representation via image, initials, or icon</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <div class="demo-section">
+    <h2>Image — All Sizes</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--xs">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--sm">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--md">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--lg">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--xl">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Initials — All Sizes</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--xs" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--sm" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--lg" aria-label="Jane Doe">JD</div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--xl" aria-label="Jane Doe">JD</div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Icon — All Sizes</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--xs" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--sm" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--md" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--lg" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--xl" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>With Online Badge</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar dsl-avatar--image dsl-avatar--md dsl-avatar--with-badge">
+        <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=2" alt="John Smith" />
+        <span class="dsl-avatar__badge" aria-label="Online"></span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md dsl-avatar--with-badge" aria-label="Mary Johnson">
+        MJ
+        <span class="dsl-avatar__badge" aria-label="Online"></span>
+      </div>
+      <div class="dsl-avatar dsl-avatar--icon dsl-avatar--lg dsl-avatar--with-badge" aria-label="User">
+        <span class="dsl-avatar__icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        </span>
+        <span class="dsl-avatar__badge" aria-label="Online"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Avatar Group</h2>
+    <div class="demo-row">
+      <div class="dsl-avatar-group">
+        <div class="dsl-avatar dsl-avatar--image dsl-avatar--md">
+          <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=1" alt="Jane Doe" />
+        </div>
+        <div class="dsl-avatar dsl-avatar--image dsl-avatar--md">
+          <img class="dsl-avatar__image" src="https://i.pravatar.cc/80?img=2" alt="John Smith" />
+        </div>
+        <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md" aria-label="Mary Johnson">MJ</div>
+        <div class="dsl-avatar dsl-avatar--initials dsl-avatar--md" aria-label="Robert Brown">RB</div>
+        <div class="dsl-avatar dsl-avatar--md dsl-avatar-group__count">+4</div>
+      </div>
+    </div>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">type</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">image, initials, icon</code></td>
+      <td style="color:var(--ds-text-muted)">image</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-avatar--{type}</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">size</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">xs, sm, md, lg, xl</code></td>
+      <td style="color:var(--ds-text-muted)">md</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-avatar--{size}</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">withBadge</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">true, false</code></td>
+      <td style="color:var(--ds-text-muted)">false</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-avatar--with-badge</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--color-bg-brand</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-bg-brand)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-bg-subtle</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-bg-subtle)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-text-inverse</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-text-inverse)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-text-muted</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-text-muted)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-success</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-success)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-full</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-full)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-family-body</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-family-body)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-weight-semibold</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-weight-semibold)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+
+</body>
+</html>

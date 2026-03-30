@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/text/text.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Text</h1>
+      <p class="ds-page-description">Typography demo page showing the full type scale and utility styles</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <div class="demo-section">
+    <h2>Headings</h2>
+    <div class="type-row">
+      <div><h1 class="dsl-h1">H1 — Find Your Perfect Community</h1><p class="type-label">dsl-h1 — 72px / Lora Bold / tight</p></div>
+      <div><h2 class="dsl-h2">H2 — Award-Winning Senior Living</h2><p class="type-label">dsl-h2 — 56px / Lora Bold / tight</p></div>
+      <div><h3 class="dsl-h3">H3 — Personalized Care Plans</h3><p class="type-label">dsl-h3 — 40px / Lora Bold / tight</p></div>
+      <div><h4 class="dsl-h4">H4 — Resort-Style Amenities</h4><p class="type-label">dsl-h4 — 32px / Lora Bold / tight</p></div>
+      <div><h5 class="dsl-h5">H5 — Dining &amp; Social Events</h5><p class="type-label">dsl-h5 — 24px / Lora Bold / tight</p></div>
+      <div><h6 class="dsl-h6">H6 — Pricing &amp; Availability</h6><p class="type-label">dsl-h6 — 18px / Lora Bold / tight</p></div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Body Text</h2>
+    <div class="type-row">
+      <div>
+        <p class="dsl-body-lg">Large body — Experience the perfect balance of independence and support in our vibrant Discovery Senior Living communities across Florida.</p>
+        <p class="type-label">dsl-body-lg — 18px / Montserrat / relaxed</p>
+      </div>
+      <div>
+        <p class="dsl-body">Default body — Our dedicated care teams are available 24/7 to assist residents with daily activities, medication management, and personal care needs.</p>
+        <p class="type-label">dsl-body — 16px / Montserrat / normal</p>
+      </div>
+      <div>
+        <p class="dsl-body-sm">Small body — Monthly pricing varies by care level and apartment size. Contact us for a personalized quote. Financial counseling available.</p>
+        <p class="type-label">dsl-body-sm — 14px / Montserrat / normal</p>
+      </div>
+      <div>
+        <p class="dsl-body-xs">Extra small — *Starting price. Prices subject to change. See community for details.</p>
+        <p class="type-label">dsl-body-xs — 12px / Montserrat / normal / muted</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Utility Styles</h2>
+    <div class="type-row">
+      <div>
+        <span class="dsl-eyebrow">Eyebrow / Label</span>
+        <p class="type-label">dsl-eyebrow — 14px / semibold / uppercase / wide tracking</p>
+      </div>
+      <div>
+        <span class="dsl-caption">Caption — Photo taken at Sunrise Gardens, Orlando, FL. © 2026 Discovery Senior Living.</span>
+        <p class="type-label">dsl-caption — 12px / muted</p>
+      </div>
+      <div>
+        <blockquote class="dsl-blockquote">"Moving to Discovery Senior Living was the best decision we ever made. Mom is thriving." — Jane D., family member</blockquote>
+        <p class="type-label">dsl-blockquote — 24px / Lora italic / brand border</p>
+      </div>
+      <div>
+        <p class="dsl-body">Use <code class="dsl-code">var(--color-brand-primary)</code> to reference design tokens in your CSS.</p>
+        <p class="type-label">dsl-code — inline code snippet</p>
+      </div>
+      <div>
+        <p class="dsl-body"><a class="dsl-link" href="#">View all communities</a> — <a class="dsl-link" href="#">Schedule a tour</a> — <a class="dsl-link" href="#">Contact us</a></p>
+        <p class="type-label">dsl-link — brand color, underline, hover transition</p>
+      </div>
+    </div>
+  </div>
+    </section>
+
+    
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-family-heading</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-family-heading)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-family-body</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-family-body)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-xs</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-xs)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-sm</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-sm)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-md)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-lg</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-lg)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-xl</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-xl)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-2xl</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-2xl)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-3xl</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-3xl)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-4xl</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-4xl)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-5xl</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-5xl)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+
+</body>
+</html>

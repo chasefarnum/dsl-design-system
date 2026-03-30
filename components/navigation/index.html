@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/navigation/navigation.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Navigation</h1>
+      <p class="ds-page-description">Responsive horizontal navbar with logo, links, CTA, hamburger, and dropdown submenus</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <nav class="dsl-nav dsl-nav--sticky" id="main-nav" aria-label="Main navigation">
+    <div class="dsl-nav__inner">
+      <a class="dsl-nav__logo" href="#">DSL</a>
+
+      <button class="dsl-nav__hamburger" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle menu" id="nav-hamburger">
+        <span class="dsl-nav__hamburger-bar"></span>
+        <span class="dsl-nav__hamburger-bar"></span>
+        <span class="dsl-nav__hamburger-bar"></span>
+      </button>
+
+      <ul class="dsl-nav__links" id="nav-links" role="list">
+        <li class="dsl-nav__item">
+          <a class="dsl-nav__link dsl-nav__link--active" href="#">Communities</a>
+        </li>
+        <li class="dsl-nav__item">
+          <!-- Item with submenu -->
+          <button class="dsl-nav__link" type="button" aria-haspopup="true" aria-expanded="false" id="nav-care-btn">
+            Care Options
+            <svg class="dsl-nav__link-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+          <ul class="dsl-nav__submenu" role="menu" aria-labelledby="nav-care-btn">
+            <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Independent Living</a></li>
+            <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Assisted Living</a></li>
+            <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Memory Care</a></li>
+            <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Skilled Nursing</a></li>
+          </ul>
+        </li>
+        <li class="dsl-nav__item">
+          <a class="dsl-nav__link" href="#">Resources</a>
+        </li>
+        <li class="dsl-nav__item">
+          <a class="dsl-nav__link" href="#">About</a>
+        </li>
+        <li class="dsl-nav__item">
+          <a class="dsl-nav__link" href="#">Contact</a>
+        </li>
+        <li class="dsl-nav__item">
+          <div class="dsl-nav__cta">
+            <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm"><span class="dsl-btn__text">Schedule a Tour</span></a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="dsl-nav__cta">
+        <a href="tel:8005551234" class="dsl-btn dsl-btn--ghost dsl-btn--sm"><span class="dsl-btn__text">1-800-555-1234</span></a>
+        <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm"><span class="dsl-btn__text">Schedule a Tour</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <p>Scroll down to see the sticky navigation. Resize the window to test the mobile hamburger menu.</p>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">sticky</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">true, false</code></td>
+      <td style="color:var(--ds-text-muted)">false</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-nav--sticky</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--color-bg-default</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-bg-default)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-text-primary</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-text-primary)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-brand-primary</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-brand-primary)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-border-default</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-border-default)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-shadow-sm</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-shadow-sm)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-4</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-4)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-5</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-5)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+<script src="../../components/navigation/navigation.js"></script>
+</body>
+</html>

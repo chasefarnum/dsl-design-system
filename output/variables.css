@@ -111,3 +111,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ── Kitchen Sink Chrome — Light mode (default) ─────────────────────────────── */
+
+:root,
+[data-theme="light"] {
+  --ds-bg-page:        #F6F6F6;
+  --ds-bg-sidebar:     #FFFFFF;
+  --ds-bg-header:      #FFFFFF;
+  --ds-border:         #E2E2E2;
+  --ds-text-primary:   #111111;
+  --ds-text-secondary: #5C5C5C;
+  --ds-text-muted:     #999999;
+}
+
+/* ── Kitchen Sink Chrome — Dark mode ────────────────────────────────────────── */
+
+[data-theme="dark"] {
+  --ds-bg-page:        #111111;
+  --ds-bg-sidebar:     #1A1A1A;
+  --ds-bg-header:      #1A1A1A;
+  --ds-border:         #2E2E2E;
+  --ds-text-primary:   #F6F6F6;
+  --ds-text-secondary: #CCCCCC;
+  --ds-text-muted:     #7A7A7A;
+
+  /* Override component tokens for dark mode */
+  --color-neutral-000: #111111;
+  --color-neutral-100: #1A1A1A;
+  --color-neutral-200: #2E2E2E;
+  --color-neutral-300: #3D3D3D;
+  --color-text-primary: #F6F6F6;
+  --color-text-secondary: #CCCCCC;
+  --color-bg-default: #111111;
+  --color-bg-subtle: #1A1A1A;
+  --color-border-default: #2E2E2E;
+}

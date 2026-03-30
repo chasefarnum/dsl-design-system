@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shadows — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+    <div class="ds-page-header">
+      <h1>Shadows</h1>
+      <p class="ds-page-description">Box shadow tokens for elevation and depth.</p>
+    </div>
+    <section class="ds-section">
+  <h2 class="ds-section-title">Shadow Scale</h2>
+  <div class="ds-shadow-row">
+    
+    <div>
+      <div class="ds-shadow-box" style="box-shadow:var(--shape-shadow-sm)">
+        <span class="ds-shadow-box__label">--shape-shadow-sm</span>
+      </div>
+      <p style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted);margin:var(--spacing-2) 0 0;text-align:center">Subtle elevation</p>
+    </div>
+    <div>
+      <div class="ds-shadow-box" style="box-shadow:var(--shape-shadow-md)">
+        <span class="ds-shadow-box__label">--shape-shadow-md</span>
+      </div>
+      <p style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted);margin:var(--spacing-2) 0 0;text-align:center">Card and popover</p>
+    </div>
+    <div>
+      <div class="ds-shadow-box" style="box-shadow:var(--shape-shadow-lg)">
+        <span class="ds-shadow-box__label">--shape-shadow-lg</span>
+      </div>
+      <p style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted);margin:var(--spacing-2) 0 0;text-align:center">Dropdown panel</p>
+    </div>
+    <div>
+      <div class="ds-shadow-box" style="box-shadow:var(--shape-shadow-xl)">
+        <span class="ds-shadow-box__label">--shape-shadow-xl</span>
+      </div>
+      <p style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted);margin:var(--spacing-2) 0 0;text-align:center">Modal / dialog</p>
+    </div>
+  </div>
+</section>
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+</body>
+</html>

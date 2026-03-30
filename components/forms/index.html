@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/forms/forms.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Forms</h1>
+      <p class="ds-page-description">Complete form layout with all input types and validation states</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <div class="demo-section">
+    <h2>Full Form Example</h2>
+    <div class="form-card">
+      <form class="dsl-form" novalidate>
+
+        <div class="dsl-form-row">
+          <div class="dsl-form-field">
+            <label class="dsl-form-label" for="first-name">
+              First Name <span class="dsl-form-label__required" aria-hidden="true">*</span>
+            </label>
+            <input class="dsl-form-input" type="text" id="first-name" name="first-name" placeholder="Jane" required autocomplete="given-name" />
+          </div>
+          <div class="dsl-form-field">
+            <label class="dsl-form-label" for="last-name">
+              Last Name <span class="dsl-form-label__required" aria-hidden="true">*</span>
+            </label>
+            <input class="dsl-form-input" type="text" id="last-name" name="last-name" placeholder="Doe" required autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="dsl-form-field">
+          <label class="dsl-form-label" for="email">
+            Email Address <span class="dsl-form-label__required" aria-hidden="true">*</span>
+          </label>
+          <input class="dsl-form-input" type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email" />
+          <span class="dsl-form-helper">We'll send your tour confirmation here.</span>
+        </div>
+
+        <div class="dsl-form-field">
+          <label class="dsl-form-label" for="phone">Phone Number</label>
+          <input class="dsl-form-input" type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+        </div>
+
+        <div class="dsl-form-field">
+          <label class="dsl-form-label" for="community">Preferred Community</label>
+          <div class="dsl-form-select-wrapper">
+            <select class="dsl-form-input dsl-form-select" id="community" name="community">
+              <option value="">Select a community…</option>
+              <option value="sunrise">Sunrise Gardens – Orlando, FL</option>
+              <option value="harbors">The Harbors – Clearwater, FL</option>
+              <option value="heritage">Heritage Oaks – Tampa, FL</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dsl-form-field">
+          <label class="dsl-form-label" for="care-type">Care Type</label>
+          <fieldset style="border:none;padding:0;margin:0;">
+            <legend class="dsl-form-label" style="margin-bottom: var(--spacing-2);">Which best describes your needs?</legend>
+            <div style="display:flex;flex-direction:column;gap:var(--spacing-2);">
+              <label class="dsl-form-check">
+                <input class="dsl-form-check__input" type="radio" name="care-type" value="independent" />
+                <span class="dsl-form-check__label">Independent Living</span>
+              </label>
+              <label class="dsl-form-check">
+                <input class="dsl-form-check__input" type="radio" name="care-type" value="assisted" />
+                <span class="dsl-form-check__label">Assisted Living</span>
+              </label>
+              <label class="dsl-form-check">
+                <input class="dsl-form-check__input" type="radio" name="care-type" value="memory" />
+                <span class="dsl-form-check__label">Memory Care</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="dsl-form-field">
+          <label class="dsl-form-label" for="message">Message</label>
+          <textarea class="dsl-form-input dsl-form-textarea" id="message" name="message" placeholder="Anything else you'd like us to know?" rows="4"></textarea>
+        </div>
+
+        <div class="dsl-form-field">
+          <label class="dsl-form-check">
+            <input class="dsl-form-check__input" type="checkbox" name="newsletter" value="yes" />
+            <span class="dsl-form-check__label">Subscribe to our newsletter for community news and events</span>
+          </label>
+        </div>
+
+        <div class="dsl-form-field">
+          <label class="dsl-form-toggle">
+            <span class="dsl-form-toggle__track">
+              <input class="dsl-form-toggle__input" type="checkbox" name="sms" value="yes" role="switch" aria-checked="false" />
+              <span class="dsl-form-toggle__slider"></span>
+            </span>
+            <span class="dsl-form-toggle__label">Receive SMS tour reminders</span>
+          </label>
+        </div>
+
+        <div style="display:flex;gap:var(--spacing-3);">
+          <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="submit"><span class="dsl-btn__text">Request a Tour</span></button>
+          <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="reset"><span class="dsl-btn__text">Clear</span></button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Validation States</h2>
+    <div class="form-card">
+      <div class="dsl-form">
+        <!-- Default -->
+        <div class="dsl-form-field">
+          <label class="dsl-form-label" for="v-default">Email (default)</label>
+          <input class="dsl-form-input" type="email" id="v-default" placeholder="jane@example.com" />
+          <span class="dsl-form-helper">Enter your email address.</span>
+        </div>
+        <!-- Error -->
+        <div class="dsl-form-field dsl-form-field--error">
+          <label class="dsl-form-label" for="v-error">Email (error)</label>
+          <input class="dsl-form-input" type="email" id="v-error" value="not-an-email" aria-invalid="true" aria-describedby="v-error-msg" />
+          <span class="dsl-form-helper" id="v-error-msg" role="alert">Please enter a valid email address.</span>
+        </div>
+        <!-- Success -->
+        <div class="dsl-form-field dsl-form-field--success">
+          <label class="dsl-form-label" for="v-success">Email (success)</label>
+          <input class="dsl-form-input" type="email" id="v-success" value="jane@example.com" aria-describedby="v-success-msg" />
+          <span class="dsl-form-helper" id="v-success-msg">Looks good!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">state</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">default, error, success</code></td>
+      <td style="color:var(--ds-text-muted)">default</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-form-field--{state}</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--form-input-bg</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-bg)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-border</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-border)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-border-focus</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-border-focus)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-text</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-text)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-placeholder</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-placeholder)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-label-text</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-label-text)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-error</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-error)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-success</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-success)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-md)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-border-width-thin</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-border-width-thin)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-border-width-medium</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-border-width-medium)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-2</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-2)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-3</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-3)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-4</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-4)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+<script src="../../components/forms/forms.js"></script>
+</body>
+</html>

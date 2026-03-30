@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inputs — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/inputs/inputs.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Inputs</h1>
+      <p class="ds-page-description">Text input variants with sizes, states, icons, and helper text</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <!-- SVG icons inline -->
+  <div style="display:none" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <symbol id="icon-search" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></symbol>
+      <symbol id="icon-email" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></symbol>
+      <symbol id="icon-phone" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></symbol>
+      <symbol id="icon-error" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></symbol>
+    </svg>
+  </div>
+
+  <div class="demo-section">
+    <h2>Input Types</h2>
+    <div class="field-stack">
+      <!-- Text -->
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-text">Full Name</label>
+        <div class="dsl-input-wrapper">
+          <input class="dsl-input dsl-input--md" type="text" id="in-text" placeholder="Jane Doe" />
+        </div>
+      </div>
+      <!-- Email with prefix icon -->
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-email">Email</label>
+        <div class="dsl-input-wrapper">
+          <span class="dsl-input-prefix" aria-hidden="true">
+            <svg width="16" height="16"><use href="#icon-email"/></svg>
+          </span>
+          <input class="dsl-input dsl-input--md dsl-input--has-prefix" type="email" id="in-email" placeholder="jane@example.com" />
+        </div>
+      </div>
+      <!-- Phone with prefix icon -->
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-phone">Phone</label>
+        <div class="dsl-input-wrapper">
+          <span class="dsl-input-prefix" aria-hidden="true">
+            <svg width="16" height="16"><use href="#icon-phone"/></svg>
+          </span>
+          <input class="dsl-input dsl-input--md dsl-input--has-prefix" type="tel" id="in-phone" placeholder="(555) 000-0000" />
+        </div>
+        <span class="dsl-input-helper">US format preferred.</span>
+      </div>
+      <!-- Search -->
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-search">Search Communities</label>
+        <div class="dsl-input-wrapper">
+          <span class="dsl-input-prefix" aria-hidden="true">
+            <svg width="16" height="16"><use href="#icon-search"/></svg>
+          </span>
+          <input class="dsl-input dsl-input--md dsl-input--has-prefix" type="search" id="in-search" placeholder="Search by city or zip…" />
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-password">Password</label>
+        <div class="dsl-input-wrapper">
+          <input class="dsl-input dsl-input--md" type="password" id="in-password" placeholder="••••••••" />
+        </div>
+      </div>
+      <!-- Select -->
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-select">Care Type</label>
+        <div class="dsl-input-wrapper dsl-input-wrapper--select">
+          <select class="dsl-input dsl-input--md dsl-input--select" id="in-select">
+            <option value="">Select…</option>
+            <option>Independent Living</option>
+            <option>Assisted Living</option>
+            <option>Memory Care</option>
+          </select>
+        </div>
+      </div>
+      <!-- Textarea with char count -->
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-textarea">Message</label>
+        <div class="dsl-input-wrapper">
+          <textarea class="dsl-input dsl-input--md dsl-input--textarea" id="in-textarea" placeholder="Your message…" maxlength="250" rows="4"></textarea>
+        </div>
+        <div class="dsl-input-count"><span id="char-count">0</span> / 250</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Sizes</h2>
+    <div class="field-stack">
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-sm">Small</label>
+        <input class="dsl-input dsl-input--sm" type="text" id="in-sm" placeholder="Small input" />
+      </div>
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-md">Medium</label>
+        <input class="dsl-input dsl-input--md" type="text" id="in-md" placeholder="Medium input" />
+      </div>
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="in-lg">Large</label>
+        <input class="dsl-input dsl-input--lg" type="text" id="in-lg" placeholder="Large input" />
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>States</h2>
+    <div class="field-stack">
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="st-default">Default</label>
+        <input class="dsl-input dsl-input--md" type="text" id="st-default" placeholder="Enter value…" />
+      </div>
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="st-filled">Filled</label>
+        <input class="dsl-input dsl-input--md" type="text" id="st-filled" value="Sunrise Gardens" />
+      </div>
+      <div class="dsl-input-field dsl-input-field--error">
+        <label class="dsl-input-label" for="st-error">Error</label>
+        <div class="dsl-input-wrapper">
+          <input class="dsl-input dsl-input--md dsl-input--has-suffix" type="text" id="st-error" value="bad@" aria-invalid="true" aria-describedby="st-error-help" />
+          <span class="dsl-input-suffix" style="color:var(--color-semantic-error)" aria-hidden="true">
+            <svg width="16" height="16"><use href="#icon-error"/></svg>
+          </span>
+        </div>
+        <span class="dsl-input-helper" id="st-error-help" role="alert">Please enter a valid email address.</span>
+      </div>
+      <div class="dsl-input-field">
+        <label class="dsl-input-label" for="st-disabled">Disabled</label>
+        <input class="dsl-input dsl-input--md" type="text" id="st-disabled" value="Not editable" disabled />
+      </div>
+    </div>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">type</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">text, email, phone, password, search, textarea, select</code></td>
+      <td style="color:var(--ds-text-muted)">text</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)"></code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">size</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">sm, md, lg</code></td>
+      <td style="color:var(--ds-text-muted)">md</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-input--{size}</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">state</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">default, focus, filled, error, disabled</code></td>
+      <td style="color:var(--ds-text-muted)">default</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-input-wrapper--{state}</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--form-input-bg</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-bg)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-border</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-border)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-border-focus</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-border-focus)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-text</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-text)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-input-placeholder</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-input-placeholder)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--form-label-text</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--form-label-text)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-semantic-error</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-semantic-error)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-md)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-border-width-thin</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-border-width-thin)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+
+</body>
+</html>

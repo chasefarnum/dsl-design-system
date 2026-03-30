@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/button/button.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Button</h1>
+      <p class="ds-page-description">Primary interactive element for CTAs and form submissions. Used across all HubSpot landing page modules.</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <div class="demo-section">
+    <h2>Primary</h2>
+    <div class="demo-row">
+      <button class="dsl-btn dsl-btn--primary dsl-btn--sm" type="button"><span class="dsl-btn__text">Small</span></button>
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button"><span class="dsl-btn__text">Schedule a Tour</span></button>
+      <button class="dsl-btn dsl-btn--primary dsl-btn--lg" type="button"><span class="dsl-btn__text">Get Started</span></button>
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button" disabled><span class="dsl-btn__text">Disabled</span></button>
+    </div>
+    <div class="demo-row">
+      <!-- Icon left -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button">
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg>
+        </span>
+        <span class="dsl-btn__text">Icon Left</span>
+      </button>
+      <!-- Icon right -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md" type="button">
+        <span class="dsl-btn__text">Icon Right</span>
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg>
+        </span>
+      </button>
+      <!-- Icon only -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md dsl-btn--icon-only" type="button" aria-label="Search">
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        </span>
+      </button>
+      <!-- Loading -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md dsl-btn--loading" type="button" aria-busy="true">
+        <span class="dsl-btn__spinner" aria-hidden="true"></span>
+        <span class="dsl-btn__text">Loading…</span>
+      </button>
+      <!-- Full width -->
+      <button class="dsl-btn dsl-btn--primary dsl-btn--md dsl-btn--full" type="button"><span class="dsl-btn__text">Full Width</span></button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Secondary</h2>
+    <div class="demo-row">
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--sm" type="button"><span class="dsl-btn__text">Small</span></button>
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--md" type="button"><span class="dsl-btn__text">Learn More</span></button>
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--lg" type="button"><span class="dsl-btn__text">Explore Communities</span></button>
+      <button class="dsl-btn dsl-btn--secondary dsl-btn--md dsl-btn--loading" type="button" aria-busy="true">
+        <span class="dsl-btn__spinner" aria-hidden="true"></span>
+        <span class="dsl-btn__text">Loading…</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Ghost</h2>
+    <div class="demo-row">
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--sm" type="button"><span class="dsl-btn__text">Small</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--md" type="button"><span class="dsl-btn__text">View Floor Plans</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--lg" type="button"><span class="dsl-btn__text">Contact Us</span></button>
+      <button class="dsl-btn dsl-btn--ghost dsl-btn--md dsl-btn--icon-only" type="button" aria-label="Close">
+        <span class="dsl-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">variant</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">primary, secondary, ghost</code></td>
+      <td style="color:var(--ds-text-muted)">primary</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-btn--{variant}</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">size</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">sm, md, lg</code></td>
+      <td style="color:var(--ds-text-muted)">md</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-btn--{size}</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">fullWidth</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">true, false</code></td>
+      <td style="color:var(--ds-text-muted)">false</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-btn--full</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">iconPosition</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">none, left, right, only</code></td>
+      <td style="color:var(--ds-text-muted)">none</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-btn--icon-only</code></td>
+    </tr><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">loading</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">true, false</code></td>
+      <td style="color:var(--ds-text-muted)">false</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-btn--loading</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--button-primary-bg</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-primary-bg)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-primary-bg-hover</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-primary-bg-hover)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-primary-text</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-primary-text)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-primary-border</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-primary-border)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-secondary-bg</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-secondary-bg)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-secondary-bg-hover</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-secondary-bg-hover)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-secondary-text</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-secondary-text)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-secondary-border</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-secondary-border)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-ghost-bg</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-ghost-bg)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-ghost-bg-hover</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-ghost-bg-hover)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-ghost-text</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-ghost-text)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--button-ghost-border</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--button-ghost-border)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-md)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-3</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-3)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--spacing-5</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--spacing-5)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-family-body</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-family-body)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-sm</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-sm)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-md</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-md)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-size-lg</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-size-lg)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--typography-font-weight-semibold</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--typography-font-weight-semibold)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+
+</body>
+</html>

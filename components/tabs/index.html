@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabs — DSL Design System</title>
+  <link rel="stylesheet" href="../../output/variables.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/tabs/tabs.css" />
+</head>
+<body>
+<script>window.DS_BASE = '../../';</script>
+<script src="../../ds/theme-toggle.js"></script>
+
+<header id="header"></header>
+<div class="ds-shell">
+  <aside id="sidebar"></aside>
+  <main class="ds-main">
+
+    <div class="ds-page-header">
+      <h1>Tabs</h1>
+      <p class="ds-page-description">Tabbed panel interface with underline and pill variants, keyboard navigation</p>
+    </div>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Variants</h2>
+      <style>
+        .demo-section { margin-bottom: var(--spacing-6); }
+        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
+        #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
+      </style>
+      <div class="demo-section">
+    <h2>Underline Variant</h2>
+    <div class="dsl-tabs dsl-tabs--underline" id="tabs1">
+      <ul class="dsl-tabs__list" role="tablist" aria-label="Care options">
+        <li role="presentation">
+          <button class="dsl-tabs__tab" role="tab" aria-selected="true" aria-controls="tabs1-panel1" id="tabs1-tab1" type="button">Independent Living</button>
+        </li>
+        <li role="presentation">
+          <button class="dsl-tabs__tab" role="tab" aria-selected="false" aria-controls="tabs1-panel2" id="tabs1-tab2" type="button">Assisted Living</button>
+        </li>
+        <li role="presentation">
+          <button class="dsl-tabs__tab" role="tab" aria-selected="false" aria-controls="tabs1-panel3" id="tabs1-tab3" type="button">Memory Care</button>
+        </li>
+        <li role="presentation">
+          <button class="dsl-tabs__tab" role="tab" aria-selected="false" aria-controls="tabs1-panel4" id="tabs1-tab4" type="button" aria-disabled="true">Skilled Nursing</button>
+        </li>
+      </ul>
+      <div class="dsl-tabs__panel" role="tabpanel" id="tabs1-panel1" aria-labelledby="tabs1-tab1">
+        <p>Independent Living at Discovery Senior Living offers a maintenance-free lifestyle with access to resort-style amenities, a vibrant social calendar, and delicious chef-prepared dining. Perfect for active seniors who want community and freedom.</p>
+      </div>
+      <div class="dsl-tabs__panel" role="tabpanel" id="tabs1-panel2" aria-labelledby="tabs1-tab2" hidden>
+        <p>Our Assisted Living communities provide personalized daily support with trained care staff available 24/7. From medication management to personal care assistance, we help residents live as independently as possible.</p>
+      </div>
+      <div class="dsl-tabs__panel" role="tabpanel" id="tabs1-panel3" aria-labelledby="tabs1-tab3" hidden>
+        <p>Our Memory Care neighborhoods offer specialized programming in a secure, nurturing environment designed specifically for residents living with Alzheimer's disease, dementia, and other memory-related conditions.</p>
+      </div>
+      <div class="dsl-tabs__panel" role="tabpanel" id="tabs1-panel4" aria-labelledby="tabs1-tab4" hidden>
+        <p>Skilled Nursing services coming soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Pill Variant</h2>
+    <div class="dsl-tabs dsl-tabs--pill" id="tabs2">
+      <ul class="dsl-tabs__list" role="tablist" aria-label="Pricing view">
+        <li role="presentation">
+          <button class="dsl-tabs__tab" role="tab" aria-selected="true" aria-controls="tabs2-panel1" id="tabs2-tab1" type="button">Monthly</button>
+        </li>
+        <li role="presentation">
+          <button class="dsl-tabs__tab" role="tab" aria-selected="false" aria-controls="tabs2-panel2" id="tabs2-tab2" type="button">Annual</button>
+        </li>
+        <li role="presentation">
+          <button class="dsl-tabs__tab" role="tab" aria-selected="false" aria-controls="tabs2-panel3" id="tabs2-tab3" type="button">Custom</button>
+        </li>
+      </ul>
+      <div class="dsl-tabs__panel" role="tabpanel" id="tabs2-panel1" aria-labelledby="tabs2-tab1">
+        <p>Monthly pricing starts at <strong>$3,200/month</strong> for Independent Living. Prices vary by care level and apartment size. All-inclusive pricing covers housing, meals, utilities, and programming.</p>
+      </div>
+      <div class="dsl-tabs__panel" role="tabpanel" id="tabs2-panel2" aria-labelledby="tabs2-tab2" hidden>
+        <p>Annual agreements may qualify for preferred pricing. Contact your local community advisor to discuss available discounts for longer-term arrangements.</p>
+      </div>
+      <div class="dsl-tabs__panel" role="tabpanel" id="tabs2-panel3" aria-labelledby="tabs2-tab3" hidden>
+        <p>We offer customized care packages and payment arrangements to meet your family's specific needs. Speak with our Financial Counselor to explore all options.</p>
+      </div>
+    </div>
+  </div>
+    </section>
+
+    <section class="ds-section">
+    <h2 class="ds-section-title">Props</h2>
+    <table class="ds-token-table">
+      <thead><tr><th>Prop</th><th>Options</th><th>Default</th><th>Modifier</th></tr></thead>
+      <tbody><tr>
+      <td style="color:var(--ds-text-primary);font-weight:var(--typography-font-weight-semibold)">variant</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--color-brand-primary)">underline, pill</code></td>
+      <td style="color:var(--ds-text-muted)">underline</td>
+      <td><code style="font-size:var(--typography-font-size-xs);color:var(--ds-text-muted)">dsl-tabs--{variant}</code></td>
+    </tr></tbody>
+    </table>
+  </section>
+
+    <section class="ds-section">
+      <h2 class="ds-section-title">Token Reference</h2>
+      <table class="ds-token-table">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+    <tr>
+      <td><code class="ds-token-name">--color-brand-primary</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-brand-primary)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-bg-subtle</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-bg-subtle)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--color-border-default</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--color-border-default)</td>
+    </tr>
+    <tr>
+      <td><code class="ds-token-name">--shape-radius-full</code></td>
+      <td style="color:var(--ds-text-secondary);font-family:var(--typography-font-family-mono,monospace);font-size:var(--typography-font-size-xs)">var(--shape-radius-full)</td>
+    </tr></tbody>
+  </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="../../ds/sidebar-nav.js"></script>
+<script src="../../components/tabs/tabs.js"></script>
+</body>
+</html>
