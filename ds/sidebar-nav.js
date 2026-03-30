@@ -72,12 +72,36 @@
     return html;
   }
 
+  function buildHeader() {
+    return '<a class="ds-mobile-header__logo-link" href="' + base + 'index.html">' +
+        '<img class="ds-mobile-header__logo-img" src="' + base + 'ds/dsl-logo.svg" alt="Discovery Senior Living" />' +
+      '</a>' +
+      '<button class="ds-mobile-menu-btn" id="ds-mobile-toggle" aria-label="Toggle navigation">' +
+        '<svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>' +
+      '</button>';
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    var headerEl = document.getElementById('header');
     var sidebarEl = document.getElementById('sidebar');
+
+    if (headerEl) headerEl.innerHTML = buildHeader();
     if (sidebarEl) {
       sidebarEl.innerHTML = buildSidebar();
-      // Re-apply theme icons after injection
       if (window.DSTheme && window.DSTheme.sync) window.DSTheme.sync();
+    }
+
+    // Mobile hamburger toggle
+    var mobileBtn = document.getElementById('ds-mobile-toggle');
+    if (mobileBtn && sidebarEl) {
+      mobileBtn.addEventListener('click', function () {
+        sidebarEl.classList.toggle('is-open');
+      });
+      sidebarEl.addEventListener('click', function (e) {
+        if (e.target.classList.contains('ds-nav__link')) {
+          sidebarEl.classList.remove('is-open');
+        }
+      });
     }
   });
 })();

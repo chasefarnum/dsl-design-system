@@ -24,6 +24,37 @@ body {
   --ds-sidebar-width: 220px;
 }
 
+/* ── Mobile Header (hidden on desktop) ───────────────────────────────────────── */
+
+#header {
+  display: none;
+}
+
+.ds-mobile-header__logo-link {
+  display: block;
+  text-decoration: none;
+}
+
+.ds-mobile-header__logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.ds-mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--shape-radius-md);
+  background: transparent;
+  color: var(--ds-text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 /* ── Shell ───────────────────────────────────────────────────────────────────── */
 
 .ds-shell {
@@ -420,7 +451,29 @@ body {
 /* ── Mobile ──────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  #header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: var(--ds-bg-header, var(--ds-bg-sidebar));
+    border-bottom: 1px solid var(--ds-border);
+    padding: 0 var(--spacing-5);
+    z-index: 200;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  .ds-shell {
+    padding-top: 56px;
+  }
+
   #sidebar {
+    top: 56px;
+    height: calc(100vh - 56px);
     transform: translateX(-100%);
   }
 
