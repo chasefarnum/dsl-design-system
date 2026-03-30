@@ -1,5 +1,7 @@
 /* DSL Design System — Kitchen Sink Chrome */
 
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap');
+
 /* ── Reset / Base ───────────────────────────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -19,29 +21,45 @@ body {
 /* ── Layout Variables ───────────────────────────────────────────────────────── */
 
 :root {
-  --ds-header-height: 56px;
   --ds-sidebar-width: 220px;
 }
 
-/* ── Header ─────────────────────────────────────────────────────────────────── */
+/* ── Shell ───────────────────────────────────────────────────────────────────── */
 
-#header {
+.ds-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────────── */
+
+#sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  height: var(--ds-header-height);
-  background-color: var(--ds-bg-header);
-  border-bottom: 1px solid var(--ds-border);
-  z-index: 200;
+  width: var(--ds-sidebar-width);
+  height: 100vh;
+  background-color: var(--ds-bg-sidebar);
+  border-right: 1px solid var(--ds-border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 var(--spacing-8);
+  transition: background-color 0.2s, border-color 0.2s, transform 0.25s;
+  z-index: 100;
+}
+
+/* ── Sidebar header (logo + theme toggle) ────────────────────────────────────── */
+
+.ds-nav__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--spacing-6);
-  transition: background-color 0.2s, border-color 0.2s;
+  padding: var(--spacing-5) var(--spacing-4) var(--spacing-4);
+  border-bottom: 1px solid var(--ds-border);
+  margin-bottom: var(--spacing-4);
 }
 
-.ds-header__logo {
+.ds-nav__logo {
   font-family: var(--typography-font-family-heading);
   font-size: var(--typography-font-size-md);
   font-weight: var(--typography-font-weight-bold);
@@ -50,24 +68,19 @@ body {
   letter-spacing: -0.01em;
 }
 
-.ds-header__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-3);
-}
-
 .ds-theme-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--ds-border);
   border-radius: var(--shape-radius-md);
   background: transparent;
   color: var(--ds-text-secondary);
   cursor: pointer;
   transition: background-color 0.15s, color 0.15s, border-color 0.2s;
+  flex-shrink: 0;
 }
 
 .ds-theme-btn:hover {
@@ -76,34 +89,11 @@ body {
 }
 
 .ds-theme-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
-/* ── Shell ───────────────────────────────────────────────────────────────────── */
-
-.ds-shell {
-  display: flex;
-  min-height: 100vh;
-  padding-top: var(--ds-header-height);
-}
-
-/* ── Sidebar ─────────────────────────────────────────────────────────────────── */
-
-#sidebar {
-  position: fixed;
-  top: var(--ds-header-height);
-  left: 0;
-  width: var(--ds-sidebar-width);
-  height: calc(100vh - var(--ds-header-height));
-  background-color: var(--ds-bg-sidebar);
-  border-right: 1px solid var(--ds-border);
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: var(--spacing-5) 0 var(--spacing-8);
-  transition: background-color 0.2s, border-color 0.2s, transform 0.25s;
-  z-index: 100;
-}
+/* ── Nav groups ──────────────────────────────────────────────────────────────── */
 
 .ds-nav__group {
   margin-bottom: var(--spacing-5);
@@ -206,10 +196,6 @@ body {
   margin-bottom: var(--spacing-5);
 }
 
-.ds-demo-row + .ds-demo-label {
-  margin-top: var(--spacing-6);
-}
-
 .ds-demo-label {
   font-size: var(--typography-font-size-xs);
   font-weight: var(--typography-font-weight-semibold);
@@ -262,16 +248,6 @@ body {
   padding: 2px var(--spacing-2);
   border-radius: var(--shape-radius-sm);
   white-space: nowrap;
-}
-
-.ds-token-swatch {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: var(--shape-radius-sm);
-  border: 1px solid var(--ds-border);
-  vertical-align: middle;
-  margin-right: var(--spacing-2);
 }
 
 /* ── Component Grid (home page) ──────────────────────────────────────────────── */
@@ -438,24 +414,7 @@ body {
 
 /* ── Mobile ──────────────────────────────────────────────────────────────────── */
 
-.ds-mobile-menu-btn {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--ds-border);
-  border-radius: var(--shape-radius-md);
-  background: transparent;
-  color: var(--ds-text-secondary);
-  cursor: pointer;
-}
-
 @media (max-width: 768px) {
-  .ds-mobile-menu-btn {
-    display: flex;
-  }
-
   #sidebar {
     transform: translateX(-100%);
   }
@@ -466,6 +425,6 @@ body {
 
   .ds-main {
     margin-left: 0;
-    padding: var(--spacing-5) var(--spacing-5);
+    padding: var(--spacing-5);
   }
 }
