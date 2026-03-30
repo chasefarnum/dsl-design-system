@@ -48,24 +48,23 @@ body {
   z-index: 100;
 }
 
-/* ── Sidebar header (logo + theme toggle) ────────────────────────────────────── */
+/* ── Sidebar header (logo) ───────────────────────────────────────────────────── */
 
 .ds-nav__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-5) var(--spacing-4) var(--spacing-4);
-  border-bottom: 1px solid var(--ds-border);
+  background-color: #153A64;
+  padding: var(--spacing-4);
   margin-bottom: var(--spacing-4);
 }
 
-.ds-nav__logo {
-  font-family: var(--typography-font-family-heading);
-  font-size: var(--typography-font-size-md);
-  font-weight: var(--typography-font-weight-bold);
-  color: var(--color-brand-primary);
+.ds-nav__logo-link {
+  display: block;
   text-decoration: none;
-  letter-spacing: -0.01em;
+}
+
+.ds-nav__logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .ds-theme-btn {

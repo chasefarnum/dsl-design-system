@@ -52,7 +52,9 @@
 
     // Logo at top
     html += '<div class="ds-nav__header">' +
-      '<a class="ds-nav__logo" href="' + base + 'index.html">DSL</a>' +
+      '<a class="ds-nav__logo-link" href="' + base + 'index.html">' +
+        '<img class="ds-nav__logo-img" src="' + base + 'ds/dsl-logo.svg" alt="Discovery Senior Living" />' +
+      '</a>' +
     '</div>';
 
     // Nav groups
