@@ -6,7 +6,9 @@
   <title>Accordion — DSL Design System</title>
   <link rel="stylesheet" href="../../output/variables.css" />
   <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/button/button.css" />
   <link rel="stylesheet" href="../../components/accordion/accordion.css" />
+  <link rel="stylesheet" href="../../node_modules/@phosphor-icons/web/src/bold/style.css" />
 </head>
 <body>
 <script>window.DS_BASE = '../../';</script>
@@ -26,19 +28,22 @@
       <h2 class="ds-section-title">Variants</h2>
       <style>
         .demo-section { margin-bottom: var(--spacing-6); }
-        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-section > h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
         .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
         #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
       </style>
-      <div class="demo-section">
+      <style>
+    
+    .demo-section { margin-bottom: var(--spacing-7); max-width: 640px; }
+    .demo-section h2 { font-size: var(--typography-font-size-sm); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-4); }
+  </style>
+<div class="demo-section">
     <h2>Default — Multi-open</h2>
     <div class="dsl-accordion" data-mode="multi">
       <div class="dsl-accordion__item">
         <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc1-panel1" id="acc1-btn1" type="button">
           What types of senior living options are available?
-          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
+          <i class="ph-bold ph-caret-down dsl-accordion__chevron" aria-hidden="true"></i>
         </button>
         <div class="dsl-accordion__panel" id="acc1-panel1" role="region" aria-labelledby="acc1-btn1">
           <div class="dsl-accordion__panel-inner">
@@ -49,9 +54,7 @@
       <div class="dsl-accordion__item">
         <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc1-panel2" id="acc1-btn2" type="button">
           How do I schedule a tour?
-          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
+          <i class="ph-bold ph-caret-down dsl-accordion__chevron" aria-hidden="true"></i>
         </button>
         <div class="dsl-accordion__panel" id="acc1-panel2" role="region" aria-labelledby="acc1-btn2">
           <div class="dsl-accordion__panel-inner">
@@ -62,9 +65,7 @@
       <div class="dsl-accordion__item">
         <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc1-panel3" id="acc1-btn3" type="button">
           What is included in the monthly fee?
-          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
+          <i class="ph-bold ph-caret-down dsl-accordion__chevron" aria-hidden="true"></i>
         </button>
         <div class="dsl-accordion__panel" id="acc1-panel3" role="region" aria-labelledby="acc1-btn3">
           <div class="dsl-accordion__panel-inner">
@@ -81,9 +82,7 @@
       <div class="dsl-accordion__item">
         <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc2-panel1" id="acc2-btn1" type="button">
           Is memory care covered by Medicare?
-          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
+          <i class="ph-bold ph-caret-down dsl-accordion__chevron" aria-hidden="true"></i>
         </button>
         <div class="dsl-accordion__panel" id="acc2-panel1" role="region" aria-labelledby="acc2-btn1">
           <div class="dsl-accordion__panel-inner">
@@ -94,9 +93,7 @@
       <div class="dsl-accordion__item">
         <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc2-panel2" id="acc2-btn2" type="button">
           Can residents bring their own furniture?
-          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
+          <i class="ph-bold ph-caret-down dsl-accordion__chevron" aria-hidden="true"></i>
         </button>
         <div class="dsl-accordion__panel" id="acc2-panel2" role="region" aria-labelledby="acc2-btn2">
           <div class="dsl-accordion__panel-inner">
@@ -107,9 +104,7 @@
       <div class="dsl-accordion__item">
         <button class="dsl-accordion__trigger" aria-expanded="false" aria-controls="acc2-panel3" id="acc2-btn3" type="button">
           Are pets allowed?
-          <svg class="dsl-accordion__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
+          <i class="ph-bold ph-caret-down dsl-accordion__chevron" aria-hidden="true"></i>
         </button>
         <div class="dsl-accordion__panel" id="acc2-panel3" role="region" aria-labelledby="acc2-btn3">
           <div class="dsl-accordion__panel-inner">

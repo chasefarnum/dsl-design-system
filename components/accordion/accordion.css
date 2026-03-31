@@ -68,9 +68,13 @@
 /* ── Chevron icon ──────────────────────────────────────────────────────────── */
 
 .dsl-accordion__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   width: 1.25em;
   height: 1.25em;
+  font-size: 20px;
   color: var(--color-text-muted);
   transition: transform 0.2s ease;
 }

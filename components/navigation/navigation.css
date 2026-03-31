@@ -96,8 +96,13 @@
 }
 
 .dsl-nav__link-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 14px;
   height: 14px;
+  font-size: 14px;
+  line-height: 1;
   transition: transform 0.2s ease;
   color: var(--color-text-muted);
 }
@@ -196,11 +201,21 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* ── Mobile-only CTA items (hidden on desktop) ─────────────────────────────── */
+
+.dsl-nav__item--mobile-cta {
+  display: none;
+}
+
 /* ── Mobile ────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
   .dsl-nav__hamburger {
     display: flex;
+  }
+
+  .dsl-nav__item--mobile-cta {
+    display: block;
   }
 
   .dsl-nav__links {
@@ -223,13 +238,14 @@
     display: flex;
   }
 
+  /* Desktop CTA always hidden on mobile — CTAs live inside the dropdown */
   .dsl-nav__cta {
     display: none;
   }
 
-  .dsl-nav[data-mobile-open] .dsl-nav__cta {
-    display: flex;
-    margin: var(--spacing-3) 0;
+  /* Mobile-only CTA items shown inside the dropdown */
+  .dsl-nav__item--mobile-cta {
+    padding: var(--spacing-1) 0;
     width: 100%;
   }
 

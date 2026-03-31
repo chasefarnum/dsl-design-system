@@ -19,6 +19,8 @@
   border-radius: var(--shape-radius-md);
   box-shadow: var(--shape-shadow-lg);
   padding: var(--spacing-2) 0;
+  margin: 0;
+  list-style: none;
   z-index: 200;
   opacity: 0;
   visibility: hidden;
@@ -74,9 +76,11 @@
 
 .dsl-menu__item-icon {
   display: inline-flex;
-  width: 1.1em;
-  height: 1.1em;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  font-size: 1.1em;
+  line-height: 1;
   color: var(--color-text-muted);
 }
 

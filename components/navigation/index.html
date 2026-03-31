@@ -6,7 +6,9 @@
   <title>Navigation — DSL Design System</title>
   <link rel="stylesheet" href="../../output/variables.css" />
   <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../components/button/button.css" />
   <link rel="stylesheet" href="../../components/navigation/navigation.css" />
+  <link rel="stylesheet" href="../../node_modules/@phosphor-icons/web/src/bold/style.css" />
 </head>
 <body>
 <script>window.DS_BASE = '../../';</script>
@@ -15,7 +17,7 @@
 <header id="header"></header>
 <div class="ds-shell">
   <aside id="sidebar"></aside>
-  <main class="ds-main">
+  <main class="ds-main ds-main--wide">
 
     <div class="ds-page-header">
       <h1>Navigation</h1>
@@ -26,11 +28,15 @@
       <h2 class="ds-section-title">Variants</h2>
       <style>
         .demo-section { margin-bottom: var(--spacing-6); }
-        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-section > h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
         .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
         #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
       </style>
-      <nav class="dsl-nav dsl-nav--sticky" id="main-nav" aria-label="Main navigation">
+      <style>
+    
+    .page-content { padding: var(--spacing-7); color: var(--color-text-secondary); font-size: var(--typography-font-size-md); }
+  </style>
+<nav class="dsl-nav dsl-nav--sticky" id="main-nav" aria-label="Main navigation">
     <div class="dsl-nav__inner">
       <a class="dsl-nav__logo" href="#">DSL</a>
 
@@ -48,9 +54,7 @@
           <!-- Item with submenu -->
           <button class="dsl-nav__link" type="button" aria-haspopup="true" aria-expanded="false" id="nav-care-btn">
             Care Options
-            <svg class="dsl-nav__link-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-            </svg>
+            <i class="ph-bold ph-caret-down dsl-nav__link-chevron" aria-hidden="true"></i>
           </button>
           <ul class="dsl-nav__submenu" role="menu" aria-labelledby="nav-care-btn">
             <li role="none"><a class="dsl-nav__submenu-link" href="#" role="menuitem">Independent Living</a></li>
@@ -68,13 +72,16 @@
         <li class="dsl-nav__item">
           <a class="dsl-nav__link" href="#">Contact</a>
         </li>
-        <li class="dsl-nav__item">
-          <div class="dsl-nav__cta">
-            <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm"><span class="dsl-btn__text">Schedule a Tour</span></a>
-          </div>
+        <!-- Mobile-only CTA items: hidden on desktop, visible inside the dropdown -->
+        <li class="dsl-nav__item dsl-nav__item--mobile-cta">
+          <a href="tel:8005551234" class="dsl-btn dsl-btn--ghost dsl-btn--sm" style="width:100%"><span class="dsl-btn__text">1-800-555-1234</span></a>
+        </li>
+        <li class="dsl-nav__item dsl-nav__item--mobile-cta">
+          <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm" style="width:100%"><span class="dsl-btn__text">Schedule a Tour</span></a>
         </li>
       </ul>
 
+      <!-- Desktop-only CTA: phone + tour (hidden on mobile) -->
       <div class="dsl-nav__cta">
         <a href="tel:8005551234" class="dsl-btn dsl-btn--ghost dsl-btn--sm"><span class="dsl-btn__text">1-800-555-1234</span></a>
         <a href="#" class="dsl-btn dsl-btn--primary dsl-btn--sm"><span class="dsl-btn__text">Schedule a Tour</span></a>

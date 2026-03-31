@@ -124,3 +124,21 @@
   outline: var(--shape-border-width-medium) solid var(--color-border-focus);
   outline-offset: 3px;
 }
+
+/* ── Mobile ────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .dsl-card--horizontal {
+    flex-direction: column;
+  }
+
+  .dsl-card--horizontal .dsl-card__media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .dsl-card--horizontal .dsl-card__media img {
+    height: 100%;
+  }
+}

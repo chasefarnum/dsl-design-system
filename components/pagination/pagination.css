@@ -74,3 +74,15 @@
   color: var(--color-text-muted);
   font-size: var(--typography-font-size-md);
 }
+
+/* ── Mobile compact indicator ──────────────────────────────────────────────── */
+
+.dsl-pagination__mobile-indicator {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 var(--spacing-4);
+  font-size: var(--typography-font-size-md);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}

@@ -42,6 +42,9 @@
     applyTheme(getTheme());
   });
 
-  // Expose sync for sidebar-nav.js to call after injection
-  window.DSTheme = { sync: function () { applyTheme(getTheme()); } };
+  // Expose sync + toggle for sidebar-nav.js and other callers
+  window.DSTheme = {
+    sync: function () { applyTheme(getTheme()); },
+    toggle: toggleTheme
+  };
 })();

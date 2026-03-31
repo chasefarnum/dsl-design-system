@@ -54,9 +54,13 @@
 
 .dsl-alert__icon {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
+  font-size: 20px;
+  line-height: 1;
   margin-top: 1px;
 }
 
@@ -139,3 +143,26 @@
 
 /* ── Hidden ────────────────────────────────────────────────────────────────── */
 .dsl-alert[hidden] { display: none; }
+
+/* ── Dark mode ─────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .dsl-alert--info {
+  background-color: rgba(0, 84, 158, 0.18);
+  color: var(--color-text-primary);
+}
+[data-theme="dark"] .dsl-alert--success {
+  background-color: rgba(45, 138, 78, 0.18);
+  color: var(--color-text-primary);
+}
+[data-theme="dark"] .dsl-alert--warning {
+  background-color: rgba(217, 119, 6, 0.18);
+  color: var(--color-text-primary);
+}
+[data-theme="dark"] .dsl-alert--error {
+  background-color: rgba(192, 57, 43, 0.18);
+  color: var(--color-text-primary);
+}
+[data-theme="dark"] .dsl-alert__title,
+[data-theme="dark"] .dsl-alert__body {
+  color: var(--color-text-primary);
+}

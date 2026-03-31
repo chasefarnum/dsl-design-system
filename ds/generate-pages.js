@@ -23,12 +23,25 @@ const COMPONENT_ICONS = {
   text: '🔤', tooltip: '💭'
 };
 
-function extractBodyContent(html) {
+function extractDemoContent(html) {
   // Remove <script> tags
   html = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+  // Pull <style> blocks from <head> so per-component layout styles are preserved
+  const headMatch = html.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
+  let headStyles = '';
+  if (headMatch) {
+    const styleMatches = [...headMatch[1].matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)];
+    if (styleMatches.length) {
+      // Strip body { } rules — they leak padding/background into the generated page shell
+      let combined = styleMatches.map(m => m[1]).join('\n');
+      combined = combined.replace(/\bbody\s*\{[^}]*\}/g, '');
+      headStyles = '<style>' + combined + '</style>\n';
+    }
+  }
   // Extract content between <body> and </body>
-  const match = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-  return match ? match[1].trim() : '';
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  const bodyContent = bodyMatch ? bodyMatch[1].trim() : '';
+  return headStyles + bodyContent;
 }
 
 function buildTokenTable(tokens) {
@@ -66,10 +79,17 @@ function buildVariantsSection(variants) {
   </section>`;
 }
 
+// Components that need button.css as a dependency
+const BUTTON_DEP_COMPONENTS = new Set(['tooltip', 'dialog', 'notification', 'menu', 'navigation', 'pagination', 'accordion', 'tabs', 'calendar', 'card', 'sections']);
+
 function componentPage(name, contract, demoBody, hasJS) {
   const jsPath = hasJS ? `../../components/${name}/${name}.js` : null;
   const title = name.charAt(0).toUpperCase() + name.slice(1);
   const description = contract.description || '';
+  const extraCSS = BUTTON_DEP_COMPONENTS.has(name)
+    ? `\n  <link rel="stylesheet" href="../../components/button/button.css" />`
+    : '';
+  const mainClass = name === 'navigation' ? 'ds-main ds-main--wide' : 'ds-main';
   return `<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -77,8 +97,9 @@ function componentPage(name, contract, demoBody, hasJS) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title} — DSL Design System</title>
   <link rel="stylesheet" href="../../output/variables.css" />
-  <link rel="stylesheet" href="../../ds/ds.css" />
+  <link rel="stylesheet" href="../../ds/ds.css" />${extraCSS}
   <link rel="stylesheet" href="../../components/${name}/${name}.css" />
+  <link rel="stylesheet" href="../../node_modules/@phosphor-icons/web/src/bold/style.css" />
 </head>
 <body>
 <script>window.DS_BASE = '../../';</script>
@@ -87,7 +108,7 @@ function componentPage(name, contract, demoBody, hasJS) {
 <header id="header"></header>
 <div class="ds-shell">
   <aside id="sidebar"></aside>
-  <main class="ds-main">
+  <main class="${mainClass}">
 
     <div class="ds-page-header">
       <h1>${title}</h1>
@@ -98,7 +119,7 @@ function componentPage(name, contract, demoBody, hasJS) {
       <h2 class="ds-section-title">Variants</h2>
       <style>
         .demo-section { margin-bottom: var(--spacing-6); }
-        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-section > h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
         .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
         #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
       </style>
@@ -130,6 +151,7 @@ function foundationPage(title, description, content, base) {
   <title>${title} — DSL Design System</title>
   <link rel="stylesheet" href="${base}output/variables.css" />
   <link rel="stylesheet" href="${base}ds/ds.css" />
+  <link rel="stylesheet" href="${base}node_modules/@phosphor-icons/web/src/bold/style.css" />
 </head>
 <body>
 <script>window.DS_BASE = '${base}';</script>
@@ -163,7 +185,7 @@ COMPONENTS.forEach(name => {
 
   const contract = JSON.parse(readFileSync(contractPath, 'utf8'));
   const html = readFileSync(htmlPath, 'utf8');
-  const demoBody = extractBodyContent(html);
+  const demoBody = extractDemoContent(html);
   const hasJS = existsSync(jsPath);
 
   writeFileSync(outPath, componentPage(name, contract, demoBody, hasJS));
@@ -172,30 +194,73 @@ COMPONENTS.forEach(name => {
 
 // ── Generate foundations pages ────────────────────────────────────────────────
 
-// Read variables.css to extract color tokens
+// Read variables.css to extract color tokens — only from the :root {} block
 const varsCss = readFileSync(join(ROOT, 'output', 'variables.css'), 'utf8');
-const colorMatches = [...varsCss.matchAll(/--color-([\w-]+):\s*([^;]+);/g)];
+const rootBlockMatch = varsCss.match(/:root\s*\{([\s\S]*?)\}/);
+const rootBlock = rootBlockMatch ? rootBlockMatch[1] : varsCss;
+const colorMatches = [...rootBlock.matchAll(/--color-([\w-]+):\s*([^;]+);/g)];
 
+// Group by first two path segments (brand-primary, neutral, semantic, etc.)
+// Exclude non-palette semantic aliases (text, bg, border, overlay) from the top-level swatch groups
+// but still show them in a separate "Semantic Aliases" section
+const PALETTE_PREFIXES = new Set(['brand', 'neutral', 'semantic', 'overlay']);
 const colorGroups = {};
+const semanticAliasGroups = {};
 colorMatches.forEach(([, name, value]) => {
-  const group = name.split('-')[0] + '-' + name.split('-')[1];
-  if (!colorGroups[group]) colorGroups[group] = [];
-  colorGroups[group].push({ name: `--color-${name}`, value: value.trim() });
+  const parts = name.split('-');
+  const prefix = parts[0];
+  const group = parts[0] + (parts[1] ? '-' + parts[1] : '');
+  const target = PALETTE_PREFIXES.has(prefix) ? colorGroups : semanticAliasGroups;
+  if (!target[group]) target[group] = [];
+  target[group].push({ name: `--color-${name}`, value: value.trim() });
 });
 
-const swatchHtml = Object.entries(colorGroups).map(([group, colors]) => {
-  const title = group.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  const swatches = colors.map(c => `
-    <div class="ds-swatch">
-      <div class="ds-swatch__color" style="background:${c.value}"></div>
-      <div class="ds-swatch__info">
-        <p class="ds-swatch__name">${c.name.replace('--color-', '')}</p>
-        <p class="ds-swatch__value">${c.value}</p>
-      </div>
-    </div>`).join('');
-  return `<h2 class="ds-section-title" style="margin-top:var(--spacing-7)">${title}</h2>
-  <div class="ds-swatch-grid">${swatches}</div>`;
-}).join('');
+// Compact inline palette strip (no labels below, tooltip on hover via title)
+function renderPaletteStrip(colors) {
+  return `<div style="display:flex;flex-wrap:wrap;gap:var(--spacing-2);margin-bottom:var(--spacing-6)">` +
+    colors.map(c => `<div title="${c.name}: ${c.value}" style="flex:1;min-width:60px;max-width:100px">
+      <div style="height:48px;border-radius:var(--shape-radius-sm);background:${c.value};border:1px solid rgba(0,0,0,0.08)"></div>
+      <p style="font-family:var(--typography-font-family-mono,'DM Mono',monospace);font-size:10px;color:var(--ds-text-muted);margin:4px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.name.replace('--color-','')}</p>
+      <p style="font-family:var(--typography-font-family-mono,'DM Mono',monospace);font-size:10px;color:var(--ds-text-muted);margin:1px 0 0;opacity:0.7">${c.value}</p>
+    </div>`).join('') + `</div>`;
+}
+
+// Alias table (no swatches — just token name → value reference)
+function renderAliasTable(groups) {
+  const rows = Object.values(groups).flat().map(c =>
+    `<tr>
+      <td><code style="font-family:var(--typography-font-family-mono,'DM Mono',monospace);font-size:var(--typography-font-size-xs);color:var(--color-brand-primary);background:var(--color-brand-primary-light);padding:2px 6px;border-radius:var(--shape-radius-sm)">${c.name}</code></td>
+      <td style="font-family:var(--typography-font-family-mono,'DM Mono',monospace);font-size:var(--typography-font-size-xs);color:var(--ds-text-secondary)">${c.value}</td>
+      <td><div style="width:20px;height:20px;border-radius:var(--shape-radius-sm);background:${c.value};border:1px solid rgba(0,0,0,0.12);display:inline-block;vertical-align:middle"></div></td>
+    </tr>`).join('');
+  return `<table class="ds-token-table" style="margin-bottom:var(--spacing-6)">
+    <thead><tr><th>Token</th><th>Value</th><th>Swatch</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+const swatchHtml =
+  `<h2 class="ds-section-title">Brand</h2>` + renderPaletteStrip(colorGroups['brand-primary'] || []) +
+  (colorGroups['brand-secondary'] ? renderPaletteStrip(colorGroups['brand-secondary']) : '') +
+  (colorGroups['brand-accent'] ? renderPaletteStrip(colorGroups['brand-accent']) : '') +
+  `<h2 class="ds-section-title" style="margin-top:var(--spacing-6)">Neutral Scale</h2>` +
+  renderPaletteStrip(
+    Object.entries(colorGroups)
+      .filter(([k]) => k.startsWith('neutral'))
+      .flatMap(([,v]) => v)
+  ) +
+  `<h2 class="ds-section-title" style="margin-top:var(--spacing-6)">Semantic</h2>` +
+  renderPaletteStrip(colorGroups['semantic-success'] ? [
+    ...(colorGroups['semantic-success'] || []),
+    ...(colorGroups['semantic-warning'] || []),
+    ...(colorGroups['semantic-error'] || []),
+    ...(colorGroups['semantic-info'] || []),
+  ] : Object.values(colorGroups).flat().filter(c => c.name.includes('semantic'))) +
+  (colorGroups['overlay-dark'] ? `<h2 class="ds-section-title" style="margin-top:var(--spacing-6)">Overlay</h2>` + renderPaletteStrip(colorGroups['overlay-dark']) : '') +
+  (Object.keys(semanticAliasGroups).length ? `
+  <h2 class="ds-section-title" style="margin-top:var(--spacing-6)">Semantic Aliases</h2>
+  <p style="font-size:var(--typography-font-size-sm);color:var(--ds-text-muted);margin:0 0 var(--spacing-4)">Contextual tokens — these update automatically in dark mode.</p>` +
+  renderAliasTable(semanticAliasGroups) : '');
 
 mkdirSync(join(ROOT, 'foundations', 'colors'), { recursive: true });
 writeFileSync(join(ROOT, 'foundations', 'colors', 'index.html'),
@@ -204,24 +269,47 @@ console.log('✓ foundations/colors/index.html');
 
 // Typography page
 const typeScaleItems = [
-  ['5xl','72px'],['4xl','60px'],['3xl','48px'],['2xl','36px'],['xl','24px'],
-  ['lg','20px'],['md','16px'],['sm','14px'],['xs','12px']
+  ['5xl','72px'],['4xl','56px'],['3xl','40px'],['2xl','32px'],['xl','24px'],
+  ['lg','18px'],['md','16px'],['sm','14px'],['xs','12px']
 ];
+const fontWeightItems = [
+  ['regular','400','Regular'],
+  ['medium','500','Medium'],
+  ['semibold','600','Semibold'],
+  ['bold','700','Bold'],
+];
+const monoStyle = `font-family:var(--typography-font-family-mono,'DM Mono',monospace);font-size:11px;color:var(--ds-text-muted)`;
 const typographyContent = `
 <section class="ds-section">
   <h2 class="ds-section-title">Heading Scale (Lora)</h2>
   ${typeScaleItems.slice(0,6).map(([size,px]) => `
   <div style="margin-bottom:var(--spacing-5);padding-bottom:var(--spacing-4);border-bottom:1px solid var(--ds-border)">
-    <p style="font-family:var(--typography-font-family-heading);font-size:var(--typography-font-size-${size});line-height:var(--typography-line-height-tight);color:var(--ds-text-primary);margin:0 0 var(--spacing-1)">The quick brown fox</p>
-    <code style="font-size:10px;color:var(--ds-text-muted)">--typography-font-size-${size} · ${px}</code>
+    <p style="font-family:var(--typography-font-family-heading);font-size:var(--typography-font-size-${size});line-height:var(--typography-line-height-tight);color:var(--ds-text-primary);margin:0 0 var(--spacing-1)">The quick brown fox jumps over the lazy dog</p>
+    <code style="${monoStyle}">--typography-font-size-${size} · ${px}</code>
   </div>`).join('')}
 </section>
 <section class="ds-section">
   <h2 class="ds-section-title">Body Scale (Montserrat)</h2>
   ${typeScaleItems.map(([size,px]) => `
-  <div style="margin-bottom:var(--spacing-4);display:flex;align-items:baseline;gap:var(--spacing-6)">
-    <code style="font-size:10px;color:var(--ds-text-muted);min-width:120px">--font-size-${size} · ${px}</code>
-    <p style="font-family:var(--typography-font-family-body);font-size:var(--typography-font-size-${size});color:var(--ds-text-primary);margin:0">The quick brown fox jumps over the lazy dog</p>
+  <div style="margin-bottom:var(--spacing-5);padding-bottom:var(--spacing-4);border-bottom:1px solid var(--ds-border)">
+    <p style="font-family:var(--typography-font-family-body);font-size:var(--typography-font-size-${size});color:var(--ds-text-primary);margin:0 0 var(--spacing-1)">The quick brown fox jumps over the lazy dog</p>
+    <code style="${monoStyle}">--typography-font-size-${size} · ${px}</code>
+  </div>`).join('')}
+</section>
+<section class="ds-section">
+  <h2 class="ds-section-title">Font Weights — Montserrat (Body)</h2>
+  ${fontWeightItems.map(([key,num,label]) => `
+  <div style="margin-bottom:var(--spacing-5);padding-bottom:var(--spacing-4);border-bottom:1px solid var(--ds-border)">
+    <p style="font-family:var(--typography-font-family-body);font-size:var(--typography-font-size-xl);font-weight:var(--typography-font-weight-${key});color:var(--ds-text-primary);margin:0 0 var(--spacing-1)">${label} — The quick brown fox jumps over the lazy dog</p>
+    <code style="${monoStyle}">--typography-font-weight-${key} · ${num}</code>
+  </div>`).join('')}
+</section>
+<section class="ds-section">
+  <h2 class="ds-section-title">Font Weights — Lora (Heading)</h2>
+  ${fontWeightItems.filter(([,num]) => ['400','600','700'].includes(num)).map(([key,num,label]) => `
+  <div style="margin-bottom:var(--spacing-5);padding-bottom:var(--spacing-4);border-bottom:1px solid var(--ds-border)">
+    <p style="font-family:var(--typography-font-family-heading);font-size:var(--typography-font-size-xl);font-weight:var(--typography-font-weight-${key});font-style:normal;color:var(--ds-text-primary);margin:0 0 var(--spacing-1)">${label} — The quick brown fox jumps over the lazy dog</p>
+    <code style="${monoStyle}">--typography-font-weight-${key} · ${num} · Lora</code>
   </div>`).join('')}
 </section>`;
 

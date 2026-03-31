@@ -1,6 +1,6 @@
 /* DSL Design System — Kitchen Sink Chrome */
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* ── Reset / Base ───────────────────────────────────────────────────────────── */
 
@@ -93,8 +93,13 @@ body {
 
 .ds-nav__logo-img {
   width: 100%;
+  max-width: 140px;
   height: auto;
   display: block;
+}
+
+[data-theme="dark"] .ds-nav__logo-img {
+  filter: brightness(0) invert(1);
 }
 
 .ds-theme-btn {
@@ -156,6 +161,7 @@ body {
   display: block;
   padding: var(--spacing-2) var(--spacing-3);
   font-size: var(--typography-font-size-sm);
+  font-weight: var(--typography-font-weight-medium);
   color: var(--ds-text-secondary);
   text-decoration: none;
   border-radius: var(--shape-radius-sm);
@@ -180,7 +186,7 @@ body {
   flex: 1;
   min-width: 0;
   padding: var(--spacing-8) var(--spacing-9);
-  max-width: 960px;
+  max-width: 1200px;
 }
 
 /* ── Page Header ─────────────────────────────────────────────────────────────── */
@@ -277,13 +283,18 @@ body {
 }
 
 .ds-token-name {
-  font-family: var(--typography-font-family-mono, monospace);
+  font-family: var(--typography-font-family-mono, 'DM Mono', monospace);
   font-size: var(--typography-font-size-xs);
   color: var(--color-brand-primary);
   background-color: var(--color-brand-primary-light);
   padding: 2px var(--spacing-2);
   border-radius: var(--shape-radius-sm);
   white-space: nowrap;
+}
+
+[data-theme="dark"] .ds-token-name {
+  color: var(--color-brand-primary-light);
+  background-color: rgba(0, 84, 158, 0.25);
 }
 
 /* ── Component Grid (home page) ──────────────────────────────────────────────── */
@@ -394,7 +405,7 @@ body {
 }
 
 .ds-swatch__value {
-  font-family: var(--typography-font-family-mono, monospace);
+  font-family: var(--typography-font-family-mono, 'DM Mono', monospace);
   font-size: 10px;
   color: var(--ds-text-muted);
   margin: 0;
@@ -448,6 +459,19 @@ body {
   color: var(--ds-text-muted);
 }
 
+/* ── Wide layout (navigation page) ──────────────────────────────────────────── */
+
+.ds-main--wide {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ds-main--wide > .ds-page-header,
+.ds-main--wide > .ds-section {
+  padding-left: var(--spacing-9);
+  padding-right: var(--spacing-9);
+}
+
 /* ── Mobile ──────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
@@ -485,4 +509,28 @@ body {
     margin-left: 0;
     padding: var(--spacing-5);
   }
+
+  .ds-page-header h1 {
+    font-size: var(--typography-font-size-2xl);
+  }
+
+  .ds-home-hero h1 {
+    font-size: var(--typography-font-size-2xl);
+  }
+
+  /* Navigation page: remove extra inner padding on mobile */
+  .ds-main--wide > .ds-page-header,
+  .ds-main--wide > .ds-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ds-theme-btn--fixed {
+    display: none;
+  }
 }
+
+/* ── Dark/Light icon visibility (CSS-driven for header toggle) ───────────────── */
+
+[data-theme="light"] .ds-theme-icon--moon { display: none; }
+[data-theme="dark"] .ds-theme-icon--sun { display: none; }

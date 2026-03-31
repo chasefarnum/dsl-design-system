@@ -113,3 +113,49 @@
 .dsl-tabs__panel[hidden] {
   display: none;
 }
+
+/* ── Mobile ────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Underline variant → vertical stacked list with left-border indicator */
+  .dsl-tabs--underline .dsl-tabs__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    border-bottom: none;
+    border-left: var(--shape-border-width-thin) solid var(--color-border-default);
+  }
+
+  .dsl-tabs--underline .dsl-tabs__tab {
+    border-bottom: none;
+    border-left: var(--shape-border-width-medium) solid transparent;
+    margin-bottom: 0;
+    margin-left: -1px;
+    text-align: left;
+    width: 100%;
+    min-height: 44px;
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: 0;
+  }
+
+  .dsl-tabs--underline .dsl-tabs__tab[aria-selected="true"] {
+    border-bottom: none;
+    border-left-color: var(--color-brand-primary);
+  }
+
+  .dsl-tabs--underline .dsl-tabs__tab:focus-visible {
+    border-radius: 0;
+    outline-offset: -2px;
+  }
+
+  /* Pill: allow horizontal scroll if too many tabs to fit */
+  .dsl-tabs--pill {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .dsl-tabs--pill::-webkit-scrollbar {
+    display: none;
+  }
+}

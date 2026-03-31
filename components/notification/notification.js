@@ -20,10 +20,10 @@ const toastMessages = {
 };
 
 const toastIcons = {
-  info:    '<svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg>',
-  success: '<svg width="20" height="20" aria-hidden="true"><use href="#icon-success"/></svg>',
-  warning: '<svg width="20" height="20" aria-hidden="true"><use href="#icon-warning"/></svg>',
-  error:   '<svg width="20" height="20" aria-hidden="true"><use href="#icon-error"/></svg>'
+  info:    '<i class="ph-bold ph-info" aria-hidden="true"></i>',
+  success: '<i class="ph-bold ph-check-circle" aria-hidden="true"></i>',
+  warning: '<i class="ph-bold ph-warning" aria-hidden="true"></i>',
+  error:   '<i class="ph-bold ph-x-circle" aria-hidden="true"></i>'
 };
 
 function showToast(intent) {
@@ -40,7 +40,7 @@ function showToast(intent) {
       '<p class="dsl-alert__title">' + msg.title + '</p>' +
       '<p class="dsl-alert__body">' + msg.body + '</p>' +
     '</div>' +
-    '<button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><svg width="14" height="14"><use href="#icon-close"/></svg></button>';
+    '<button class="dsl-alert__dismiss" aria-label="Dismiss" type="button"><i class="ph-bold ph-x" aria-hidden="true"></i></button>';
 
   container.appendChild(toast);
 

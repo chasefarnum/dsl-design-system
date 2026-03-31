@@ -6,6 +6,7 @@
   <title>DSL Inputs — Component Example</title>
   <link rel="stylesheet" href="../../output/variables.css" />
   <link rel="stylesheet" href="inputs.css" />
+  <link rel="stylesheet" href="../../node_modules/@phosphor-icons/web/src/bold/style.css" />
   <style>
     body { font-family: var(--typography-font-family-body); padding: var(--spacing-7); background: var(--color-bg-subtle); }
     .demo-section { margin-bottom: var(--spacing-7); max-width: 480px; }
@@ -14,16 +15,6 @@
   </style>
 </head>
 <body>
-
-  <!-- SVG icons inline -->
-  <div style="display:none" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <symbol id="icon-search" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></symbol>
-      <symbol id="icon-email" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></symbol>
-      <symbol id="icon-phone" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></symbol>
-      <symbol id="icon-error" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></symbol>
-    </svg>
-  </div>
 
   <div class="demo-section">
     <h2>Input Types</h2>
@@ -40,7 +31,7 @@
         <label class="dsl-input-label" for="in-email">Email</label>
         <div class="dsl-input-wrapper">
           <span class="dsl-input-prefix" aria-hidden="true">
-            <svg width="16" height="16"><use href="#icon-email"/></svg>
+            <i class="ph-bold ph-envelope-simple" aria-hidden="true"></i>
           </span>
           <input class="dsl-input dsl-input--md dsl-input--has-prefix" type="email" id="in-email" placeholder="jane@example.com" />
         </div>
@@ -50,7 +41,7 @@
         <label class="dsl-input-label" for="in-phone">Phone</label>
         <div class="dsl-input-wrapper">
           <span class="dsl-input-prefix" aria-hidden="true">
-            <svg width="16" height="16"><use href="#icon-phone"/></svg>
+            <i class="ph-bold ph-phone" aria-hidden="true"></i>
           </span>
           <input class="dsl-input dsl-input--md dsl-input--has-prefix" type="tel" id="in-phone" placeholder="(555) 000-0000" />
         </div>
@@ -61,7 +52,7 @@
         <label class="dsl-input-label" for="in-search">Search Communities</label>
         <div class="dsl-input-wrapper">
           <span class="dsl-input-prefix" aria-hidden="true">
-            <svg width="16" height="16"><use href="#icon-search"/></svg>
+            <i class="ph-bold ph-magnifying-glass" aria-hidden="true"></i>
           </span>
           <input class="dsl-input dsl-input--md dsl-input--has-prefix" type="search" id="in-search" placeholder="Search by city or zip…" />
         </div>
@@ -130,7 +121,7 @@
         <div class="dsl-input-wrapper">
           <input class="dsl-input dsl-input--md dsl-input--has-suffix" type="text" id="st-error" value="bad@" aria-invalid="true" aria-describedby="st-error-help" />
           <span class="dsl-input-suffix" style="color:var(--color-semantic-error)" aria-hidden="true">
-            <svg width="16" height="16"><use href="#icon-error"/></svg>
+            <i class="ph-bold ph-x-circle" aria-hidden="true"></i>
           </span>
         </div>
         <span class="dsl-input-helper" id="st-error-help" role="alert">Please enter a valid email address.</span>

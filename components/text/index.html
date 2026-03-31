@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../output/variables.css" />
   <link rel="stylesheet" href="../../ds/ds.css" />
   <link rel="stylesheet" href="../../components/text/text.css" />
+  <link rel="stylesheet" href="../../node_modules/@phosphor-icons/web/src/bold/style.css" />
 </head>
 <body>
 <script>window.DS_BASE = '../../';</script>
@@ -26,11 +27,18 @@
       <h2 class="ds-section-title">Variants</h2>
       <style>
         .demo-section { margin-bottom: var(--spacing-6); }
-        .demo-section h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
+        .demo-section > h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--ds-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wide); margin: 0 0 var(--spacing-3); }
         .demo-row { display: flex; align-items: center; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-3); }
         #selected-date { margin-top: var(--spacing-4); font-size: var(--typography-font-size-sm); color: var(--ds-text-secondary); }
       </style>
-      <div class="demo-section">
+      <style>
+    
+    .demo-section { margin-bottom: var(--spacing-7); max-width: 800px; }
+    .demo-section > h2 { font-size: var(--typography-font-size-xs); font-weight: var(--typography-font-weight-semibold); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--typography-letter-spacing-wider); margin: 0 0 var(--spacing-4); border-bottom: 1px solid var(--color-border-subtle); padding-bottom: var(--spacing-2); }
+    .type-row { display: flex; flex-direction: column; gap: var(--spacing-5); }
+    .type-label { font-family: var(--typography-font-family-mono, 'DM Mono', monospace); font-size: var(--typography-font-size-xs); color: var(--color-text-muted); margin-top: var(--spacing-1); }
+  </style>
+<div class="demo-section">
     <h2>Headings</h2>
     <div class="type-row">
       <div><h1 class="dsl-h1">H1 — Find Your Perfect Community</h1><p class="type-label">dsl-h1 — 72px / Lora Bold / tight</p></div>

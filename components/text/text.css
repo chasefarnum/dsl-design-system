@@ -69,3 +69,15 @@
 .dsl-link:hover {
   color: var(--color-text-link-hover);
 }
+
+/* ── Responsive type scale ─────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .dsl-h1 { font-size: var(--typography-font-size-3xl); }
+  .dsl-h2 { font-size: var(--typography-font-size-2xl); }
+  .dsl-h3 { font-size: var(--typography-font-size-xl); }
+  .dsl-h4 { font-size: var(--typography-font-size-lg); }
+  .dsl-h5 { font-size: var(--typography-font-size-md); }
+  .dsl-h6 { font-size: var(--typography-font-size-sm); }
+  .dsl-blockquote { font-size: var(--typography-font-size-lg); }
+}

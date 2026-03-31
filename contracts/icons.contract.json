@@ -1,6 +1,6 @@
 {
   "name": "icons",
-  "description": "SVG icon system using symbol+use pattern, color inherits from currentColor",
+  "description": "SVG icon system using Phosphor Icons Bold weight (phosphoricons.com) — MIT license. 256×256 viewBox, rendered via Phosphor web components.",
   "primitive": "native",
   "cssClass": "dsl-icon",
   "source": "components/icons/icons.html",
