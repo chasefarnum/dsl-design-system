@@ -1,35 +1,77 @@
 {
-  "name": "inputs",
-  "description": "Text input variants with sizes, states, icons, and helper text",
-  "primitive": "native",
-  "cssClass": "dsl-input",
+  "id": "inputs",
+  "name": "Inputs",
+  "description": "Unified input component covering text, email, tel, search, password, select, and textarea types. Supports sm/md/lg sizes, prefix/suffix icons, helper text, char count, and default/focus/filled/error/disabled states.",
   "source": "components/inputs/inputs.html",
-  "variants": {
-    "type": {
-      "options": ["text", "email", "phone", "password", "search", "textarea", "select"],
-      "default": "text"
-    },
-    "size": {
-      "options": ["sm", "md", "lg"],
-      "default": "md",
-      "cssModifier": "dsl-input--{size}"
-    },
-    "state": {
-      "options": ["default", "focus", "filled", "error", "disabled"],
-      "default": "default",
-      "cssModifier": "dsl-input-wrapper--{state}"
+  "cssClass": "dsl-input",
+  "props": {
+    "type":  { "options": ["text", "email", "tel", "search", "password", "select", "textarea"], "default": "text" },
+    "size":  { "options": ["sm", "md", "lg"], "default": "md" },
+    "state": { "options": ["default", "focus", "filled", "error", "disabled"], "default": "default" }
+  },
+  "states": ["default", "focus", "filled", "error", "disabled"],
+  "nested": ["icons"],
+  "composition": {
+    "slots": {
+      "field": {
+        "childOrder": ["label", "wrapper", "helper"],
+        "children": {
+          "label":  { "figma": { "textProp": "labelText",  "booleanProp": "showLabel" } },
+          "wrapper": {
+            "childOrder": ["prefix", "input", "suffix"],
+            "children": {
+              "prefix": { "figma": { "booleanProp": "showPrefix", "sizing": "fixed", "width": 20, "height": 20 } },
+              "input":  { "figma": { "textProp": "placeholder" } },
+              "suffix": { "figma": { "booleanProp": "showSuffix", "sizing": "fixed", "width": 20, "height": 20, "position": "trailing" } }
+            }
+          },
+          "helper": { "figma": { "textProp": "helperText", "booleanProp": "showHelper", "position": "trailing" } }
+        }
+      }
     }
   },
-  "slots": ["input-wrapper", "input-prefix", "input-suffix", "input-label", "input-helper"],
   "tokens": {
-    "--form-input-bg": "var(--form-input-bg)",
-    "--form-input-border": "var(--form-input-border)",
-    "--form-input-border-focus": "var(--form-input-border-focus)",
-    "--form-input-text": "var(--form-input-text)",
-    "--form-input-placeholder": "var(--form-input-placeholder)",
-    "--form-label-text": "var(--form-label-text)",
-    "--color-semantic-error": "var(--color-semantic-error)",
-    "--shape-radius-md": "var(--shape-radius-md)",
-    "--shape-border-width-thin": "var(--shape-border-width-thin)"
-  }
+    "color": {
+      "input.background":       "form.input.bg",
+      "input.border":           "form.input.border",
+      "input.border.focus":     "form.input.border-focus",
+      "input.text":             "form.input.text",
+      "input.placeholder":      "form.input.placeholder",
+      "label.text":             "form.label.text",
+      "state.error":            "color.text.secondary",
+      "border.error":           "color.border.default"
+    },
+    "spacing": {
+      "padding.x.sm":  "spacing.3",
+      "padding.y.sm":  "spacing.2",
+      "padding.x.md":  "spacing.3",
+      "padding.y.md":  "spacing.3",
+      "padding.x.lg":  "spacing.4",
+      "padding.y.lg":  "spacing.4",
+      "gap.field":     "spacing.2",
+      "gap.prefix":    "spacing.2"
+    },
+    "typography": {
+      "input.family":   "typography.font-family.body",
+      "input.size.sm":  "typography.font-size.sm",
+      "input.size.md":  "typography.font-size.md",
+      "input.size.lg":  "typography.font-size.lg",
+      "input.weight":   "typography.font-weight.regular",
+      "label.family":   "typography.font-family.body",
+      "label.size":     "typography.font-size.sm",
+      "label.weight":   "typography.font-weight.semibold",
+      "helper.size":    "typography.font-size.sm"
+    },
+    "border": {
+      "radius": "shape.radius.md",
+      "width":  "shape.border-width.thin",
+      "width.focus": "shape.border-width.medium"
+    }
+  },
+  "a11y": {
+    "role": "textbox",
+    "aria": ["aria-required", "aria-invalid", "aria-describedby", "aria-label"],
+    "keyboard": ["Tab", "Enter"]
+  },
+  "platforms": ["web"]
 }

@@ -1,31 +1,65 @@
 {
-  "name": "forms",
-  "description": "Complete form layout with all input types and validation states",
-  "primitive": "native",
-  "cssClass": "dsl-form",
+  "id": "forms",
+  "name": "Forms",
+  "description": "Full form layout with text, email, tel, select, radio, checkbox, toggle, textarea inputs, validation states, and submit/reset actions.",
   "source": "components/forms/forms.html",
-  "variants": {
-    "state": {
-      "options": ["default", "error", "success"],
-      "default": "default",
-      "cssModifier": "dsl-form-field--{state}"
+  "cssClass": "dsl-form",
+  "props": {
+    "state": { "options": ["default", "error", "success"], "default": "default" }
+  },
+  "states": ["default", "error", "success"],
+  "nested": ["inputs", "button"],
+  "composition": {
+    "slots": {
+      "field": {
+        "childOrder": ["label", "input", "helper"],
+        "children": {
+          "label":  { "figma": { "textProp": "labelText" } },
+          "input":  { "figma": { "booleanProp": "showInput" } },
+          "helper": { "figma": { "textProp": "helperText", "booleanProp": "showHelper" } }
+        }
+      }
     }
   },
-  "slots": ["form-field", "form-label", "form-input", "form-helper", "form-error"],
   "tokens": {
-    "--form-input-bg": "var(--form-input-bg)",
-    "--form-input-border": "var(--form-input-border)",
-    "--form-input-border-focus": "var(--form-input-border-focus)",
-    "--form-input-text": "var(--form-input-text)",
-    "--form-input-placeholder": "var(--form-input-placeholder)",
-    "--form-label-text": "var(--form-label-text)",
-    "--color-semantic-error": "var(--color-semantic-error)",
-    "--color-semantic-success": "var(--color-semantic-success)",
-    "--shape-radius-md": "var(--shape-radius-md)",
-    "--shape-border-width-thin": "var(--shape-border-width-thin)",
-    "--shape-border-width-medium": "var(--shape-border-width-medium)",
-    "--spacing-2": "var(--spacing-2)",
-    "--spacing-3": "var(--spacing-3)",
-    "--spacing-4": "var(--spacing-4)"
-  }
+    "color": {
+      "input.background":       "form.input.bg",
+      "input.border":           "form.input.border",
+      "input.border.focus":     "form.input.border-focus",
+      "input.text":             "form.input.text",
+      "input.placeholder":      "form.input.placeholder",
+      "label.text":             "form.label.text",
+      "state.error":            "color.bg.subtle",
+      "state.success":          "color.bg.subtle",
+      "text.error":             "color.text.secondary",
+      "text.success":           "color.text.brand"
+    },
+    "spacing": {
+      "field.gap":    "spacing.2",
+      "row.gap":      "spacing.4",
+      "padding.x":    "spacing.3",
+      "padding.y":    "spacing.3",
+      "form.gap":     "spacing.5"
+    },
+    "typography": {
+      "label.family":  "typography.font-family.body",
+      "label.size":    "typography.font-size.sm",
+      "label.weight":  "typography.font-weight.semibold",
+      "input.family":  "typography.font-family.body",
+      "input.size":    "typography.font-size.md",
+      "helper.size":   "typography.font-size.sm",
+      "helper.weight": "typography.font-weight.regular"
+    },
+    "border": {
+      "radius": "shape.radius.md",
+      "width":  "shape.border-width.thin",
+      "width.focus": "shape.border-width.medium"
+    }
+  },
+  "a11y": {
+    "role": "form",
+    "aria": ["aria-required", "aria-invalid", "aria-describedby", "aria-live"],
+    "keyboard": ["Tab", "Enter", "Space"]
+  },
+  "platforms": ["web"]
 }

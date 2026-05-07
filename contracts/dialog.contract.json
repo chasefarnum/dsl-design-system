@@ -1,27 +1,69 @@
 {
-  "name": "dialog",
-  "description": "Modal dialog with focus trap and keyboard accessibility",
-  "primitive": "native",
-  "cssClass": "dsl-dialog",
+  "id": "dialog",
+  "name": "Dialog",
+  "description": "Modal dialog with focus trap, backdrop overlay, header/body/footer slots, and close control. Used for tour scheduling, confirmations, and content modals.",
   "source": "components/dialog/dialog.html",
-  "variants": {
-    "size": {
-      "options": ["sm", "md", "lg"],
-      "default": "md",
-      "cssModifier": "dsl-dialog--{size}"
+  "cssClass": "dsl-dialog",
+  "props": {
+    "size": { "options": ["sm", "md", "lg"], "default": "md" }
+  },
+  "states": ["closed", "open"],
+  "nested": ["button"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["header", "body", "footer"],
+        "children": {
+          "header": {
+            "childOrder": ["title", "close"],
+            "children": {
+              "title": { "figma": { "textProp": "dialogTitle" } },
+              "close": { "figma": { "booleanProp": "showClose", "sizing": "fixed", "width": 32, "height": 32, "position": "trailing" } }
+            }
+          },
+          "body":   { "figma": { "textProp": "bodyContent" } },
+          "footer": { "figma": { "booleanProp": "showFooter", "position": "trailing" } }
+        }
+      }
     }
   },
-  "slots": ["dialog__backdrop", "dialog__panel", "dialog__header", "dialog__title", "dialog__close", "dialog__body", "dialog__footer"],
-  "states": ["closed", "open"],
   "tokens": {
-    "--color-bg-default": "var(--color-bg-default)",
-    "--color-overlay-dark-60": "var(--color-overlay-dark-60)",
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-border-default": "var(--color-border-default)",
-    "--shape-radius-lg": "var(--shape-radius-lg)",
-    "--shape-shadow-xl": "var(--shape-shadow-xl)",
-    "--spacing-5": "var(--spacing-5)",
-    "--spacing-6": "var(--spacing-6)",
-    "--typography-font-family-heading": "var(--typography-font-family-heading)"
-  }
+    "color": {
+      "background.panel":    "color.bg.default",
+      "background.overlay":  "color.bg.subtle",
+      "text.primary":        "color.text.primary",
+      "text.secondary":      "color.text.secondary",
+      "border.default":      "color.border.default"
+    },
+    "spacing": {
+      "padding.header.x": "spacing.6",
+      "padding.header.y": "spacing.5",
+      "padding.body.x":   "spacing.6",
+      "padding.body.y":   "spacing.5",
+      "padding.footer.x": "spacing.6",
+      "padding.footer.y": "spacing.5",
+      "gap.footer":       "spacing.3"
+    },
+    "typography": {
+      "title.family":  "typography.font-family.body",
+      "title.size":    "typography.font-size.xl",
+      "title.weight":  "typography.font-weight.bold",
+      "body.family":   "typography.font-family.body",
+      "body.size":     "typography.font-size.md",
+      "body.weight":   "typography.font-weight.regular"
+    },
+    "border": {
+      "radius": "shape.radius.lg",
+      "width":  "shape.border-width.thin"
+    },
+    "motion": {
+      "shadow": "shape.shadow.xl"
+    }
+  },
+  "a11y": {
+    "role": "dialog",
+    "aria": ["aria-modal", "aria-labelledby", "aria-describedby"],
+    "keyboard": ["Escape", "Tab"]
+  },
+  "platforms": ["web"]
 }

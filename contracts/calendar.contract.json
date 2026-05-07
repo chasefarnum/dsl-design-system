@@ -1,27 +1,62 @@
 {
-  "name": "calendar",
-  "description": "Month-view calendar with date selection",
-  "primitive": "native",
-  "cssClass": "dsl-calendar",
+  "id": "calendar",
+  "name": "Calendar",
+  "description": "Month-view date picker with prev/next navigation, day grid, and date selection states.",
   "source": "components/calendar/calendar.html",
-  "variants": {},
-  "states": ["default", "today", "selected", "disabled", "hover"],
+  "cssClass": "dsl-calendar",
+  "props": {
+    "variant": { "options": ["default"], "default": "default" }
+  },
+  "states": ["default", "today", "selected", "disabled", "hover", "focus"],
+  "nested": [],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["header", "weekdays", "grid"],
+        "children": {
+          "header":   { "figma": { "textProp": "monthLabel" } },
+          "weekdays": { "figma": { "booleanProp": "showWeekdays" } },
+          "grid":     { "figma": { "booleanProp": "showGrid" } }
+        }
+      }
+    }
+  },
   "tokens": {
-    "--color-bg-default": "var(--color-bg-default)",
-    "--color-bg-subtle": "var(--color-bg-subtle)",
-    "--color-bg-brand": "var(--color-bg-brand)",
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-text-inverse": "var(--color-text-inverse)",
-    "--color-text-muted": "var(--color-text-muted)",
-    "--color-border-default": "var(--color-border-default)",
-    "--color-brand-primary": "var(--color-brand-primary)",
-    "--shape-radius-md": "var(--shape-radius-md)",
-    "--shape-radius-full": "var(--shape-radius-full)",
-    "--shape-border-width-thin": "var(--shape-border-width-thin)",
-    "--spacing-2": "var(--spacing-2)",
-    "--spacing-4": "var(--spacing-4)",
-    "--spacing-5": "var(--spacing-5)",
-    "--typography-font-family-body": "var(--typography-font-family-body)",
-    "--typography-font-size-sm": "var(--typography-font-size-sm)"
-  }
+    "color": {
+      "background.default":   "color.bg.default",
+      "background.subtle":    "color.bg.subtle",
+      "background.selected":  "button.primary.bg",
+      "background.today":     "color.bg.subtle",
+      "text.primary":         "color.text.primary",
+      "text.muted":           "color.text.muted",
+      "text.inverse":         "color.text.inverse",
+      "border.default":       "color.border.default",
+      "focus.ring":           "color.border.focus"
+    },
+    "spacing": {
+      "padding.x":     "spacing.4",
+      "padding.y":     "spacing.4",
+      "cell.padding":  "spacing.2",
+      "gap":           "spacing.2"
+    },
+    "typography": {
+      "title.family":  "typography.font-family.body",
+      "title.size":    "typography.font-size.md",
+      "title.weight":  "typography.font-weight.semibold",
+      "day.family":    "typography.font-family.body",
+      "day.size":      "typography.font-size.sm",
+      "day.weight":    "typography.font-weight.regular"
+    },
+    "border": {
+      "radius.cell":   "shape.radius.full",
+      "radius.panel":  "shape.radius.md",
+      "width":         "shape.border-width.thin"
+    }
+  },
+  "a11y": {
+    "role": "application",
+    "aria": ["aria-label", "aria-live", "aria-pressed", "aria-disabled"],
+    "keyboard": ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Enter", "Space", "PageUp", "PageDown"]
+  },
+  "platforms": ["web"]
 }

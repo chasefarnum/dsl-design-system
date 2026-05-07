@@ -1,35 +1,61 @@
 {
+  "id": "badge",
   "name": "Badge",
+  "description": "Compact inline label for status, category tags, and availability callouts on community pages.",
   "source": "components/badge/badge.html",
-  "primitive": "native",
-  "description": "Compact inline label for status, category tags, and feature callouts on senior living pages.",
   "cssClass": "dsl-badge",
-  "variants": {
-    "intent": {
-      "options": ["default", "success", "warning", "error", "info"],
-      "default": "default",
-      "cssModifier": "dsl-badge--{intent}"
+  "props": {
+    "intent": { "options": ["default", "brand", "success", "warning", "error", "info"], "default": "default" },
+    "size":   { "options": ["sm", "md"], "default": "md" }
+  },
+  "states": ["default", "hover", "dismissed"],
+  "nested": [],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["label", "dismiss"],
+        "children": {
+          "label":   { "figma": { "textProp": "label" } },
+          "dismiss": { "figma": { "booleanProp": "dismissible", "sizing": "fixed", "width": 14, "height": 14, "position": "trailing" } }
+        }
+      }
     }
   },
-  "slots": ["badge"],
   "tokens": {
-    "--color-brand-primary":       "var(--color-brand-primary)",
-    "--color-neutral-000":         "var(--color-neutral-000)",
-    "--color-semantic-success":    "var(--color-semantic-success)",
-    "--color-semantic-warning":    "var(--color-semantic-warning)",
-    "--color-semantic-error":      "var(--color-semantic-error)",
-    "--color-semantic-info":       "var(--color-semantic-info)",
-    "--color-bg-subtle":           "var(--color-bg-subtle)",
-    "--color-text-secondary":      "var(--color-text-secondary)",
-    "--color-border-default":      "var(--color-border-default)",
-    "--shape-radius-full":         "var(--shape-radius-full)",
-    "--spacing-1":                 "var(--spacing-1)",
-    "--spacing-3":                 "var(--spacing-3)",
-    "--typography-font-family-body":    "var(--typography-font-family-body)",
-    "--typography-font-size-xs":        "var(--typography-font-size-xs)",
-    "--typography-font-size-sm":        "var(--typography-font-size-sm)",
-    "--typography-font-weight-semibold":"var(--typography-font-weight-semibold)",
-    "--typography-letter-spacing-wide": "var(--typography-letter-spacing-wide)"
+    "color": {
+      "background.default":  "color.bg.subtle",
+      "background.brand":    "color.bg.brand",
+      "background.success":  "color.bg.subtle",
+      "background.warning":  "color.bg.subtle",
+      "background.error":    "color.bg.subtle",
+      "background.info":     "color.bg.subtle",
+      "text.default":        "color.text.secondary",
+      "text.brand":          "color.text.inverse",
+      "border.default":      "color.border.default"
+    },
+    "spacing": {
+      "padding.x.md": "spacing.3",
+      "padding.y.md": "spacing.1",
+      "padding.x.sm": "spacing.2",
+      "padding.y.sm": "spacing.1",
+      "gap":          "spacing.2"
+    },
+    "typography": {
+      "label.family":        "typography.font-family.body",
+      "label.size.md":       "typography.font-size.sm",
+      "label.size.sm":       "typography.font-size.xs",
+      "label.weight":        "typography.font-weight.semibold",
+      "label.letterSpacing": "typography.letter-spacing.wide"
+    },
+    "border": {
+      "radius": "shape.radius.full",
+      "width":  "shape.border-width.thin"
+    }
   },
-  "states": ["hover"]
+  "a11y": {
+    "role": "status",
+    "aria": ["aria-label"],
+    "keyboard": []
+  },
+  "platforms": ["web"]
 }

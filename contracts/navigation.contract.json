@@ -1,25 +1,59 @@
 {
-  "name": "navigation",
-  "description": "Responsive horizontal navbar with logo, links, CTA, hamburger, and dropdown submenus",
-  "primitive": "native",
-  "cssClass": "dsl-nav",
+  "id": "navigation",
+  "name": "Navigation",
+  "description": "Responsive sticky nav bar with logo left, links center, dual CTA right (phone + tour button). Mobile hamburger with dropdown links. Supports dropdown submenus and scrolled shadow state.",
   "source": "components/navigation/navigation.html",
-  "variants": {
-    "sticky": {
-      "options": [true, false],
-      "default": false,
-      "cssModifier": "dsl-nav--sticky"
+  "cssClass": "dsl-nav",
+  "props": {
+    "sticky":  { "options": ["true", "false"], "default": "true" },
+    "variant": { "options": ["desktop", "mobile"], "default": "desktop" }
+  },
+  "states": ["default", "scrolled", "mobile-open"],
+  "nested": ["button"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["logo", "links", "cta"],
+        "children": {
+          "logo":  { "figma": { "textProp": "logoText" } },
+          "links": { "figma": { "booleanProp": "showLinks" } },
+          "cta":   { "figma": { "booleanProp": "showCta", "position": "trailing" } }
+        }
+      }
     }
   },
-  "slots": ["nav__logo", "nav__links", "nav__link", "nav__cta", "nav__hamburger", "nav__submenu"],
-  "states": ["default", "scrolled", "mobile-open"],
   "tokens": {
-    "--color-bg-default": "var(--color-bg-default)",
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-brand-primary": "var(--color-brand-primary)",
-    "--color-border-default": "var(--color-border-default)",
-    "--shape-shadow-sm": "var(--shape-shadow-sm)",
-    "--spacing-4": "var(--spacing-4)",
-    "--spacing-5": "var(--spacing-5)"
-  }
+    "color": {
+      "background.default":   "color.bg.default",
+      "background.scrolled":  "color.bg.default",
+      "text.link":            "color.text.primary",
+      "text.link.active":     "color.text.brand",
+      "text.link.hover":      "color.text.brand",
+      "border.bottom":        "color.border.default"
+    },
+    "spacing": {
+      "padding.x":       "spacing.6",
+      "padding.y":       "spacing.4",
+      "gap.links":       "spacing.5",
+      "gap.cta":         "spacing.3",
+      "height":          "spacing.7"
+    },
+    "typography": {
+      "link.family":   "typography.font-family.body",
+      "link.size":     "typography.font-size.sm",
+      "link.weight":   "typography.font-weight.semibold"
+    },
+    "border": {
+      "width": "shape.border-width.thin"
+    },
+    "motion": {
+      "shadow.scrolled": "shape.shadow.sm"
+    }
+  },
+  "a11y": {
+    "role": "navigation",
+    "aria": ["aria-label", "aria-expanded", "aria-controls", "aria-haspopup", "aria-current"],
+    "keyboard": ["Tab", "Enter", "Escape", "ArrowDown"]
+  },
+  "platforms": ["web"]
 }

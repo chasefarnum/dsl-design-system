@@ -1,22 +1,56 @@
 {
-  "name": "pagination",
-  "description": "Prev/next + page number controls with active state and ellipsis",
-  "primitive": "native",
-  "cssClass": "dsl-pagination",
+  "id": "pagination",
+  "name": "Pagination",
+  "description": "Prev/next arrow buttons with numbered page items, active state, ellipsis, and disabled states. Supports sm and md sizes.",
   "source": "components/pagination/pagination.html",
-  "variants": {
-    "size": {
-      "options": ["sm", "md"],
-      "default": "md",
-      "cssModifier": "dsl-pagination--{size}"
+  "cssClass": "dsl-pagination",
+  "props": {
+    "size": { "options": ["sm", "md"], "default": "md" }
+  },
+  "states": ["default", "active", "hover", "disabled"],
+  "nested": ["button"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["prev", "pages", "next"],
+        "children": {
+          "prev":  { "figma": { "booleanProp": "showPrev", "sizing": "fixed", "width": 36, "height": 36 } },
+          "pages": { "figma": { "textProp": "currentPage" } },
+          "next":  { "figma": { "booleanProp": "showNext", "sizing": "fixed", "width": 36, "height": 36, "position": "trailing" } }
+        }
+      }
     }
   },
   "tokens": {
-    "--color-bg-default": "var(--color-bg-default)",
-    "--color-bg-brand": "var(--color-bg-brand)",
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-text-inverse": "var(--color-text-inverse)",
-    "--color-border-default": "var(--color-border-default)",
-    "--shape-radius-md": "var(--shape-radius-md)"
-  }
+    "color": {
+      "background.default":  "color.bg.default",
+      "background.active":   "button.primary.bg",
+      "background.hover":    "color.bg.subtle",
+      "text.default":        "color.text.primary",
+      "text.active":         "color.text.inverse",
+      "text.disabled":       "color.text.muted",
+      "border.default":      "color.border.default"
+    },
+    "spacing": {
+      "size.md":      "spacing.5",
+      "size.sm":      "spacing.4",
+      "gap":          "spacing.1"
+    },
+    "typography": {
+      "page.family":  "typography.font-family.body",
+      "page.size.md": "typography.font-size.sm",
+      "page.size.sm": "typography.font-size.xs",
+      "page.weight":  "typography.font-weight.semibold"
+    },
+    "border": {
+      "radius": "shape.radius.md",
+      "width":  "shape.border-width.thin"
+    }
+  },
+  "a11y": {
+    "role": "navigation",
+    "aria": ["aria-label", "aria-current", "aria-disabled"],
+    "keyboard": ["Tab", "Enter", "Space"]
+  },
+  "platforms": ["web"]
 }

@@ -1,43 +1,65 @@
 {
+  "id": "card",
   "name": "Card",
+  "description": "Surface container for community highlights, resident profiles, and CTA blocks. Supports flat, raised, bordered, and clickable variants. Includes horizontal layout.",
   "source": "components/card/card.html",
-  "primitive": "native",
-  "description": "Surface container for grouping related content. Used for community highlights, resident profiles, and CTA blocks.",
   "cssClass": "dsl-card",
-  "variants": {
-    "elevation": {
-      "options": ["flat", "raised", "bordered"],
-      "default": "flat",
-      "cssModifier": "dsl-card--{elevation}"
+  "props": {
+    "elevation": { "options": ["flat", "raised", "bordered"], "default": "flat" },
+    "layout":    { "options": ["vertical", "horizontal"],     "default": "vertical" }
+  },
+  "states": ["default", "hover"],
+  "nested": ["button", "badge"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["media", "header", "body", "footer"],
+        "children": {
+          "media":    { "figma": { "booleanProp": "showMedia",  "sizing": "fixed", "width": 560, "height": 280 } },
+          "header":   { "figma": { "booleanProp": "showHeader" } },
+          "body":     { "figma": { "textProp": "bodyText" } },
+          "footer":   { "figma": { "booleanProp": "showFooter", "position": "trailing" } }
+        }
+      }
     }
   },
-  "slots": [
-    "dsl-card",
-    "dsl-card__media",
-    "dsl-card__header",
-    "dsl-card__title",
-    "dsl-card__subtitle",
-    "dsl-card__body",
-    "dsl-card__footer"
-  ],
   "tokens": {
-    "--color-bg-default":          "var(--color-bg-default)",
-    "--color-border-default":      "var(--color-border-default)",
-    "--color-text-primary":        "var(--color-text-primary)",
-    "--color-text-secondary":      "var(--color-text-secondary)",
-    "--color-text-muted":          "var(--color-text-muted)",
-    "--shape-radius-lg":           "var(--shape-radius-lg)",
-    "--shape-border-width-thin":   "var(--shape-border-width-thin)",
-    "--shape-shadow-sm":           "var(--shape-shadow-sm)",
-    "--shape-shadow-md":           "var(--shape-shadow-md)",
-    "--spacing-4":                 "var(--spacing-4)",
-    "--spacing-5":                 "var(--spacing-5)",
-    "--typography-font-family-heading": "var(--typography-font-family-heading)",
-    "--typography-font-family-body":    "var(--typography-font-family-body)",
-    "--typography-font-size-sm":        "var(--typography-font-size-sm)",
-    "--typography-font-size-md":        "var(--typography-font-size-md)",
-    "--typography-font-size-xl":        "var(--typography-font-size-xl)",
-    "--typography-font-weight-bold":    "var(--typography-font-weight-bold)"
+    "color": {
+      "background.default":  "color.bg.default",
+      "border.default":      "color.border.default",
+      "text.primary":        "color.text.primary",
+      "text.secondary":      "color.text.secondary",
+      "text.muted":          "color.text.muted"
+    },
+    "spacing": {
+      "padding.x":  "spacing.5",
+      "padding.y":  "spacing.5",
+      "gap.inner":  "spacing.4"
+    },
+    "typography": {
+      "title.family":    "typography.font-family.body",
+      "title.size":      "typography.font-size.xl",
+      "title.weight":    "typography.font-weight.bold",
+      "subtitle.family": "typography.font-family.body",
+      "subtitle.size":   "typography.font-size.sm",
+      "subtitle.weight": "typography.font-weight.regular",
+      "body.family":     "typography.font-family.body",
+      "body.size":       "typography.font-size.md",
+      "body.weight":     "typography.font-weight.regular"
+    },
+    "border": {
+      "radius": "shape.radius.lg",
+      "width":  "shape.border-width.thin"
+    },
+    "motion": {
+      "shadow.default": "shape.shadow.sm",
+      "shadow.raised":  "shape.shadow.md"
+    }
   },
-  "states": []
+  "a11y": {
+    "role": "article",
+    "aria": ["aria-label", "aria-labelledby"],
+    "keyboard": ["Enter"]
+  },
+  "platforms": ["web"]
 }

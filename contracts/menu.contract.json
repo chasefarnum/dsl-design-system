@@ -1,24 +1,63 @@
 {
-  "name": "menu",
-  "description": "Trigger button + dropdown panel with item variants",
-  "primitive": "native",
-  "cssClass": "dsl-menu",
+  "id": "menu",
+  "name": "Menu",
+  "description": "Dropdown menu with a trigger button and panel of items. Supports basic items, icon items, links, dividers, and destructive items. Aligns left or right.",
   "source": "components/menu/menu.html",
-  "variants": {
-    "position": {
-      "options": ["bottom-left", "bottom-right", "top-left", "top-right"],
-      "default": "bottom-left"
+  "cssClass": "dsl-menu",
+  "props": {
+    "align": { "options": ["left", "right"], "default": "left" }
+  },
+  "states": ["closed", "open"],
+  "nested": ["button", "icons"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["trigger", "panel"],
+        "children": {
+          "trigger": { "figma": { "booleanProp": "showTrigger" } },
+          "panel": {
+            "childOrder": ["item"],
+            "children": {
+              "item": { "figma": { "textProp": "itemLabel", "visibleWhen": "state=open" } }
+            }
+          }
+        }
+      }
     }
   },
-  "slots": ["menu__trigger", "menu__panel", "menu__item", "menu__divider"],
-  "states": ["closed", "open"],
   "tokens": {
-    "--color-bg-default": "var(--color-bg-default)",
-    "--color-bg-subtle": "var(--color-bg-subtle)",
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-semantic-error": "var(--color-semantic-error)",
-    "--color-border-default": "var(--color-border-default)",
-    "--shape-radius-md": "var(--shape-radius-md)",
-    "--shape-shadow-lg": "var(--shape-shadow-lg)"
-  }
+    "color": {
+      "background.panel":       "color.bg.default",
+      "background.item.hover":  "color.bg.subtle",
+      "text.item":              "color.text.primary",
+      "text.destructive":       "color.text.secondary",
+      "border.default":         "color.border.default",
+      "border.divider":         "color.border.subtle"
+    },
+    "spacing": {
+      "padding.item.x":  "spacing.4",
+      "padding.item.y":  "spacing.3",
+      "padding.panel.y": "spacing.2",
+      "gap.icon":        "spacing.3",
+      "min.width":       "spacing.8"
+    },
+    "typography": {
+      "item.family":  "typography.font-family.body",
+      "item.size":    "typography.font-size.md",
+      "item.weight":  "typography.font-weight.regular"
+    },
+    "border": {
+      "radius": "shape.radius.md",
+      "width":  "shape.border-width.thin"
+    },
+    "motion": {
+      "shadow": "shape.shadow.lg"
+    }
+  },
+  "a11y": {
+    "role": "menu",
+    "aria": ["aria-haspopup", "aria-expanded", "aria-controls", "aria-labelledby"],
+    "keyboard": ["Enter", "Space", "Escape", "ArrowDown", "ArrowUp", "Home", "End"]
+  },
+  "platforms": ["web"]
 }

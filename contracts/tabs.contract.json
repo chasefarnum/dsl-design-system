@@ -1,21 +1,67 @@
 {
-  "name": "tabs",
-  "description": "Tabbed panel interface with underline and pill variants, keyboard navigation",
-  "primitive": "native",
-  "cssClass": "dsl-tabs",
+  "id": "tabs",
+  "name": "Tabs",
+  "description": "Tabbed panel interface with underline (active border-bottom indicator) and pill (filled background) variants. Supports active, hover, default, and disabled tab states with keyboard navigation.",
   "source": "components/tabs/tabs.html",
-  "variants": {
-    "variant": {
-      "options": ["underline", "pill"],
-      "default": "underline",
-      "cssModifier": "dsl-tabs--{variant}"
+  "cssClass": "dsl-tabs",
+  "props": {
+    "variant": { "options": ["underline", "pill"], "default": "underline" },
+    "count":   { "options": ["2", "3", "4", "5"], "default": "3" }
+  },
+  "states": ["default", "active", "hover", "disabled"],
+  "nested": [],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["tablist", "panel"],
+        "children": {
+          "tablist": {
+            "childOrder": ["tab"],
+            "children": {
+              "tab": { "figma": { "textProp": "tabLabel" } }
+            }
+          },
+          "panel": { "figma": { "textProp": "panelContent" } }
+        }
+      }
     }
   },
-  "states": ["default", "active", "disabled"],
   "tokens": {
-    "--color-brand-primary": "var(--color-brand-primary)",
-    "--color-bg-subtle": "var(--color-bg-subtle)",
-    "--color-border-default": "var(--color-border-default)",
-    "--shape-radius-full": "var(--shape-radius-full)"
-  }
+    "color": {
+      "tab.text.default":      "color.text.secondary",
+      "tab.text.active":       "color.text.brand",
+      "tab.text.hover":        "color.text.primary",
+      "tab.text.disabled":     "color.text.muted",
+      "tab.indicator.active":  "color.text.brand",
+      "tab.background.active": "button.primary.bg",
+      "tab.background.pill":   "color.bg.subtle",
+      "list.border":           "color.border.default",
+      "panel.text":            "color.text.primary"
+    },
+    "spacing": {
+      "tab.padding.x":   "spacing.4",
+      "tab.padding.y":   "spacing.3",
+      "gap.tabs":        "spacing.1",
+      "panel.padding.y": "spacing.5"
+    },
+    "typography": {
+      "tab.family":   "typography.font-family.body",
+      "tab.size":     "typography.font-size.md",
+      "tab.weight":   "typography.font-weight.semibold",
+      "panel.family": "typography.font-family.body",
+      "panel.size":   "typography.font-size.md",
+      "panel.weight": "typography.font-weight.regular"
+    },
+    "border": {
+      "radius.pill":     "shape.radius.full",
+      "width.indicator": "shape.border-width.medium",
+      "width.list":      "shape.border-width.thin"
+    }
+  },
+  "a11y": {
+    "role": "tablist",
+    "aria": ["role", "aria-selected", "aria-controls", "aria-labelledby", "aria-disabled"],
+    "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End", "Enter", "Space"]
+  },
+  "platforms": ["web"]
 }

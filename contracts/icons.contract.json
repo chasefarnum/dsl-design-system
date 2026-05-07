@@ -1,23 +1,44 @@
 {
-  "name": "icons",
-  "description": "SVG icon system using Phosphor Icons Bold weight (phosphoricons.com) — MIT license. 256×256 viewBox, rendered via Phosphor web components.",
-  "primitive": "native",
-  "cssClass": "dsl-icon",
+  "id": "icons",
+  "name": "Icons",
+  "description": "SVG icon system using Phosphor Icons Bold weight. Sizes 16/20/24/32. Renders via Phosphor web font classes. Color via currentColor.",
   "source": "components/icons/icons.html",
-  "variants": {
-    "size": {
-      "options": [16, 20, 24, 32],
-      "default": 20,
-      "cssModifier": "dsl-icon--{size}"
+  "cssClass": "dsl-icon",
+  "props": {
+    "size": { "options": ["16", "20", "24", "32"], "default": "20" }
+  },
+  "states": ["default"],
+  "nested": [],
+  "icons": [
+    "arrow-right", "arrow-left", "caret-down", "caret-up", "caret-right", "caret-left",
+    "close", "check", "search", "menu", "external-link", "phone", "email",
+    "star", "user", "calendar", "info", "warning", "error", "success"
+  ],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["icon"],
+        "children": {
+          "icon": { "figma": { "sizing": "fixed", "width": 24, "height": 24 } }
+        }
+      }
     }
   },
-  "icons": [
-    "arrow-right","arrow-left","chevron-down","chevron-up","chevron-right","chevron-left",
-    "close","check","search","menu","external-link","phone","email",
-    "star","user","calendar","info","warning","error","success"
-  ],
   "tokens": {
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-text-muted": "var(--color-text-muted)"
-  }
+    "color": {
+      "text.primary": "color.text.primary",
+      "text.muted":   "color.text.muted",
+      "text.brand":   "color.text.brand",
+      "text.inverse": "color.text.inverse"
+    },
+    "spacing": {},
+    "typography": {},
+    "border": {}
+  },
+  "a11y": {
+    "role": "img",
+    "aria": ["aria-hidden", "aria-label"],
+    "keyboard": []
+  },
+  "platforms": ["web"]
 }

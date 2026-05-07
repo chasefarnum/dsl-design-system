@@ -1,27 +1,73 @@
 {
-  "name": "notification",
-  "description": "Alert/notification with info/success/warning/error variants, dismissible, toast, and banner",
-  "primitive": "native",
-  "cssClass": "dsl-alert",
+  "id": "notification",
+  "name": "Notification",
+  "description": "Alert/notification with info/success/warning/error intents. Supports inline alert, full-width banner, and toast. Each has icon, title, body, and dismissible close button.",
   "source": "components/notification/notification.html",
-  "variants": {
-    "intent": {
-      "options": ["info", "success", "warning", "error"],
-      "default": "info",
-      "cssModifier": "dsl-alert--{intent}"
-    },
-    "type": {
-      "options": ["inline", "toast", "banner"],
-      "default": "inline",
-      "cssModifier": "dsl-alert--{type}"
-    }
+  "cssClass": "dsl-alert",
+  "props": {
+    "intent": { "options": ["info", "success", "warning", "error"], "default": "info" },
+    "type":   { "options": ["inline", "banner", "toast"],           "default": "inline" }
   },
   "states": ["default", "dismissed"],
+  "nested": ["icons", "button"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["icon", "content", "dismiss"],
+        "children": {
+          "icon":    { "figma": { "booleanProp": "showIcon",    "sizing": "fixed", "width": 20, "height": 20 } },
+          "content": {
+            "childOrder": ["title", "body"],
+            "children": {
+              "title": { "figma": { "textProp": "alertTitle",  "booleanProp": "showTitle" } },
+              "body":  { "figma": { "textProp": "alertBody" } }
+            }
+          },
+          "dismiss": { "figma": { "booleanProp": "dismissible", "sizing": "fixed", "width": 20, "height": 20, "position": "trailing" } }
+        }
+      }
+    }
+  },
   "tokens": {
-    "--color-semantic-info": "var(--color-semantic-info)",
-    "--color-semantic-success": "var(--color-semantic-success)",
-    "--color-semantic-warning": "var(--color-semantic-warning)",
-    "--color-semantic-error": "var(--color-semantic-error)",
-    "--shape-radius-md": "var(--shape-radius-md)"
-  }
+    "color": {
+      "background.info":     "color.bg.subtle",
+      "background.success":  "color.bg.subtle",
+      "background.warning":  "color.bg.subtle",
+      "background.error":    "color.bg.subtle",
+      "icon.info":           "color.text.brand",
+      "icon.success":        "color.text.brand",
+      "icon.warning":        "color.text.secondary",
+      "icon.error":          "color.text.secondary",
+      "text.title":          "color.text.primary",
+      "text.body":           "color.text.secondary",
+      "border.info":         "color.border.default",
+      "border.success":      "color.border.default",
+      "border.warning":      "color.border.default",
+      "border.error":        "color.border.default"
+    },
+    "spacing": {
+      "padding.x":   "spacing.4",
+      "padding.y":   "spacing.4",
+      "gap.inner":   "spacing.3",
+      "gap.content": "spacing.1"
+    },
+    "typography": {
+      "title.family":  "typography.font-family.body",
+      "title.size":    "typography.font-size.sm",
+      "title.weight":  "typography.font-weight.semibold",
+      "body.family":   "typography.font-family.body",
+      "body.size":     "typography.font-size.sm",
+      "body.weight":   "typography.font-weight.regular"
+    },
+    "border": {
+      "radius": "shape.radius.md",
+      "width":  "shape.border-width.thin"
+    }
+  },
+  "a11y": {
+    "role": "status",
+    "aria": ["role", "aria-live", "aria-atomic", "aria-label"],
+    "keyboard": ["Escape"]
+  },
+  "platforms": ["web"]
 }

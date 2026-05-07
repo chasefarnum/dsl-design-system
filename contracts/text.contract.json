@@ -1,21 +1,83 @@
 {
-  "name": "text",
-  "description": "Typography demo page showing the full type scale and utility styles",
-  "primitive": "native",
-  "cssClass": "dsl-text",
+  "id": "text",
+  "name": "Text",
+  "description": "Full typography system: headings h1–h6 (Montserrat Bold), body variants (lg/md/sm/xs), eyebrow label, caption, blockquote (brand left border), inline code, and link styles.",
   "source": "components/text/text.html",
-  "variants": {},
+  "cssClass": "dsl-text",
+  "props": {
+    "variant": {
+      "options": ["h1", "h2", "h3", "h4", "h5", "h6", "body-lg", "body", "body-sm", "body-xs", "eyebrow", "caption", "blockquote", "code", "link"],
+      "default": "body"
+    }
+  },
+  "states": ["default"],
+  "nested": [],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["text"],
+        "children": {
+          "text": { "figma": { "textProp": "content" } }
+        }
+      }
+    }
+  },
   "tokens": {
-    "--typography-font-family-heading": "var(--typography-font-family-heading)",
-    "--typography-font-family-body": "var(--typography-font-family-body)",
-    "--typography-font-size-xs": "var(--typography-font-size-xs)",
-    "--typography-font-size-sm": "var(--typography-font-size-sm)",
-    "--typography-font-size-md": "var(--typography-font-size-md)",
-    "--typography-font-size-lg": "var(--typography-font-size-lg)",
-    "--typography-font-size-xl": "var(--typography-font-size-xl)",
-    "--typography-font-size-2xl": "var(--typography-font-size-2xl)",
-    "--typography-font-size-3xl": "var(--typography-font-size-3xl)",
-    "--typography-font-size-4xl": "var(--typography-font-size-4xl)",
-    "--typography-font-size-5xl": "var(--typography-font-size-5xl)"
-  }
+    "color": {
+      "heading":         "color.text.primary",
+      "body":            "color.text.primary",
+      "body.muted":      "color.text.muted",
+      "eyebrow":         "color.text.muted",
+      "caption":         "color.text.muted",
+      "blockquote.text": "color.text.primary",
+      "blockquote.border": "color.text.brand",
+      "link":            "color.text.link",
+      "link.hover":      "color.text.link-hover",
+      "code.text":       "color.text.brand",
+      "code.background": "color.bg.subtle"
+    },
+    "spacing": {
+      "blockquote.padding.x": "spacing.5",
+      "blockquote.border.width": "spacing.1"
+    },
+    "typography": {
+      "h1.family":   "typography.font-family.body",
+      "h1.size":     "typography.font-size.5xl",
+      "h1.weight":   "typography.font-weight.bold",
+      "h2.family":   "typography.font-family.body",
+      "h2.size":     "typography.font-size.4xl",
+      "h2.weight":   "typography.font-weight.bold",
+      "h3.family":   "typography.font-family.body",
+      "h3.size":     "typography.font-size.3xl",
+      "h3.weight":   "typography.font-weight.bold",
+      "h4.family":   "typography.font-family.body",
+      "h4.size":     "typography.font-size.2xl",
+      "h4.weight":   "typography.font-weight.bold",
+      "h5.family":   "typography.font-family.body",
+      "h5.size":     "typography.font-size.xl",
+      "h5.weight":   "typography.font-weight.bold",
+      "h6.family":   "typography.font-family.body",
+      "h6.size":     "typography.font-size.lg",
+      "h6.weight":   "typography.font-weight.bold",
+      "body-lg.family": "typography.font-family.body",
+      "body-lg.size":   "typography.font-size.lg",
+      "body.size":      "typography.font-size.md",
+      "body-sm.size":   "typography.font-size.sm",
+      "body-xs.size":   "typography.font-size.xs",
+      "body.weight":    "typography.font-weight.regular",
+      "eyebrow.family": "typography.font-family.body",
+      "eyebrow.size":   "typography.font-size.sm",
+      "eyebrow.weight": "typography.font-weight.semibold",
+      "eyebrow.letterSpacing": "typography.letter-spacing.wide",
+      "caption.size":   "typography.font-size.xs",
+      "caption.weight": "typography.font-weight.regular"
+    },
+    "border": {}
+  },
+  "a11y": {
+    "role": "none",
+    "aria": [],
+    "keyboard": []
+  },
+  "platforms": ["web"]
 }

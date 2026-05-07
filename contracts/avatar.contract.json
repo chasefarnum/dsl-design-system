@@ -1,35 +1,58 @@
 {
-  "name": "avatar",
-  "description": "User representation via image, initials, or icon",
-  "primitive": "native",
-  "cssClass": "dsl-avatar",
+  "id": "avatar",
+  "name": "Avatar",
+  "description": "User representation via image, initials, or icon. Supports online status badge and avatar groups.",
   "source": "components/avatar/avatar.html",
-  "variants": {
-    "type": {
-      "options": ["image", "initials", "icon"],
-      "default": "image",
-      "cssModifier": "dsl-avatar--{type}"
-    },
-    "size": {
-      "options": ["xs", "sm", "md", "lg", "xl"],
-      "default": "md",
-      "cssModifier": "dsl-avatar--{size}"
-    },
-    "withBadge": {
-      "options": [true, false],
-      "default": false,
-      "cssModifier": "dsl-avatar--with-badge"
+  "cssClass": "dsl-avatar",
+  "props": {
+    "type": { "options": ["image", "initials", "icon"], "default": "image" },
+    "size": { "options": ["xs", "sm", "md", "lg", "xl"],  "default": "md" }
+  },
+  "states": ["default", "with-badge"],
+  "nested": [],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["content", "badge"],
+        "children": {
+          "content": { "figma": { "textProp": "initials", "visibleWhen": "type=initials" } },
+          "badge":   { "figma": { "booleanProp": "showBadge", "sizing": "fixed", "width": 12, "height": 12, "position": "trailing" } }
+        }
+      }
     }
   },
-  "slots": ["avatar__image", "avatar__initials", "avatar__icon", "avatar__badge"],
   "tokens": {
-    "--color-bg-brand": "var(--color-bg-brand)",
-    "--color-bg-subtle": "var(--color-bg-subtle)",
-    "--color-text-inverse": "var(--color-text-inverse)",
-    "--color-text-muted": "var(--color-text-muted)",
-    "--color-semantic-success": "var(--color-semantic-success)",
-    "--shape-radius-full": "var(--shape-radius-full)",
-    "--typography-font-family-body": "var(--typography-font-family-body)",
-    "--typography-font-weight-semibold": "var(--typography-font-weight-semibold)"
-  }
+    "color": {
+      "background.brand":   "color.bg.brand",
+      "background.subtle":  "color.bg.subtle",
+      "text.inverse":       "color.text.inverse",
+      "text.muted":         "color.text.muted",
+      "border.default":     "color.border.default",
+      "badge.online":       "button.primary.bg"
+    },
+    "spacing": {
+      "size.xs": "spacing.4",
+      "size.sm": "spacing.5",
+      "size.md": "spacing.6",
+      "size.lg": "spacing.7",
+      "size.xl": "spacing.8"
+    },
+    "typography": {
+      "initials.family": "typography.font-family.body",
+      "initials.weight": "typography.font-weight.semibold",
+      "initials.size.xs": "typography.font-size.xs",
+      "initials.size.md": "typography.font-size.sm",
+      "initials.size.lg": "typography.font-size.md"
+    },
+    "border": {
+      "radius": "shape.radius.full",
+      "width":  "shape.border-width.thin"
+    }
+  },
+  "a11y": {
+    "role": "img",
+    "aria": ["aria-label"],
+    "keyboard": []
+  },
+  "platforms": ["web"]
 }

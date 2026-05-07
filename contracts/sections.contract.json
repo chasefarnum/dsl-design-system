@@ -1,30 +1,66 @@
 {
-  "name": "sections",
-  "description": "Full-width landing page layout containers with background and padding variants",
-  "primitive": "native",
-  "cssClass": "dsl-section",
+  "id": "sections",
+  "name": "Sections",
+  "description": "Full-width landing page layout containers. Types: hero, feature (3-column grid), split (2-col text+media), cta (centered), content (text-only). Backgrounds: white, subtle, brand, dark.",
   "source": "components/sections/sections.html",
-  "variants": {
-    "type": {
-      "options": ["hero", "feature", "cta", "content", "split"],
-      "default": "content",
-      "cssModifier": "dsl-section--{type}"
-    },
-    "background": {
-      "options": ["white", "subtle", "brand", "dark"],
-      "default": "white",
-      "cssModifier": "dsl-section--bg-{background}"
+  "cssClass": "dsl-section",
+  "props": {
+    "type":       { "options": ["hero", "feature", "split", "cta", "content"], "default": "hero" },
+    "background": { "options": ["white", "subtle", "brand", "dark"],           "default": "white" }
+  },
+  "states": ["default"],
+  "nested": ["button"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["eyebrow", "heading", "body", "actions", "grid", "media"],
+        "children": {
+          "eyebrow":  { "figma": { "textProp": "eyebrowText",  "booleanProp": "showEyebrow" } },
+          "heading":  { "figma": { "textProp": "headingText" } },
+          "body":     { "figma": { "textProp": "bodyText",     "booleanProp": "showBody" } },
+          "actions":  { "figma": { "booleanProp": "showActions" } },
+          "grid":     { "figma": { "booleanProp": "showGrid",   "visibleWhen": "type=feature" } },
+          "media":    { "figma": { "booleanProp": "showMedia",  "visibleWhen": "type=split", "sizing": "fixed", "width": 580, "height": 400 } }
+        }
+      }
     }
   },
   "tokens": {
-    "--color-bg-default": "var(--color-bg-default)",
-    "--color-bg-subtle": "var(--color-bg-subtle)",
-    "--color-bg-brand": "var(--color-bg-brand)",
-    "--color-bg-brand-dark": "var(--color-bg-brand-dark)",
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-text-inverse": "var(--color-text-inverse)",
-    "--spacing-8": "var(--spacing-8)",
-    "--spacing-9": "var(--spacing-9)",
-    "--spacing-10": "var(--spacing-10)"
-  }
+    "color": {
+      "background.white":  "color.bg.default",
+      "background.subtle": "color.bg.subtle",
+      "background.brand":  "color.bg.brand",
+      "background.dark":   "color.bg.brand-dark",
+      "text.heading":      "color.text.primary",
+      "text.body":         "color.text.secondary",
+      "text.eyebrow":      "color.text.muted",
+      "text.inverse":      "color.text.inverse"
+    },
+    "spacing": {
+      "padding.x":         "spacing.6",
+      "padding.y.default": "spacing.9",
+      "padding.y.hero":    "spacing.10",
+      "gap.actions":       "spacing.4",
+      "gap.grid":          "spacing.5",
+      "max.width":         "spacing.10"
+    },
+    "typography": {
+      "eyebrow.family":   "typography.font-family.body",
+      "eyebrow.size":     "typography.font-size.sm",
+      "eyebrow.weight":   "typography.font-weight.semibold",
+      "heading.family":   "typography.font-family.body",
+      "heading.size":     "typography.font-size.4xl",
+      "heading.weight":   "typography.font-weight.bold",
+      "body.family":      "typography.font-family.body",
+      "body.size":        "typography.font-size.lg",
+      "body.weight":      "typography.font-weight.regular"
+    },
+    "border": {}
+  },
+  "a11y": {
+    "role": "region",
+    "aria": ["aria-label", "aria-labelledby"],
+    "keyboard": []
+  },
+  "platforms": ["web"]
 }

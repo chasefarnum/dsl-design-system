@@ -1,35 +1,68 @@
 {
-  "name": "accordion",
+  "id": "accordion",
+  "name": "Accordion",
   "description": "Collapsible content panels for FAQs and progressive disclosure",
-  "primitive": "native",
-  "cssClass": "dsl-accordion",
   "source": "components/accordion/accordion.html",
-  "variants": {
-    "variant": {
-      "options": ["default", "bordered"],
-      "default": "default",
-      "cssModifier": "dsl-accordion--{variant}"
-    },
-    "mode": {
-      "options": ["multi", "single"],
-      "default": "multi",
-      "dataAttribute": "data-mode"
+  "cssClass": "dsl-accordion",
+  "props": {
+    "variant": { "options": ["default", "bordered"], "default": "default" },
+    "mode":    { "options": ["multi", "single"],     "default": "multi" }
+  },
+  "states": ["closed", "open", "hover", "focus", "disabled"],
+  "nested": ["icon"],
+  "composition": {
+    "slots": {
+      "item": {
+        "childOrder": ["trigger", "panel"],
+        "children": {
+          "trigger": {
+            "childOrder": ["label", "chevron"],
+            "children": {
+              "label":   { "figma": { "textProp": "triggerLabel" } },
+              "chevron": { "figma": { "booleanProp": "showChevron", "sizing": "fixed", "width": 20, "height": 20, "rotateOnExpand": true, "defaultRotation": 0, "expandedRotation": -180 } }
+            }
+          },
+          "panel": {
+            "childOrder": ["content"],
+            "children": {
+              "content": { "figma": { "textProp": "panelContent", "visibleWhen": "open" } }
+            }
+          }
+        }
+      }
     }
   },
-  "slots": ["accordion__item", "accordion__trigger", "accordion__panel"],
-  "states": ["closed", "open"],
   "tokens": {
-    "--color-bg-default": "var(--color-bg-default)",
-    "--color-bg-subtle": "var(--color-bg-subtle)",
-    "--color-border-default": "var(--color-border-default)",
-    "--color-text-primary": "var(--color-text-primary)",
-    "--color-text-secondary": "var(--color-text-secondary)",
-    "--color-brand-primary": "var(--color-brand-primary)",
-    "--shape-radius-md": "var(--shape-radius-md)",
-    "--shape-border-width-thin": "var(--shape-border-width-thin)",
-    "--spacing-4": "var(--spacing-4)",
-    "--spacing-5": "var(--spacing-5)",
-    "--typography-font-family-body": "var(--typography-font-family-body)",
-    "--typography-font-weight-semibold": "var(--typography-font-weight-semibold)"
-  }
+    "color": {
+      "background.default":  "color.bg.default",
+      "background.subtle":   "color.bg.subtle",
+      "border.default":      "color.border.default",
+      "text.primary":        "color.text.primary",
+      "text.secondary":      "color.text.secondary",
+      "text.brand":          "color.text.brand"
+    },
+    "spacing": {
+      "padding.x":   "spacing.4",
+      "padding.y":   "spacing.4",
+      "gap.inner":   "spacing.3"
+    },
+    "typography": {
+      "trigger.family":  "typography.font-family.body",
+      "trigger.size":    "typography.font-size.md",
+      "trigger.weight":  "typography.font-weight.semibold",
+      "panel.family":    "typography.font-family.body",
+      "panel.size":      "typography.font-size.md",
+      "panel.weight":    "typography.font-weight.regular"
+    },
+    "border": {
+      "radius":          "shape.radius.md",
+      "width":           "shape.border-width.thin"
+    }
+  },
+  "a11y": {
+    "role": "button",
+    "aria": ["aria-expanded", "aria-controls", "aria-labelledby"],
+    "keyboard": ["Enter", "Space", "ArrowDown", "ArrowUp", "Home", "End"]
+  },
+  "platforms": ["web"]
 }

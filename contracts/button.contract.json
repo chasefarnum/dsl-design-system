@@ -1,58 +1,72 @@
 {
+  "id": "button",
   "name": "Button",
-  "source": "components/button/button.html",
-  "primitive": "native",
   "description": "Primary interactive element for CTAs and form submissions. Used across all HubSpot landing page modules.",
+  "source": "components/button/button.html",
   "cssClass": "dsl-btn",
-  "variants": {
-    "variant": {
-      "options": ["primary", "secondary", "ghost"],
-      "default": "primary",
-      "cssModifier": "dsl-btn--{variant}"
-    },
-    "size": {
-      "options": ["sm", "md", "lg"],
-      "default": "md",
-      "cssModifier": "dsl-btn--{size}"
-    },
-    "fullWidth": {
-      "options": [true, false],
-      "default": false,
-      "cssModifier": "dsl-btn--full"
-    },
-    "iconPosition": {
-      "options": ["none", "left", "right", "only"],
-      "default": "none",
-      "cssModifier": "dsl-btn--icon-only"
-    },
-    "loading": {
-      "options": [true, false],
-      "default": false,
-      "cssModifier": "dsl-btn--loading"
+  "props": {
+    "variant": { "options": ["primary", "secondary", "ghost"], "default": "primary" },
+    "size":    { "options": ["sm", "md", "lg"], "default": "md" }
+  },
+  "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+  "nested": ["icon"],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["icon-left", "label", "icon-right", "spinner"],
+        "children": {
+          "icon-left":  { "figma": { "booleanProp": "iconLeft",  "sizing": "fixed", "width": 20, "height": 20 } },
+          "label":      { "figma": { "textProp": "label" } },
+          "icon-right": { "figma": { "booleanProp": "iconRight", "sizing": "fixed", "width": 20, "height": 20, "position": "trailing" } },
+          "spinner":    { "figma": { "booleanProp": "loading",   "sizing": "fixed", "width": 20, "height": 20, "visibleWhen": "state=loading" } }
+        }
+      }
     }
   },
-  "slots": ["button"],
   "tokens": {
-    "--button-primary-bg":       "var(--button-primary-bg)",
-    "--button-primary-bg-hover": "var(--button-primary-bg-hover)",
-    "--button-primary-text":     "var(--button-primary-text)",
-    "--button-primary-border":   "var(--button-primary-border)",
-    "--button-secondary-bg":     "var(--button-secondary-bg)",
-    "--button-secondary-bg-hover": "var(--button-secondary-bg-hover)",
-    "--button-secondary-text":   "var(--button-secondary-text)",
-    "--button-secondary-border": "var(--button-secondary-border)",
-    "--button-ghost-bg":         "var(--button-ghost-bg)",
-    "--button-ghost-bg-hover":   "var(--button-ghost-bg-hover)",
-    "--button-ghost-text":       "var(--button-ghost-text)",
-    "--button-ghost-border":     "var(--button-ghost-border)",
-    "--shape-radius-md":         "var(--shape-radius-md)",
-    "--spacing-3":               "var(--spacing-3)",
-    "--spacing-5":               "var(--spacing-5)",
-    "--typography-font-family-body":       "var(--typography-font-family-body)",
-    "--typography-font-size-sm":           "var(--typography-font-size-sm)",
-    "--typography-font-size-md":           "var(--typography-font-size-md)",
-    "--typography-font-size-lg":           "var(--typography-font-size-lg)",
-    "--typography-font-weight-semibold":   "var(--typography-font-weight-semibold)"
+    "color": {
+      "background.primary":          "button.primary.bg",
+      "background.primary.hover":    "button.primary.bg-hover",
+      "text.primary":                "button.primary.text",
+      "border.primary":              "button.primary.border",
+      "background.secondary":        "button.secondary.bg",
+      "background.secondary.hover":  "button.secondary.bg-hover",
+      "text.secondary":              "button.secondary.text",
+      "border.secondary":            "button.secondary.border",
+      "background.ghost":            "button.ghost.bg",
+      "background.ghost.hover":      "button.ghost.bg-hover",
+      "text.ghost":                  "button.ghost.text",
+      "border.ghost":                "button.ghost.border",
+      "focus.ring":                  "color.border.focus"
+    },
+    "spacing": {
+      "padding.x.sm": "spacing.3",
+      "padding.y.sm": "spacing.2",
+      "padding.x.md": "spacing.4",
+      "padding.y.md": "spacing.3",
+      "padding.x.lg": "spacing.5",
+      "padding.y.lg": "spacing.4",
+      "gap":          "spacing.2"
+    },
+    "typography": {
+      "label.family":   "typography.font-family.body",
+      "label.size.sm":  "typography.font-size.sm",
+      "label.size.md":  "typography.font-size.md",
+      "label.size.lg":  "typography.font-size.lg",
+      "label.weight":   "typography.font-weight.semibold"
+    },
+    "border": {
+      "radius": "shape.radius.md",
+      "width":  "shape.border-width.thin"
+    },
+    "motion": {
+      "transition": "motion.duration.fast"
+    }
   },
-  "states": ["hover", "focus-visible", "active", "disabled", "loading"]
+  "a11y": {
+    "role": "button",
+    "aria": ["aria-busy", "aria-disabled", "aria-label"],
+    "keyboard": ["Enter", "Space"]
+  },
+  "platforms": ["web"]
 }

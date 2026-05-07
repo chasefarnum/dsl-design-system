@@ -1,21 +1,59 @@
 {
-  "name": "tooltip",
-  "description": "Hover+focus tooltip with 4 positions and fade transition",
-  "primitive": "native",
-  "cssClass": "dsl-tooltip",
+  "id": "tooltip",
+  "name": "Tooltip",
+  "description": "Hover/focus tooltip with 4 positions (top/bottom/left/right). Dark background with light text and directional arrow pointer. Wraps any trigger element.",
   "source": "components/tooltip/tooltip.html",
-  "variants": {
-    "position": {
-      "options": ["top", "bottom", "left", "right"],
-      "default": "top",
-      "dataAttribute": "data-position"
+  "cssClass": "dsl-tooltip",
+  "props": {
+    "position": { "options": ["top", "bottom", "left", "right"], "default": "top" }
+  },
+  "states": ["hidden", "visible"],
+  "nested": [],
+  "composition": {
+    "slots": {
+      "default": {
+        "childOrder": ["trigger", "tooltip"],
+        "children": {
+          "trigger": { "figma": { "booleanProp": "showTrigger" } },
+          "tooltip": {
+            "childOrder": ["arrow", "label"],
+            "children": {
+              "arrow": { "figma": { "booleanProp": "showArrow", "sizing": "fixed", "width": 8, "height": 8 } },
+              "label": { "figma": { "textProp": "tooltipText", "visibleWhen": "state=visible" } }
+            }
+          }
+        }
+      }
     }
   },
   "tokens": {
-    "--color-neutral-900": "var(--color-neutral-900)",
-    "--color-neutral-000": "var(--color-neutral-000)",
-    "--shape-radius-md": "var(--shape-radius-md)",
-    "--shape-shadow-md": "var(--shape-shadow-md)",
-    "--typography-font-size-sm": "var(--typography-font-size-sm)"
-  }
+    "color": {
+      "background.tooltip":  "color.text.primary",
+      "text.tooltip":        "color.text.inverse",
+      "border.focus":        "color.border.focus"
+    },
+    "spacing": {
+      "padding.x":    "spacing.3",
+      "padding.y":    "spacing.2",
+      "offset":       "spacing.2",
+      "max.width":    "spacing.8"
+    },
+    "typography": {
+      "label.family": "typography.font-family.body",
+      "label.size":   "typography.font-size.sm",
+      "label.weight": "typography.font-weight.regular"
+    },
+    "border": {
+      "radius": "shape.radius.md"
+    },
+    "motion": {
+      "shadow": "shape.shadow.md"
+    }
+  },
+  "a11y": {
+    "role": "tooltip",
+    "aria": ["role", "aria-describedby"],
+    "keyboard": ["Tab", "Escape"]
+  },
+  "platforms": ["web"]
 }
