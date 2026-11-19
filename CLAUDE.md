@@ -13,7 +13,7 @@ v1.0 — initial structure
 
 ## Project Overview
 
-**Client:** Discovery Senior Living — see projects/discovery-senior-living/CLAUDE.md for client context
+**Client:** Discovery Senior Living — see projects/halo/discovery-senior-living/CLAUDE.md for client context
 **Project type:** Design system
 **Status:** TBD
 **Started:** TBD
